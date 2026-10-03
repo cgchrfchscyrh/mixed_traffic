@@ -13,3 +13,7 @@ The initially inherited `braces` advisory was removed from the new projects by u
 ## Deployment checks
 
 Check HTTPS, repository base paths, media/figure/CSV links, CSP, and response headers after publishing. GitHub Pages controls HTTP response headers; HTML can provide CSP and referrer policy, but cannot impose HSTS, X-Frame-Options, or HTTP-only CSP directives. Record the actual live responses rather than claiming every header is configurable. No secrets or original licensed manuscript PDFs belong in this repository.
+
+## Observed production response
+
+The final live check confirmed HTTPS enforcement, GitHub Pages hosting, and `Strict-Transport-Security: max-age=31556952`. Every generated page has the intended HTML CSP, and the layout sets a strict-origin-when-cross-origin referrer policy. MP4 byte-range requests return 206 Partial Content. No HTTP `X-Frame-Options`, `X-Content-Type-Options`, or CSP response header was returned; these provider-controlled header limitations are recorded rather than claimed to be configured. See `reports/live-deployment.json`.

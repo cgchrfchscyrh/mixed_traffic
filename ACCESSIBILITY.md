@@ -33,3 +33,7 @@ The supplied mixed-traffic publisher PDF is untagged; the supplied eVTOL PDF rep
 Manual testing with multiple screen readers and users with disabilities, full remediation of external scholarly PDFs, and UF institutional accessibility/brand approval have not been completed. A neutral palette or disclaimer does not grant an exemption from applicable institutional requirements.
 
 For official requirements, consult [UF Web Standards](https://brandcenter.ufl.edu/web-standards/) and [UF EIT Accessibility Policy](https://policy.ufl.edu/policy/electronic-information-technology-and-communication-accessibility-policy/). Contact for access barriers: liusongyang@ufl.edu.
+
+## Published build verification
+
+The [successful deployment workflow](https://github.com/cgchrfchscyrh/mixed_traffic/actions/runs/37144901012) scanned 11 page states and passed 95 additional checks. Its report is saved in `reports/ci/axe-wcag21aa.json`. Live verification checked 5 pages and 22 unique page/resource URLs, confirmed public-media bytes match the source assets, tested video playback and pause, and checked 320 CSS-pixel reflow. Details are in `reports/live-deployment.json` and `reports/live-browser.json`.

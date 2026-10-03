@@ -58,7 +58,7 @@ TEST_URL=http://127.0.0.1:4332/mixed_traffic npm run test:a11y
 `.github/workflows/astro.yml` 在推送 `main` 后执行安装、审计、lint、构建和 axe 检查，再部署 `dist/`。仓库 Settings → Pages → Build and deployment 的 Source 使用 **GitHub Actions**。构建使用仓库名作为 `base`，所有资源通过统一的路径函数生成。
 
 ```sh
-git add src public scripts package.json package-lock.json README.md ACCESSIBILITY.md SECURITY.md .github astro.config.ts eslint.config.ts prettier.config.ts
+git add src public scripts package.json package-lock.json README.md ACCESSIBILITY.md SECURITY.md .github astro.config.ts eslint.config.mjs prettier.config.ts
 git commit -m "Update research website"
 git push origin main
 ```

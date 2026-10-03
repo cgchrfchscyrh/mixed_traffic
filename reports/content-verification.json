@@ -1,0 +1,35 @@
+{
+  "sourceUnchanged": true,
+  "tables": [
+    {
+      "id": "intersections-50",
+      "rows": 15,
+      "csvMatchesHTMLData": true
+    },
+    {
+      "id": "intersections-80",
+      "rows": 15,
+      "csvMatchesHTMLData": true
+    }
+  ],
+  "figures": [
+    {
+      "id": "network",
+      "width": 735,
+      "height": 444,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "penetration",
+      "width": 1512,
+      "height": 378,
+      "dimensionsMatch": true
+    },
+    {
+      "id": "intersections",
+      "width": 1512,
+      "height": 240,
+      "dimensionsMatch": true
+    }
+  ]
+}

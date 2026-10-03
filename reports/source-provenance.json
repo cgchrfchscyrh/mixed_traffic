@@ -1,0 +1,9 @@
+{
+  "originalFile": "mixed_traffic.pdf",
+  "sha256": "a38d2340ebab950870a38dfe5fd2f99f274f222d27ef94d6a7ae0f7cbd89977a",
+  "doi": "10.1109/IROS60139.2025.11245805",
+  "source": "User-supplied published PDF; original unchanged and not republished by this site.",
+  "figureExtraction": "Selected original figures rasterized at 216 dpi; no research content redrawn. Captions and explanations provided in HTML.",
+  "data": "Values transcribed from the paper tables; no estimates of missing training samples.",
+  "checkedOn": "2026-10-03"
+}

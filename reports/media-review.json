@@ -1,0 +1,19 @@
+{
+  "programs": [],
+  "streams": [
+    {
+      "codec_name": "h264",
+      "codec_type": "video",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "format": {
+    "duration": "20.000000",
+    "size": "1152123"
+  },
+  "reviewedOn": "2026-10-03",
+  "speechOrMeaningfulAudioInExcerpt": false,
+  "descriptionTrack": "public/media/context-descriptions.vtt",
+  "manualReview": "Original figure crops, context-video sampled frames, mobile and desktop layouts reviewed. Narrative descriptions include source captions and separate context from the paper experiment."
+}

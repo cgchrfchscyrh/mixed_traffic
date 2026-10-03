@@ -1,0 +1,763 @@
+{
+  "id": "mixed_traffic",
+  "wordmark": "MIXED TRAFFIC",
+  "shortTitle": "Learning to share the intersection.",
+  "title": "Large-Scale Mixed-Traffic and Intersection Control using Multi-agent Reinforcement Learning",
+  "description": "Decentralized reinforcement learning for human-driven and robot vehicles across a 14-intersection urban road network.",
+  "venue": "IROS 2025",
+  "publication": "2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 13777–13784.",
+  "doi": "10.1109/IROS60139.2025.11245805",
+  "year": "2025",
+  "authors": [
+    {
+      "name": "Songyang Liu",
+      "aff": "1",
+      "email": "liusongyang@ufl.edu"
+    },
+    {
+      "name": "Muyang Fan",
+      "aff": "2",
+      "email": "mfan1@memphis.edu"
+    },
+    {
+      "name": "Weizi Li",
+      "aff": "3",
+      "email": "weizili@utk.edu"
+    },
+    {
+      "name": "Jing Du",
+      "aff": "1",
+      "email": "eric.du@essie.ufl.edu"
+    },
+    {
+      "name": "Shuai Li",
+      "aff": "1",
+      "email": "shuai.li@ufl.edu"
+    }
+  ],
+  "affiliations": [
+    "Department of Civil and Coastal Engineering, University of Florida, Gainesville, FL, USA",
+    "Department of Computer Science, University of Memphis, Memphis, TN, USA",
+    "Min H. Kao Department of Electrical Engineering and Computer Science, University of Tennessee, Knoxville, TN, USA"
+  ],
+  "repo": "https://github.com/cgchrfchscyrh/MixedTrafficControl_IROS",
+  "repoLabel": "Research code",
+  "repoNote": "SUMO environments, training code, and additional result tables are available in the research repository.",
+  "siteRepo": "https://github.com/cgchrfchscyrh/mixed_traffic",
+  "paperUrl": "https://doi.org/10.1109/IROS60139.2025.11245805",
+  "htmlPaper": "https://arxiv.org/html/2504.04691v1",
+  "pdfUrl": "https://arxiv.org/pdf/2504.04691",
+  "pdfLabel": "Preprint PDF (external, 8 pages)",
+  "heroFigure": "network",
+  "heroFigureLabel": "Our study · Colorado Springs network",
+  "heroFigureCaption": "14 intersections. Human-driven vehicles and robot vehicles share the same network.",
+  "heroIntro": "Can robot vehicles improve traffic flow while conventional signals remain in the network?",
+  "intro": "A city will not become fully autonomous overnight. We study the transition: human-driven vehicles and robot vehicles share roads, while traffic signals and learned vehicle control coexist across intersections.",
+  "insight": "The right mix matters. More unsignalized intersections do not automatically produce better network performance.",
+  "stats": [
+    {
+      "value": "14",
+      "label": "intersections in a SUMO simulation"
+    },
+    {
+      "value": "5",
+      "label": "mixed-control configurations"
+    },
+    {
+      "value": "40–80%",
+      "label": "robot-vehicle penetration studied"
+    }
+  ],
+  "contextTitle": "Real streets. Mixed traffic.",
+  "contextDescription": "A time-lapse of traffic on Wilhelmshöher Allee in Kassel, Germany. This background footage is separate from the Colorado Springs simulation in the paper.",
+  "contextCredit": "Arne Groh · Wikimedia Commons · public domain",
+  "contextUrl": "https://commons.wikimedia.org/wiki/File:1_hour_Wilhelmshoeher_Allee.ogv",
+  "contextDuration": 20,
+  "contextDetails": [
+    "A fixed, elevated camera looks down a broad, tree-lined road. Vehicles move in both directions through the narrow opening between the trees; cars enter and leave the bottom of the frame while more distant vehicles move toward the horizon. The scene is accelerated time-lapse, rather than real-time traffic.",
+    "This 20-second excerpt uses source time 00:10–00:30. The original compresses one hour of traffic into about two and a half minutes. The excerpt has no audio track and does not show the research controller or identify which vehicles are autonomous."
+  ],
+  "contextLicense": "Released into the public domain by Arne Groh. The excerpt is re-encoded and has its audio removed; the scene and playback speed are otherwise preserved. Recorded 20 September 2009.",
+  "contextLicenseUrl": "https://commons.wikimedia.org/wiki/File:1_hour_Wilhelmshoeher_Allee.ogv#Licensing",
+  "steps": [
+    {
+      "title": "Observe locally",
+      "text": "Each robot vehicle observes queues, average waiting times, and intersection occupancy for the traffic directions around it."
+    },
+    {
+      "title": "Choose stop or go",
+      "text": "Inside a 30 m control zone, the shared learned policy selects Stop or Go. Vehicles make these decisions independently."
+    },
+    {
+      "title": "Coordinate across a network",
+      "text": "Some intersections retain traffic signals; others are regulated by robot vehicles. A conflict penalty complements the waiting-time reward."
+    }
+  ],
+  "methodFigure": "network",
+  "methodTitle": "One shared policy. Local decisions.",
+  "methodIntro": "We train a decentralized multi-agent policy with Rainbow DQN. Human-driven vehicles follow the Intelligent Driver Model; robot vehicles also follow it outside the intersection control zone.",
+  "resultsTitle": "A better balance at 80% robot vehicles.",
+  "resultsIntro": "At 80% robot-vehicle penetration, the 8U + 6S configuration has the lowest network waiting time and highest throughput among the configurations in Table II. U denotes an unsignalized intersection regulated by robot vehicles; S denotes a signalized intersection.",
+  "highlights": [
+    {
+      "label": "Average waiting time",
+      "before": "6.17 s",
+      "after": "5.09 s",
+      "note": "1.08 seconds less waiting"
+    },
+    {
+      "label": "Network throughput",
+      "before": "454",
+      "after": "493",
+      "note": "39 more arrivals per 500 seconds"
+    }
+  ],
+  "resultNote": "Simulation results, not a field deployment. Headline values compare 8U + 6S with the fully signalized 0U + 14S baseline at 80% RV penetration. Waiting time and throughput need not improve together at other settings.",
+  "scopeTitle": "A transition strategy, evaluated in simulation.",
+  "limitations": [
+    "The evaluation uses one road network reconstructed from Colorado Springs in SUMO. It does not establish effectiveness for every city, demand pattern, or driver behavior.",
+    "Network gains can coexist with longer waiting times at individual intersections. Configuration choice and robot-vehicle penetration both affect the outcome.",
+    "Robot vehicles are assumed to exchange local traffic information. The study does not establish real-world deployment safety, communications reliability, or regulatory readiness."
+  ],
+  "guideIntro": "This research guide explains the published study and its results in HTML. It is a companion to the paper, not a complete transcription. The external arXiv HTML link provides the full preprint; the DOI identifies the published IROS paper.",
+  "guideSections": [
+    {
+      "title": "The question",
+      "paragraphs": [
+        "Can robot vehicles improve the flow of a large mixed-traffic network without replacing every traffic signal? The study combines two kinds of intersection control in one 14-intersection network, with human-driven and robot vehicles sharing its roads."
+      ]
+    },
+    {
+      "title": "Local observations and actions",
+      "paragraphs": [
+        "Each robot vehicle receives queue lengths, mean waiting times, and occupancy information for the directions at its intersection. Vehicles share one policy but make decisions independently. Within 30 m of an intersection, the policy chooses between Stop and Go. Outside that zone, robot vehicles follow the Intelligent Driver Model, as do human-driven vehicles.",
+        "The local reward gives the directional waiting time for Go and its negative for Stop, scaled by a coefficient. A conflict adds a penalty of −1. A stop action uses deceleration based on speed and remaining distance to the intersection."
+      ]
+    },
+    {
+      "title": "Experimental protocol",
+      "paragraphs": [
+        "The SUMO network has 14 intersections and 12 peripheral entrances/exits. The baseline retains all 14 signals. Five mixed configurations replace 2, 4, 6, 8, or 10 signals with robot-vehicle control. The study tests RV penetration rates of 40%, 50%, 60%, 70%, and 80%.",
+        "The Rainbow DQN policy is trained for 1,000 iterations. Each configuration is evaluated over 100 episodes of 1,000 seconds. Throughput is counted during the second half of an episode, a 500-second window."
+      ]
+    },
+    {
+      "title": "How to read the metrics",
+      "paragraphs": [
+        "Average waiting time is the time vehicles remain motionless in the control zone, averaged over vehicles. Lower is better. Network throughput counts vehicles that reach their destinations within the measurement window; intersection throughput instead counts vehicles passing a specific intersection. Higher is better. These two throughput quantities should not be added or treated as interchangeable."
+      ]
+    },
+    {
+      "title": "What the results show",
+      "paragraphs": [
+        "At 80% RV penetration, 8U + 6S achieves 5.09 s of network waiting time and 493 arrivals per 500 s, compared with 6.17 s and 454 for the fully signalized baseline. At 50%, the minimum network waiting time is 5.86 s with 2U + 12S, while the highest network throughput is 473 with 10U + 4S.",
+        "The full table also contains less favorable outcomes. At 50%, 6U + 8S has 7.92 s of waiting and throughput of 448, compared with 6.17 s and 454 for the baseline. Replacing additional signals is therefore not a monotonic improvement."
+      ]
+    },
+    {
+      "title": "Reading the figures",
+      "paragraphs": [
+        "The network diagram identifies the 14 intersections and includes enlarged views of intersections 5, 7, 9, and 11. The penetration-rate plots compare 8U + 6S and 4U + 10S across five RV rates. The per-intersection bar chart takes the best waiting time across five configurations separately for each intersection; it does not show a single deployable configuration that simultaneously achieves every displayed minimum."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "id": "network",
+      "number": "1",
+      "title": "The 14-intersection network",
+      "file": "network.png",
+      "width": 735,
+      "height": 444,
+      "alt": "Map of the Colorado Springs study network, labeled with intersections 1 through 14, and four enlarged intersection views.",
+      "description": "The central map shows the road network used in SUMO. Four surrounding panels enlarge intersections 5, 7, 9, and 11, illustrating different intersection geometries. Twelve peripheral entrances and exits define the origin–destination pairs. The map locates the experiment; it does not encode a performance metric.",
+      "credit": "Figure 1, published IROS paper, p. 13780."
+    },
+    {
+      "id": "penetration",
+      "number": "2",
+      "title": "Performance across robot-vehicle penetration rates",
+      "file": "penetration.png",
+      "width": 1512,
+      "height": 378,
+      "alt": "Four box plots compare waiting time and throughput at robot-vehicle rates of 40, 50, 60, 70, and 80 percent, for the 8U + 6S and 4U + 10S configurations.",
+      "description": "The left pair of panels uses 8U + 6S; the right pair uses 4U + 10S. Each pair reports waiting time in seconds and throughput in vehicles per 500 seconds. The rightmost item labeled TL in each panel marks the fully signalized baseline. Performance varies across RV rates and configurations. The exact 50% and 80% network values are available in the tables on this page. The raw samples underlying the box plots are not supplied by the uploaded PDF and have not been reconstructed from pixels.",
+      "credit": "Figure 2, published IROS paper, p. 13782."
+    },
+    {
+      "id": "intersections",
+      "number": "3",
+      "title": "Local benefits vary by intersection",
+      "file": "intersections.png",
+      "width": 1512,
+      "height": 240,
+      "alt": "Two sets of grouped bars compare baseline waiting times with the best mixed-control waiting time for each of 14 intersections, at 50 and 80 percent robot vehicles.",
+      "description": "The left panel represents 50% RV penetration; the right panel represents 80%. The “Ours” bar for each intersection compares the best waiting time across the five mixed-control configurations, rather than one shared configuration. Benefits vary by intersection; some retain lower waiting times under fully signalized control. The numeric tables provide all configuration values and preserve cases where waiting time increases.",
+      "credit": "Figure 3, published IROS paper, p. 13782."
+    }
+  ],
+  "bibtex": "@inproceedings{liu2025mixedtraffic,\n  title = {Large-Scale Mixed-Traffic and Intersection Control using Multi-agent Reinforcement Learning},\n  author = {Liu, Songyang and Fan, Muyang and Li, Weizi and Du, Jing and Li, Shuai},\n  booktitle = {2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},\n  year = {2025},\n  pages = {13777--13784},\n  doi = {10.1109/IROS60139.2025.11245805}\n}",
+  "citationKey": "liu2025mixedtraffic",
+  "comparisons": [
+    {
+      "id": "80",
+      "label": "80% robot vehicles",
+      "source": "Table II, network row.",
+      "summary": "At 80%, 8U + 6S gives the lowest waiting time and highest throughput.",
+      "metrics": [
+        {
+          "title": "Average waiting time",
+          "unit": "s",
+          "direction": "Lower is better",
+          "max": 10,
+          "values": [6.17, 5.76, 5.91, 6.31, 5.09, 5.95]
+        },
+        {
+          "title": "Network throughput",
+          "unit": "vehicles / 500 s",
+          "direction": "Higher is better",
+          "max": 550,
+          "values": [454, 473, 466, 475, 493, 478]
+        }
+      ],
+      "labels": [
+        "0U + 14S",
+        "2U + 12S",
+        "4U + 10S",
+        "6U + 8S",
+        "8U + 6S",
+        "10U + 4S"
+      ],
+      "featured": 4
+    },
+    {
+      "id": "50",
+      "label": "50% robot vehicles",
+      "source": "Table I, network row.",
+      "summary": "At 50%, 2U + 12S minimizes waiting time; 10U + 4S maximizes throughput.",
+      "metrics": [
+        {
+          "title": "Average waiting time",
+          "unit": "s",
+          "direction": "Lower is better",
+          "max": 10,
+          "values": [6.17, 5.86, 6.63, 7.92, 6.11, 7.02]
+        },
+        {
+          "title": "Network throughput",
+          "unit": "vehicles / 500 s",
+          "direction": "Higher is better",
+          "max": 550,
+          "values": [454, 470, 459, 448, 471, 473]
+        }
+      ],
+      "labels": [
+        "0U + 14S",
+        "2U + 12S",
+        "4U + 10S",
+        "6U + 8S",
+        "8U + 6S",
+        "10U + 4S"
+      ],
+      "featured": 1
+    }
+  ],
+  "tables": [
+    {
+      "id": "intersections-50",
+      "title": "Table I · 50% robot vehicles",
+      "caption": "Waiting time W (seconds) and throughput Q (vehicles per 500 seconds), by intersection and configuration, at 50% RV penetration.",
+      "note": "The network row uses destination arrivals for Q; individual rows use vehicles passing that intersection. U = unsignalized, robot-vehicle control. S = signalized.",
+      "headers": [
+        "Intersection",
+        "0U + 14S · W (s)",
+        "0U + 14S · Q (vehicles / 500 s)",
+        "2U + 12S · W (s)",
+        "2U + 12S · Q (vehicles / 500 s)",
+        "4U + 10S · W (s)",
+        "4U + 10S · Q (vehicles / 500 s)",
+        "6U + 8S · W (s)",
+        "6U + 8S · Q (vehicles / 500 s)",
+        "8U + 6S · W (s)",
+        "8U + 6S · Q (vehicles / 500 s)",
+        "10U + 4S · W (s)",
+        "10U + 4S · Q (vehicles / 500 s)"
+      ],
+      "rows": [
+        [
+          "1",
+          "5.27",
+          "391",
+          "0.53",
+          "349",
+          "0.67",
+          "346",
+          "0.67",
+          "346",
+          "0.6",
+          "351",
+          "0.63",
+          "355"
+        ],
+        [
+          "2",
+          "3.07",
+          "194",
+          "4.92",
+          "190",
+          "4.97",
+          "191",
+          "17.47",
+          "170",
+          "6.9",
+          "192",
+          "16.4",
+          "178"
+        ],
+        [
+          "3",
+          "7.26",
+          "464",
+          "7.12",
+          "362",
+          "6.24",
+          "373",
+          "8.63",
+          "332",
+          "7.41",
+          "367",
+          "7.15",
+          "371"
+        ],
+        [
+          "4",
+          "0.95",
+          "56",
+          "2.49",
+          "64",
+          "2.5",
+          "64",
+          "6.2",
+          "56",
+          "0.81",
+          "65",
+          "6.42",
+          "61"
+        ],
+        [
+          "5",
+          "9.74",
+          "515",
+          "9.65",
+          "504",
+          "11.55",
+          "407",
+          "11.62",
+          "386",
+          "11.47",
+          "396",
+          "11.82",
+          "382"
+        ],
+        [
+          "6",
+          "5.10",
+          "88",
+          "3.03",
+          "87",
+          "4.41",
+          "86",
+          "4.37",
+          "89",
+          "0.11",
+          "102",
+          "0.1",
+          "108"
+        ],
+        [
+          "7",
+          "12.89",
+          "488",
+          "13.22",
+          "490",
+          "20.47",
+          "396",
+          "21.92",
+          "367",
+          "19.98",
+          "388",
+          "18.31",
+          "393"
+        ],
+        [
+          "8",
+          "7.62",
+          "198",
+          "6.76",
+          "182",
+          "7.24",
+          "184",
+          "7.3",
+          "184",
+          "4.2",
+          "177",
+          "4.97",
+          "177"
+        ],
+        [
+          "9",
+          "1.91",
+          "190",
+          "2.04",
+          "188",
+          "2.0",
+          "191",
+          "1.95",
+          "191",
+          "2.02",
+          "191",
+          "1.96",
+          "192"
+        ],
+        [
+          "10",
+          "0.28",
+          "39",
+          "0.35",
+          "44",
+          "0.37",
+          "43",
+          "0.36",
+          "41",
+          "0.4",
+          "43",
+          "0.01",
+          "44"
+        ],
+        [
+          "11",
+          "17.83",
+          "144",
+          "15.91",
+          "143",
+          "16.81",
+          "138",
+          "16.36",
+          "143",
+          "16.45",
+          "145",
+          "16.6",
+          "141"
+        ],
+        [
+          "12",
+          "0.79",
+          "112",
+          "0.78",
+          "114",
+          "0.81",
+          "117",
+          "0.8",
+          "118",
+          "1.1",
+          "121",
+          "0.15",
+          "128"
+        ],
+        [
+          "13",
+          "4.19",
+          "221",
+          "4.94",
+          "230",
+          "5.03",
+          "233",
+          "4.94",
+          "235",
+          "5.2",
+          "235",
+          "5.49",
+          "236"
+        ],
+        [
+          "14",
+          "9.49",
+          "354",
+          "8.24",
+          "358",
+          "8.47",
+          "359",
+          "8.2",
+          "358",
+          "8.21",
+          "363",
+          "8.4",
+          "362"
+        ],
+        [
+          "Network",
+          "6.17",
+          "454",
+          "5.86",
+          "470",
+          "6.63",
+          "459",
+          "7.92",
+          "448",
+          "6.11",
+          "471",
+          "7.02",
+          "473"
+        ]
+      ]
+    },
+    {
+      "id": "intersections-80",
+      "title": "Table II · 80% robot vehicles",
+      "caption": "Waiting time W (seconds) and throughput Q (vehicles per 500 seconds), by intersection and configuration, at 80% RV penetration.",
+      "note": "The network row uses destination arrivals for Q; individual rows use vehicles passing that intersection. U = unsignalized, robot-vehicle control. S = signalized.",
+      "headers": [
+        "Intersection",
+        "0U + 14S · W (s)",
+        "0U + 14S · Q (vehicles / 500 s)",
+        "2U + 12S · W (s)",
+        "2U + 12S · Q (vehicles / 500 s)",
+        "4U + 10S · W (s)",
+        "4U + 10S · Q (vehicles / 500 s)",
+        "6U + 8S · W (s)",
+        "6U + 8S · Q (vehicles / 500 s)",
+        "8U + 6S · W (s)",
+        "8U + 6S · Q (vehicles / 500 s)",
+        "10U + 4S · W (s)",
+        "10U + 4S · Q (vehicles / 500 s)"
+      ],
+      "rows": [
+        [
+          "1",
+          "5.27",
+          "391",
+          "0.46",
+          "359",
+          "0.74",
+          "365",
+          "0.77",
+          "364",
+          "0.75",
+          "365",
+          "0.75",
+          "364"
+        ],
+        [
+          "2",
+          "3.07",
+          "194",
+          "4.83",
+          "190",
+          "4.94",
+          "191",
+          "8.46",
+          "190",
+          "0.23",
+          "212",
+          "0.69",
+          "206"
+        ],
+        [
+          "3",
+          "7.26",
+          "464",
+          "3.89",
+          "430",
+          "5.26",
+          "419",
+          "6.11",
+          "398",
+          "5.57",
+          "408",
+          "6.9",
+          "378"
+        ],
+        [
+          "4",
+          "0.95",
+          "56",
+          "2.55",
+          "64",
+          "2.46",
+          "63",
+          "0.67",
+          "64",
+          "0.06",
+          "65",
+          "1.32",
+          "67"
+        ],
+        [
+          "5",
+          "9.74",
+          "515",
+          "10.64",
+          "493",
+          "8.93",
+          "435",
+          "8.4",
+          "419",
+          "8.83",
+          "437",
+          "10.98",
+          "405"
+        ],
+        [
+          "6",
+          "5.10",
+          "88",
+          "4.5",
+          "86",
+          "4.3",
+          "87",
+          "4.29",
+          "87",
+          "0.08",
+          "99",
+          "0.11",
+          "106"
+        ],
+        [
+          "7",
+          "12.89",
+          "488",
+          "13.87",
+          "490",
+          "16.08",
+          "431",
+          "16.81",
+          "419",
+          "15.76",
+          "432",
+          "18.37",
+          "420"
+        ],
+        [
+          "8",
+          "7.62",
+          "198",
+          "6.79",
+          "182",
+          "6.8",
+          "187",
+          "7.32",
+          "188",
+          "3.8",
+          "184",
+          "4.18",
+          "179"
+        ],
+        [
+          "9",
+          "1.91",
+          "190",
+          "2.05",
+          "190",
+          "2.04",
+          "190",
+          "2.03",
+          "192",
+          "2.11",
+          "190",
+          "2.06",
+          "190"
+        ],
+        [
+          "10",
+          "0.28",
+          "39",
+          "0.39",
+          "45",
+          "0.36",
+          "43",
+          "0.38",
+          "42",
+          "0.4",
+          "43",
+          "0.01",
+          "44"
+        ],
+        [
+          "11",
+          "17.83",
+          "144",
+          "16.51",
+          "137",
+          "16.26",
+          "144",
+          "17.11",
+          "141",
+          "17.47",
+          "139",
+          "17.24",
+          "139"
+        ],
+        [
+          "12",
+          "0.79",
+          "112",
+          "0.77",
+          "113",
+          "0.82",
+          "118",
+          "0.82",
+          "118",
+          "1.13",
+          "119",
+          "0.13",
+          "126"
+        ],
+        [
+          "13",
+          "4.19",
+          "221",
+          "4.88",
+          "229",
+          "4.99",
+          "233",
+          "4.98",
+          "230",
+          "5.23",
+          "233",
+          "5.57",
+          "235"
+        ],
+        [
+          "14",
+          "9.49",
+          "354",
+          "8.01",
+          "357",
+          "8.14",
+          "359",
+          "8.29",
+          "358",
+          "8.28",
+          "364",
+          "8.32",
+          "361"
+        ],
+        [
+          "Network",
+          "6.17",
+          "454",
+          "5.76",
+          "473",
+          "5.91",
+          "466",
+          "6.31",
+          "475",
+          "5.09",
+          "493",
+          "5.95",
+          "478"
+        ]
+      ]
+    }
+  ]
+}

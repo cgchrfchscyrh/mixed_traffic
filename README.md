@@ -1,89 +1,74 @@
-# Academic project page template
+# MIXED TRAFFIC — 论文项目网页
 
-This is a template to help you build a professional project page for your research paper, based on the design from the original [Nerfies page](https://nerfies.github.io/). Instead of manually editing an HTML file, you can author the page's content in Markdown and make use of a polished set of components, then deploy it with GitHub Pages. [See a live demo of the template](https://research-template.roman.technology).
+论文：**Large-Scale Mixed-Traffic and Intersection Control using Multi-agent Reinforcement Learning**。以作者提供的正式发表 PDF 为事实来源；原始 PDF 保持不变，不在仓库中重新分发。
 
-<img src="public/screenshot-light.png" width="48%" alt="Screenshot of this template in light mode" /> <img src = "public/screenshot-dark.png" width="48%" alt="Screenshot of this template in dark mode"/>
+网站地址：<https://cgchrfchscyrh.github.io/mixed_traffic/>。科研代码仓库与本网页仓库分开：<https://github.com/cgchrfchscyrh/MixedTrafficControl_IROS>。
 
-## Features
+## 网站内容
 
-- Pre-built components for LaTeX, figures, tables, code blocks (with syntax highlighting), videos, YouTube embeds, 3D objects, comparison sliders, carousels, tabbed slides, and pairs of columns.
-- Optional cover image or video behind the page header.
-- Optional dark mode :)
-- Automatically converts figures stored as PDF files into images.
-- Compresses images using [AVIF](https://en.wikipedia.org/wiki/AVIF) and uses [responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images) to minimize loading time.
-- Optimized font rendering, with [resized fallback font faces](https://developer.chrome.com/blog/font-fallbacks) to prevent cumulative layout shift.
-- Responsive, accessible, and SEO-optimized.
-- Add your own components with HTML or any Javascript framework you like. React comes pre-configured, but you could also use Vue, Svelte, etc.
-- Built with [Astro](https://astro.build/), [React](https://react.dev/), [Tailwind](https://tailwindcss.com/), [MDX](https://mdxjs.com/), and [TypeScript](https://www.typescriptlang.org/).
+- `/`：英文论文介绍、真实场景视频与论文图并列的首屏、方法、结果对比、研究边界、引用。
+- `/paper/`：HTML 研究指南，明确是论文的阅读辅助，不是完整逐字转录。
+- `/results/`：原始图、详细文字说明、结果表格及 CSV 下载。
+- `/accessibility/`：无障碍说明、媒体来源、附件限制和联系信息。
+- `/404.html`：保留导航与 UF 非官方立场声明的错误页面。
 
-## Examples
+中性炭黑和灰白界面不使用 UF 标志或蓝橙主题。保留论文作者单位和所有页面的 UF 非官方立场声明。原论文图的科学配色保持不变，另提供文字和表格说明。
 
-- [Token-Efficient Long Video Understanding for Multimodal LLMs](https://research.nvidia.com/labs/lpr/storm/) (NVIDIA Research)
-- [PolyPose: Deformable 2D/3D Registration via Polyrigid Transforms](https://polypose.csail.mit.edu/) (MIT CSAIL)
-- [ByteWrist: A Parallel Robotic Wrist Enabling Flexible and Anthropomorphic Motion for Confined Spaces](https://bytewrist.github.io/) (ByteDance Seed)
-- [Dexterous Teleoperation of 20-DoF ByteDexter Hand via Human Motion Retargeting](https://byte-dexter.github.io/) (ByteDance Seed)
-- [Conformal Prediction as Bayesian Quadrature](https://jakesnell.com/projects/conformal-as-bayes-quad/)
-- [Lossy Compression With Pretrained Diffusion Models](https://jeremyiv.github.io/diffc-project-page/)
-- [RoboSpatial: Teaching Spatial Understanding to 2D and 3D Vision-Language Models for Robotics](https://chanh.ee/RoboSpatial/)
-- [CLIP-RT: Learning Language-Conditioned Robotic Policies from Natural Language Supervision](https://clip-rt.github.io/)
-- [PCO: Precision-Controllable Offset Surfaces with Sharp Features](https://alan-leo-wong.github.io/SIGASIA24-PCO-ProjectPage/)
-- [SCUBA: Salesforce Computer Use Benchmark](https://sfrcua.github.io/SCUBA/)
+## 本地运行与检查
 
-## Usage
+需要 Node.js 24。使用项目自带的锁定文件安装。
 
-1. Click ["Use this template"](https://github.com/new?template_name=academic-project-astro-template&template_owner=RomanHauksson) to make a copy of this repository in your GitHub account.
-2. Enable GitHub Pages for the repository. Click on the **Settings** tab, then go to **Pages** (under the **Code and automation** section). Using the dropdown, change **Source** from "Deploy from a branch" to "GitHub Actions".
-
-At this point, whenever you push to the `main` branch, the GitHub Actions workflow in `.github/workflows/astro.yml` will automatically build a static website and deploy it to `https://<username>.github.io/<repository>/`. No other configuration is necessary!
-
-To edit the content, you _could_ simply edit [`./src/paper.mdx`](./src/paper.mdx) in your browser in the GitHub interface, without downloading or setting anything else up. But if you want to preview your changes faster, I recommend editing it locally:
-
-3. Clone the repository.
-
-4. [Install Node.js](https://nodejs.org/en/download/) if you haven't already. Make sure you're using version 24 or later, which you can check by running
-
-```bash
-node --version
-```
-
-If your Node version is less than 24, you can use [Node Version Manager](https://github.com/nvm-sh/nvm) to install version 24 and switch to it:
-
-```bash
-nvm install 24 && nvm use 24
-```
-
-6. In the root directory of your cloned repository, install the dependencies:
-
-```bash
-npm install
-```
-
-7. Start the development server:
-
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-While the development server is running, you can open `http://localhost:4321` in your browser to see a live preview of your page.
-
-8. Edit the content in [`./src/paper.mdx`](./src/paper.mdx). Every time you save a file, the development server will automatically reload `http://localhost:4321` to display the updated version of the page.
-
-9. Push your changes to the GitHub repository to trigger a new deployment with your changes.
-
-Alternatively, you can build the site locally, and copy the output to wherever you'd like to host the site. Running the following command will create a static website stored in `./dist/`.
-
-```bash
-npm run build
+```sh
+npm run lint
+npm run audit:security
+BASE_PATH=/mixed_traffic SITE_URL=https://cgchrfchscyrh.github.io npm run build
+BASE_PATH=/mixed_traffic npm run preview -- --host 127.0.0.1 --port 4332
 ```
 
-For more information, consult [`./documentation.md`](./documentation.md).
+在另一终端运行：
 
-I'd like to speak directly with users to learn about what they want and get feedback on the template. If you're interested in getting help with setting up with the project, fixing bugs AI can't solve, or even having me develop the page for you, you can [email me](mailto:roman.i0djm@aleeas.com) or [schedule a virtual meeting](https://cal.com/romanhauksson/projectpage).
+```sh
+npx playwright install chromium
+TEST_URL=http://127.0.0.1:4332/mixed_traffic npm run test:a11y
+```
 
-## Alternative template
+也可以用 `CHROME_PATH` 指定已安装的 Chrome。无障碍测试包括 axe、键盘跳转/标签页/视频控制、320 像素回流、文字间距、无 JavaScript 页面、媒体描述轨道和引用复制。详细记录见 [ACCESSIBILITY.md](ACCESSIBILITY.md)。
 
-For a different look, the other template I'd recommend is [_Clarity: A Minimalist Website Template for AI Research_](https://shikun.io/projects/clarity) by Shikun Liu. It has a beautiful and careful design that's distinct from the original Nerfies page. It's simply an HTML file styled with Sass.
+安全审计仍报告一个未修复的上游公告；[SECURITY.md](SECURITY.md) 记录其静态站点适用性评估和复查期限。`audit:security` 会保留原始 npm 输出，并拒绝新增、过期或不符合已复核范围的问题。不要将通过此检查表述为“所有依赖零漏洞”。
 
-## Credits
+## 修改内容
 
-This template was originally adapted from Eliahu Horwitz's [Academic Project Page Template](https://github.com/eliahuhorwitz/Academic-project-page-template), which was adapted from Keunhong Park's [project page for _Nerfies_](https://nerfies.github.io/). It's licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+- `src/data/site.json`：论文题目、作者、研究叙事、图表说明、数值与 BibTeX。
+- `src/components/` 和 `src/pages/`：布局和交互。
+- `src/styles/global.css`：响应式样式、可见焦点、打印与 reduced-motion 支持。
+- `public/figures/`：从原 PDF 提取的 PNG。
+- `public/data/`：与 HTML 数值一致的 CSV。修改结果时同步更新并核对原论文。
+- `public/media/`：静音片段、封面及英文画面描述 VTT。
+- `reports/source-provenance.json`：原 PDF 文件名、SHA-256、提取来源和核对日期。
+
+论文数字使用原表数值，未复用与数值不一致的百分比表述。缺失的训练轨迹数据没有从图片猜测或补造。eVTOL 的公开研究仓库目前尚未发布实现，因此按钮使用 “Project repository”，而不是声称代码已公开。
+
+## GitHub Pages
+
+`.github/workflows/astro.yml` 在推送 `main` 后执行安装、审计、lint、构建和 axe 检查，再部署 `dist/`。仓库 Settings → Pages → Build and deployment 的 Source 使用 **GitHub Actions**。构建使用仓库名作为 `base`，所有资源通过统一的路径函数生成。
+
+```sh
+git add src public scripts package.json package-lock.json README.md ACCESSIBILITY.md SECURITY.md .github astro.config.ts eslint.config.ts prettier.config.ts
+git commit -m "Update research website"
+git push origin main
+```
+
+分享给导师时发送网站地址；GitHub 仓库地址适合查看源码。GitHub Pages 是公开发布，不是私密审稿空间。
+
+## 素材与规范
+
+视频来源：[Arne Groh · Wikimedia Commons · public domain](https://commons.wikimedia.org/wiki/File:1_hour_Wilhelmshoeher_Allee.ogv)。使用方式、完整画面说明与研究录像的区别见网站媒体说明。
+
+参考：[UF Web Standards](https://brandcenter.ufl.edu/web-standards/)、[UF EIT Accessibility Policy](https://policy.ufl.edu/policy/electronic-information-technology-and-communication-accessibility-policy/)。中性视觉和免责声明不代表已获得 UF 官方品牌批准。自动化检查也不代表 ADA 或完整 WCAG 认证。
+
+基于 Roman Hauksson 的 [Academic Project Astro Template](https://github.com/RomanHauksson/academic-project-astro-template)，按本研究内容重新实现。已上线的 HOIST 网站由另一个仓库维护。

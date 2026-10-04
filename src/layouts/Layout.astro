@@ -9,9 +9,10 @@ interface Props {
 }
 const { title = site.title, description = site.description } = Astro.props;
 const isNotFound = /\/404(?:\/|\.html)?$/.test(Astro.url.pathname);
-const canonical = Astro.site && !isNotFound
-  ? new URL(Astro.url.pathname, Astro.site).href
-  : undefined;
+const canonical =
+  Astro.site && !isNotFound
+    ? new URL(Astro.url.pathname, Astro.site).href
+    : undefined;
 const nav = [
   { name: "Overview", href: asset() },
   { name: "Research guide", href: asset("paper/") },
@@ -47,7 +48,7 @@ const nav = [
             <meta property="og:url" content={canonical} />
             <meta
               property="og:image"
-              content={new URL(asset("media/poster.jpg"), Astro.site).href}
+              content={new URL(asset(site.contextPoster), Astro.site).href}
             />
             <meta property="og:image:alt" content={site.contextDescription} />
           </>

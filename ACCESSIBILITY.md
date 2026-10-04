@@ -1,4 +1,4 @@
-# Accessibility review — 3 October 2026
+# Accessibility review — 4 October 2026
 
 Target: WCAG 2.1 Level A and AA. This is a technical review record, not an ADA/WCAG certification or institutional brand approval.
 
@@ -34,6 +34,10 @@ Manual testing with multiple screen readers and users with disabilities, full re
 
 For official requirements, consult [UF Web Standards](https://brandcenter.ufl.edu/web-standards/) and [UF EIT Accessibility Policy](https://policy.ufl.edu/policy/electronic-information-technology-and-communication-accessibility-policy/). Contact for access barriers: liusongyang@ufl.edu.
 
+## Waymo video update
+
+On 4 October 2026, the generic street time-lapse was replaced with official Waymo Los Angeles autonomous-driving B-roll, using source time 01:08–01:28. The selected excerpt is video-only, has no autoplay or loop, and is paired with a complete visual alternative and a synchronized description track. The original shot boundaries (4.546 s and 13.221 s within the excerpt) were checked for the VTT cues. Attribution appears next to the player and in the media-credit section. New asset filenames ensure previous browser caches cannot display the old clip with the new description. Details are in `reports/media-review.json`.
+
 ## Published build verification
 
-The [successful deployment workflow](https://github.com/cgchrfchscyrh/mixed_traffic/actions/runs/37144901012) scanned 11 page states and passed 95 additional checks. Its report is saved in `reports/ci/axe-wcag21aa.json`. Live verification checked 5 pages and 22 unique page/resource URLs, confirmed public-media bytes match the source assets, tested video playback and pause, and checked 320 CSS-pixel reflow. Details are in `reports/live-deployment.json` and `reports/live-browser.json`.
+The deployment report and live resource checks are refreshed after this update. The reports identify the exact deployed commit, actual CI checks, HTTPS response headers, resource hashes and live playback/reflow behavior. See `reports/deployment.json`, `reports/ci/axe-wcag21aa.json`, `reports/live-deployment.json`, and `reports/live-browser.json`.

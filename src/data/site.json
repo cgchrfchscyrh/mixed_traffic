@@ -68,17 +68,17 @@
       "label": "robot-vehicle penetration studied"
     }
   ],
-  "contextTitle": "Real streets. Mixed traffic.",
-  "contextDescription": "A time-lapse of traffic on Wilhelmshöher Allee in Kassel, Germany. This background footage is separate from the Colorado Springs simulation in the paper.",
-  "contextCredit": "Arne Groh · Wikimedia Commons · public domain",
-  "contextUrl": "https://commons.wikimedia.org/wiki/File:1_hour_Wilhelmshoeher_Allee.ogv",
+  "contextTitle": "Autonomous vehicles on real city streets.",
+  "contextDescription": "A Waymo autonomous Jaguar I-PACE drives through Los Angeles alongside other road traffic. Source: Waymo. This industry footage provides context for the paper’s separate Colorado Springs simulation.",
+  "contextCredit": "Source: Waymo · Autonomous Jaguar I-PACE driving in Los Angeles",
+  "contextUrl": "https://waymo.com/media-resources/",
   "contextDuration": 20,
   "contextDetails": [
-    "A fixed, elevated camera looks down a broad, tree-lined road. Vehicles move in both directions through the narrow opening between the trees; cars enter and leave the bottom of the frame while more distant vehicles move toward the horizon. The scene is accelerated time-lapse, rather than real-time traffic.",
-    "This 20-second excerpt uses source time 00:10–00:30. The original compresses one hour of traffic into about two and a half minutes. The excerpt has no audio track and does not show the research controller or identify which vehicles are autonomous."
+    "A white Waymo Jaguar I-PACE, fitted with a roof-mounted sensor unit and additional sensors around its body, travels through city streets. The first moving shot follows the vehicle beside a large white building with a patterned facade. A second, wider front-quarter view follows it past a silver curved building and across marked intersections. Other vehicles pass in adjacent lanes, and traffic lights, crosswalks, and downtown buildings are visible. The final shot changes to dusk: the same type of vehicle approaches the camera with its headlights on while other cars travel behind it.",
+    "This approximately 20-second silent excerpt uses 01:08–01:28 of Waymo’s official Los Angeles driving B-roll. It illustrates a real-world autonomous vehicle sharing public roads. It does not demonstrate the authors’ controller, identify the control mode of surrounding vehicles, or validate the paper’s simulation results. No affiliation with or endorsement by Waymo is implied."
   ],
-  "contextLicense": "Released into the public domain by Arne Groh. The excerpt is re-encoded and has its audio removed; the scene and playback speed are otherwise preserved. Recorded 20 September 2009.",
-  "contextLicenseUrl": "https://commons.wikimedia.org/wiki/File:1_hour_Wilhelmshoeher_Allee.ogv#Licensing",
+  "contextLicense": "Waymo provides this media for press and educational purposes with the credit “Source: Waymo.” The excerpt is trimmed, resized, re-encoded, and presented without audio; the original image sequence and playback speed are retained. This is an educational research use.",
+  "contextLicenseUrl": "https://waymo.com/media-resources/",
   "steps": [
     {
       "title": "Observe locally",
@@ -759,5 +759,8 @@
         ]
       ]
     }
-  ]
+  ],
+  "contextVideo": "media/waymo-los-angeles.mp4",
+  "contextPoster": "media/waymo-los-angeles.jpg",
+  "contextTrack": "media/waymo-descriptions.vtt"
 }

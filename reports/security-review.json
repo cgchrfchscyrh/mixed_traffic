@@ -1,23 +1,13 @@
 {
-  "date": "2026-10-03T18:16:24.124Z",
-  "dependencyFindings": {
+  "date": "2026-10-04T18:17:14.577Z",
+  "vulnerabilities": {
     "info": 0,
     "low": 0,
     "moderate": 0,
-    "high": 2,
+    "high": 0,
     "critical": 0,
-    "total": 2
+    "total": 0
   },
-  "reviewedAdvisories": [
-    {
-      "advisory": "https://github.com/advisories/GHSA-ch52-4w7c-c8xp",
-      "package": "http-cache-semantics",
-      "version": "4.2.0",
-      "expires": "2026-11-03T00:00:00Z",
-      "reason": "Only Astro's remote-image build cache imports this package. All media are local public assets, and only static dist files are deployed; there is no shared authenticated cache or Node server."
-    }
-  ],
-  "unreviewedAdvisories": [],
-  "guardErrors": [],
-  "scope": "Static GitHub Pages deployment; raw npm audit findings remain recorded."
+  "scope": "Static output, local assets, no server adapter or authenticated cache",
+  "exceptions": []
 }

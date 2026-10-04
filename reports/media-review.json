@@ -1,19 +1,32 @@
 {
-  "programs": [],
-  "streams": [
-    {
-      "codec_name": "h264",
-      "codec_type": "video",
-      "width": 1280,
-      "height": 720
+  "reviewedOn": "2026-10-04",
+  "sourceTitle": "Waymo’s autonomously driven Jaguar I-PACE navigating Los Angeles",
+  "sourcePage": "https://waymo.com/media-resources/",
+  "sourceDownload": "https://storage.googleapis.com/waymo-uploads/files/site-media/press/b-roll/clips_la_drivingfootage.mp4",
+  "sourceSha256": "7bd87ca0b4a3c1522f668132954c15279910fca89bcf5ac0dfe0c5ded8b761a2",
+  "sourceInterval": "01:08–01:28",
+  "credit": "Source: Waymo",
+  "use": "Waymo official media resources explicitly allow press and educational purposes with attribution.",
+  "adaptations": "Trimmed, resized to 1280×720, H.264 encoded, audio removed; original shot order and speed retained.",
+  "file": "media/waymo-los-angeles.mp4",
+  "sha256": "eea9ee74d18b7b33ae9937175da3567498c342a96adbae7fc59f5ea899c1f32d",
+  "ffprobe": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720
+      }
+    ],
+    "format": {
+      "duration": "20.020000",
+      "size": "4538653"
     }
-  ],
-  "format": {
-    "duration": "20.000000",
-    "size": "1152123"
   },
-  "reviewedOn": "2026-10-03",
+  "descriptionTrack": "media/waymo-descriptions.vtt",
   "speechOrMeaningfulAudioInExcerpt": false,
-  "descriptionTrack": "public/media/context-descriptions.vtt",
-  "manualReview": "Original figure crops, context-video sampled frames, mobile and desktop layouts reviewed. Narrative descriptions include source captions and separate context from the paper experiment."
+  "visualReview": "Reviewed every second of the selected excerpt: daylight driving shots at intersections, followed by a dusk street shot with headlights. The vehicle and sensor equipment are visible, as are surrounding road users. Desktop and 320-pixel media layouts inspected; the Waymo vehicle is clearly visible in the initial poster. Playback, pause, replay, and timed description loading passed the project checks.",
+  "claimBoundary": "Official Waymo real-world autonomous driving B-roll, distinct from the paper’s simulation and authors’ research controller."
 }

@@ -39,7 +39,7 @@ TEST_URL=http://127.0.0.1:4332/mixed_traffic npm run test:a11y
 
 也可以用 `CHROME_PATH` 指定已安装的 Chrome。无障碍测试包括 axe、键盘跳转/标签页/视频控制、320 像素回流、文字间距、无 JavaScript 页面、媒体描述轨道和引用复制。详细记录见 [ACCESSIBILITY.md](ACCESSIBILITY.md)。
 
-安全审计仍报告一个未修复的上游公告；[SECURITY.md](SECURITY.md) 记录其静态站点适用性评估和复查期限。`audit:security` 会保留原始 npm 输出，并拒绝新增、过期或不符合已复核范围的问题。不要将通过此检查表述为“所有依赖零漏洞”。
+2026 年 10 月 4 日已更新 `http-cache-semantics` 至修复版 4.3.0，当前依赖审计为零漏洞。`audit:security` 不再使用公告例外，会阻止存在漏洞或审计失败的部署。详见 [SECURITY.md](SECURITY.md)。
 
 ## 修改内容
 
@@ -67,7 +67,7 @@ git push origin main
 
 ## 素材与规范
 
-视频来源：[Arne Groh · Wikimedia Commons · public domain](https://commons.wikimedia.org/wiki/File:1_hour_Wilhelmshoeher_Allee.ogv)。使用方式、完整画面说明与研究录像的区别见网站媒体说明。
+视频来源：[Waymo 官方媒体素材库](https://waymo.com/media-resources/)，使用其允许新闻及教育用途的洛杉矶自动驾驶实景素材，标注 “Source: Waymo”。选取原视频 01:08–01:28，制作约 20 秒静音片段，并提供完整文字说明及 VTT 画面描述；不自动播放。该片段用于现实背景，不是论文控制器的实车验证。
 
 参考：[UF Web Standards](https://brandcenter.ufl.edu/web-standards/)、[UF EIT Accessibility Policy](https://policy.ufl.edu/policy/electronic-information-technology-and-communication-accessibility-policy/)。中性视觉和免责声明不代表已获得 UF 官方品牌批准。自动化检查也不代表 ADA 或完整 WCAG 认证。
 

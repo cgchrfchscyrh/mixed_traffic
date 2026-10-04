@@ -40,4 +40,4 @@ On 4 October 2026, the generic street time-lapse was replaced with official Waym
 
 ## Published build verification
 
-The deployment report and live resource checks are refreshed after this update. The reports identify the exact deployed commit, actual CI checks, HTTPS response headers, resource hashes and live playback/reflow behavior. See `reports/deployment.json`, `reports/ci/axe-wcag21aa.json`, `reports/live-deployment.json`, and `reports/live-browser.json`.
+The updated deployment passed 11 axe scans and 95 functional checks with zero violations or errors. Live verification checked five pages and 22 resources, including matching hashes for the new Waymo video, poster and description track. Browser checks confirmed the new video source, visible Waymo credit, initially paused playback, working play/pause controls and 320 CSS-pixel reflow. The reports identify the exact deployed commit and actual HTTPS response headers. See `reports/deployment.json`, `reports/ci/axe-wcag21aa.json`, `reports/live-deployment.json`, and `reports/live-browser.json`.

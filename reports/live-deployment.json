@@ -1,5 +1,5 @@
 {
-  "checkedOn": "2026-10-03",
+  "checkedOn": "2026-10-04",
   "site": "https://cgchrfchscyrh.github.io/mixed_traffic/",
   "httpsEnforced": true,
   "pages": [
@@ -74,8 +74,8 @@
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 24837,
-      "sha256": "84953acca2ec2a44ba7857b7a48a29b08dc4bf091d2b838d2ab31857a2c5ab95"
+      "bytes": 25432,
+      "sha256": "79b14547e794d95108419dd9811470648c19268fbee044240b8a868436b5dcae"
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/404.html",
@@ -137,8 +137,8 @@
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/accessibility/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 9154,
-      "sha256": "cb37a980336d396e54ca83e9127c63c30b488412d57b2ed0dc53d946224bf4e6"
+      "bytes": 9649,
+      "sha256": "c26427448ef117a7e9af95293187b25a5185153301d780486f200d0c982b805e"
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/citation.bib",
@@ -197,47 +197,47 @@
       "matchesSource": true
     },
     {
-      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/context-descriptions.vtt",
+      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/waymo-descriptions.vtt",
       "status": 200,
       "contentType": "text/vtt; charset=utf-8",
-      "bytes": 350,
-      "sha256": "63bc2513923110bf70078e29f45b7569de9298d6eced8718fd22c3d415a18121",
+      "bytes": 670,
+      "sha256": "831c498bee7ae3e8db26fa354f2a44d0013048d5e7ce10b89e327bdf6eaa0f37",
       "matchesSource": true
     },
     {
-      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/context.mp4",
-      "status": 200,
-      "contentType": "video/mp4",
-      "bytes": 1152123,
-      "sha256": "c1dcaf4aad0d393cb5afe8556f4688399193392fed5dbff6e68ccd801b177904",
-      "matchesSource": true
-    },
-    {
-      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/poster.jpg",
+      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/waymo-los-angeles.jpg",
       "status": 200,
       "contentType": "image/jpeg",
-      "bytes": 93505,
-      "sha256": "6d4a528d7a2d6051228e97c42e43be572d6809ffcc34bf4475d36f3e17e05030",
+      "bytes": 46613,
+      "sha256": "319def8d984500cdeb244a7a66592af1f1060cac05b87eba988d7f1946f9f55c",
+      "matchesSource": true
+    },
+    {
+      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/waymo-los-angeles.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 4538653,
+      "sha256": "eea9ee74d18b7b33ae9937175da3567498c342a96adbae7fc59f5ea899c1f32d",
       "matchesSource": true
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/paper/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 10040,
-      "sha256": "758f261092dbc510d32e65c790207782aaabd5fbc77fe317fdfa1efd3d92d37c"
+      "bytes": 10096,
+      "sha256": "975c83be9f2e6782be258602a094ea68a7a7a1c1a200c9130bb851cc8de4879c"
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/results/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 17213,
-      "sha256": "437321f579181acfac4c0c21fae54d8b107808a49cc869f5ffc739d03db339c5"
+      "bytes": 17269,
+      "sha256": "82251ca46142c779daf57ca1294a7c50cedfcffa66d8a64d43bc504b222f49d3"
     }
   ],
   "mediaRangeRequest": {
     "status": 206,
-    "contentRange": "bytes 0-1023/1152123",
+    "contentRange": "bytes 0-1023/4538653",
     "contentType": "video/mp4"
   },
   "errors": [],

@@ -1,11 +1,8 @@
 {
-  "commit": "bc5891df57f928063ab5b5c46a359c57c6052a0d",
-  "workflowRun": 37144901012,
-  "workflowUrl": "https://github.com/cgchrfchscyrh/mixed_traffic/actions/runs/37144901012",
+  "id": 37224072611,
+  "status": "completed",
   "conclusion": "success",
-  "axeScans": 11,
-  "additionalChecks": 95,
-  "axeViolations": 0,
-  "checkErrors": 0,
-  "site": "https://cgchrfchscyrh.github.io/mixed_traffic/"
+  "head_sha": "0fa2cb8061e4723069b500f9333672f4c01ff8c5",
+  "html_url": "https://github.com/cgchrfchscyrh/mixed_traffic/actions/runs/37224072611",
+  "updated_at": "2026-10-04T18:21:52Z"
 }

@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-10-11",
-  "checkedAt": "2026-10-11T20:03:19.005071+00:00",
+  "checkedAt": "2026-10-11T20:12:22.767273+00:00",
   "site": "https://cgchrfchscyrh.github.io/mixed_traffic/",
   "httpsEnforced": true,
   "pages": [
@@ -13,7 +13,7 @@
         "Content-Type": "text/html; charset=utf-8",
         "Strict-Transport-Security": "max-age=31556952"
       },
-      "csp": "default-src 'self'; script-src 'self' 'sha256-8174llsinUiMP78BC44Irv4HKTZxd+d0mrTkApRn1qo=' 'sha256-TU3hnMU3gPWzfZWshlG8UZ5qQZwIuwm6EELObo6tR0M=' 'sha256-7iPcghAV4DfeDhWpYgaTOcpbTcQZ0NEanRMdOSrW388='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'",
+      "csp": "default-src 'self'; script-src 'self' 'sha256-XSHyaWFDOw9FjceI6LZyHRf5uHKw/rDCb294iP9Amwc=' 'sha256-TU3hnMU3gPWzfZWshlG8UZ5qQZwIuwm6EELObo6tR0M=' 'sha256-7iPcghAV4DfeDhWpYgaTOcpbTcQZ0NEanRMdOSrW388='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'",
       "referrer": "strict-origin-when-cross-origin",
       "canonical": "https://cgchrfchscyrh.github.io/mixed_traffic/",
       "title": "Large-Scale Mixed-Traffic and Intersection Control using Multi-agent Reinforcement Learning"
@@ -80,22 +80,22 @@
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 38015,
-      "sha256": "8115af453ccd4f3bc67ebe2a869df4c0835cdccc5a30e24e46958d3b6918ba48"
+      "bytes": 42015,
+      "sha256": "fff89acadda5f3c47489d357319e2405a681939ad468650d2dfa81c1407240b7"
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/404.html",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 3265,
-      "sha256": "220ccb8b21efebeaae693495b7f58c9aad7a7b3879f70d011f46df2df6c53fef"
+      "sha256": "449e15ee1b7f8151b2d12d5ab0d7a4eed2722fcd70de37bffd1429c90f6e8911"
     },
     {
-      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/_astro/Layout.fm3WQu14.css",
+      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/_astro/Layout.CnVlA_RA.css",
       "status": 200,
       "contentType": "text/css; charset=utf-8",
-      "bytes": 21390,
-      "sha256": "ca3fd07d664c766767773d5df6fcacc4095698fa046ec730a3d0aa359b3fe78b"
+      "bytes": 25178,
+      "sha256": "0352c0e0b1904c3a36d3e8344ca393165374f8770f03b28c4ded74aa84b18f25"
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/_astro/ibm-plex-sans-cyrillic-ext-wght-normal.d45eAU9y.woff2",
@@ -143,8 +143,8 @@
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/accessibility/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 10740,
-      "sha256": "b2ee843660cbdf38e42cf5d6cfac2500859f7f607f3f600cde23e5a2ab71ff4e"
+      "bytes": 14184,
+      "sha256": "367e6960928d460ed2cea8f59fb345b9b3e1d90390b6e1eb4e1f9d8aab738025"
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/citation.bib",
@@ -227,6 +227,30 @@
       "matchesSource": true
     },
     {
+      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/mixed-traffic-simulation-descriptions.vtt",
+      "status": 200,
+      "contentType": "text/vtt; charset=utf-8",
+      "bytes": 682,
+      "sha256": "d59c16610870657dd4cf19e876a1c74a3ce39835bfafec74aed207be982b646e",
+      "matchesSource": true
+    },
+    {
+      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/mixed-traffic-simulation.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 188433,
+      "sha256": "f5e5b178b80a187e37df9996974556791e77efe029b4daafafaa939cd00a3d80",
+      "matchesSource": true
+    },
+    {
+      "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/mixed-traffic-simulation.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 4389379,
+      "sha256": "4fd3195fed0aa5c48e07909bbb75aeecb317d00a2bf0496ce4f589f11378897d",
+      "matchesSource": true
+    },
+    {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/media/waymo-descriptions.vtt",
       "status": 200,
       "contentType": "text/vtt; charset=utf-8",
@@ -255,14 +279,14 @@
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 13314,
-      "sha256": "3dd3ec2988699d053df8a0ed1f9fd004598d0bf51450154e84859676b04a7fbe"
+      "sha256": "8061c6aa4819cf10440862efaaff1b86f2d28aac9ff82489880fc7b361189328"
     },
     {
       "url": "https://cgchrfchscyrh.github.io/mixed_traffic/results/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 17273,
-      "sha256": "f3b717fff708a919135c986838fbcb8bc5af3426e4f40e43d5ecb840d3feaa8b"
+      "sha256": "452139963846be035c2593af37dbbefd0cf03c55335d0857278de7d2586a4a0e"
     }
   ],
   "mediaRangeRequests": [
@@ -271,9 +295,15 @@
       "status": 206,
       "contentRange": "bytes 0-1023/4538653",
       "contentType": "video/mp4"
+    },
+    {
+      "file": "mixed-traffic-simulation.mp4",
+      "status": 206,
+      "contentRange": "bytes 0-1023/4389379",
+      "contentType": "video/mp4"
     }
   ],
-  "internalFragmentLinksChecked": 41,
+  "internalFragmentLinksChecked": 40,
   "custom404": {
     "url": "https://cgchrfchscyrh.github.io/mixed_traffic/check-missing-page/",
     "status": 404,
@@ -286,5 +316,5 @@
     "GitHub Pages controls HTTP response headers. Only actual observed values are recorded. CSP and referrer policy are additionally present as HTML meta elements.",
     "Missing HTTP CSP, X-Frame-Options and X-Content-Type-Options response headers are not claimed as configured."
   ],
-  "deployedContentCommit": "37ba3cde11385dce5111848bb60d187b0b0e88c1"
+  "deployedContentCommit": "e64740b7cddca2bffb1e683bd4fce3e09494eff4"
 }

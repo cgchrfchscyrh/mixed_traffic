@@ -21,7 +21,7 @@
     ],
     "measurements": [
       {
-        "text": "Mixed traffic · IROS 2025",
+        "text": "Mixed traffic \u00b7 IROS 2025",
         "foreground": "rgb(238, 238, 238)",
         "ratio": 6.890332585492312,
         "insideOverlay": true
@@ -117,13 +117,13 @@
         "insideOverlay": true
       },
       {
-        "text": "Read published paper ↗",
+        "text": "Read published paper \u2197",
         "foreground": "rgb(32, 32, 32)",
         "ratio": 16.29325535858735,
         "insideOverlay": true
       },
       {
-        "text": "Research code ↗",
+        "text": "Research code \u2197",
         "foreground": "rgb(32, 32, 32)",
         "ratio": 16.29325535858735,
         "insideOverlay": true
@@ -144,5 +144,6 @@
   "limitations": [
     "Automated scans cannot infer raster media contrast or validate external PDF accessibility.",
     "This visual review does not replace a full assistive-technology or institutional review."
-  ]
+  ],
+  "deployedContentCommit": "e64740b7cddca2bffb1e683bd4fce3e09494eff4"
 }

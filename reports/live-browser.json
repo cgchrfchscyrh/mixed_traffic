@@ -1,35 +1,50 @@
 {
-  "date": "2026-10-04T18:22:15.690Z",
-  "site": "https://cgchrfchscyrh.github.io/mixed_traffic/",
-  "checks": [
+  "checkedOn": "2026-10-11",
+  "checkedAt": "2026-10-11T20:03:19.430Z",
+  "url": "https://cgchrfchscyrh.github.io/mixed_traffic/",
+  "initiallyPaused": true,
+  "sections": [
+    "Problem",
+    "Existing work",
+    "Knowledge gap",
+    "Method",
+    "Experiments",
+    "Results",
+    "Conclusion"
+  ],
+  "media": {
+    "src": "https://cgchrfchscyrh.github.io/mixed_traffic/media/waymo-los-angeles.mp4",
+    "duration": 20.02,
+    "paused": true,
+    "controls": true,
+    "muted": true
+  },
+  "figures": [
     {
-      "name": "New Waymo asset is used",
-      "passed": true
+      "id": "presentation-method",
+      "alt": "Mixed traffic control illustration with labelled robot and human vehicles, stop and go actions, and the traffic-information-to-RL-policy decision process.",
+      "description": "An overhead illustration shows vehicles approaching a four-way urban intersection. The top and right robot vehicles are marked STOP, while the left robot vehicle is marked GO. An arrow identifies a human-driven vehicle within the intersection. Under the street scene, traffic information feeds a reinforcement-learning policy, which selects one of two robot-vehicle actions, GO or STOP. These written labels state the actions independently of their colors. In the model described on the slide, human-driven vehicles use the Intelligent Driver Model. Robot vehicles use the same driver model away from an intersection and switch to the RL policy near an intersection. This is a control illustration, not a photograph of a field experiment.",
+      "src": "https://cgchrfchscyrh.github.io/mixed_traffic/figures/presentation/mixed-traffic-method-slide18.webp"
     },
     {
-      "name": "Waymo credit is visible",
-      "passed": true
+      "id": "presentation-signalized",
+      "alt": "Illustration of a signalized four-way intersection, with traffic lights and four approaches labelled A through D.",
+      "description": "A four-way intersection contains traffic lights on its approaches, lane markings, and pedestrian crossings. The four approaches are labelled A, B, C, and D. The source slide calls this a signalized intersection, abbreviated S. Colored lane overlays illustrate different movement states. The letters identify approaches, not particular intersections in the 14-intersection network.",
+      "src": "https://cgchrfchscyrh.github.io/mixed_traffic/figures/presentation/signalized-intersection-slide19.webp"
     },
     {
-      "name": "Initially paused",
-      "passed": true
-    },
-    {
-      "name": "Remote video plays with native controls",
-      "passed": true
-    },
-    {
-      "name": "Remote video pauses",
-      "passed": true
-    },
-    {
-      "name": "All homepage images load",
-      "passed": true
-    },
-    {
-      "name": "Live result page reflows at 320 CSS pixels",
-      "passed": true
+      "id": "presentation-unsignalized",
+      "alt": "Illustration of an unsignalized four-way intersection, with yield signs and four approaches labelled A through D.",
+      "description": "A four-way intersection has pedestrian crossings, yield signs, and approaches labelled A, B, C, and D. The source slide calls this an unsignalized intersection, abbreviated U, where robot vehicles are managed by the learned stop/go control policy in the simulation. Colored approach overlays illustrate movement regions. The letters identify approaches, not selected intersection numbers in the study network.",
+      "src": "https://cgchrfchscyrh.github.io/mixed_traffic/figures/presentation/unsignalized-intersection-slide19.webp"
     }
   ],
-  "errors": []
+  "keyboardPlayPause": true,
+  "keyboardResults": true,
+  "narrow": {
+    "width": 320,
+    "documentWidth": 320
+  },
+  "errors": [],
+  "deployedContentCommit": "37ba3cde11385dce5111848bb60d187b0b0e88c1"
 }

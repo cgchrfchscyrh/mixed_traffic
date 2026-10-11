@@ -165,54 +165,181 @@ try {
         );
         await page.keyboard.press("ArrowRight");
       }
-      const video = page.locator("#context-video"),
-        toggle = page.locator("#video-toggle");
+      const heroVideos = page.locator("#context-video, #simulation-video");
+      const heroToggle = page.locator("#hero-playback-toggle");
+      const viewToggle = page.locator("#hero-view-toggle");
       check(
-        await video.evaluate((v) => v.paused && v.currentTime === 0),
-        "Video is paused on initial load",
+        (await page.locator("video").count()) === 2 &&
+          (await heroVideos.count()) === 2,
+        "Waymo context and research simulation videos are both present",
       );
-      await toggle.focus();
+      check(
+        await heroVideos.evaluateAll((videos) =>
+          videos.every((v) => v.paused && v.currentTime === 0),
+        ),
+        "Both title videos are paused on initial load",
+      );
+      check(
+        await heroVideos.evaluateAll((videos) =>
+          videos.every((v) => v.muted && v.controls && v.playsInline),
+        ),
+        "Both title videos are muted, inline, and retain native controls",
+      );
+      check(
+        await heroVideos.evaluateAll((videos) =>
+          videos.every((v) => {
+            const describedBy = v
+              .getAttribute("aria-describedby")
+              ?.split(/\s+/);
+            return (
+              Boolean(v.getAttribute("aria-label")) &&
+              describedBy?.length > 0 &&
+              describedBy.every((id) =>
+                document.getElementById(id)?.textContent.trim(),
+              )
+            );
+          }),
+        ),
+        "Both videos have accessible names and existing text-description targets",
+      );
+      await heroToggle.focus();
+      check(
+        await heroToggle.evaluate(
+          (el) => getComputedStyle(el).outlineStyle !== "none",
+        ),
+        "Combined playback control has a visible keyboard focus outline",
+      );
       await page.keyboard.press("Enter");
       await page.waitForFunction(
-        () => {
-          const v = document.querySelector("video");
-          return !v.paused && v.currentTime > 0.2;
-        },
+        () =>
+          [
+            ...document.querySelectorAll("#context-video, #simulation-video"),
+          ].every((v) => !v.paused && v.currentTime > 0.2) &&
+          !document
+            .querySelector("#hero-playback-toggle")
+            .hasAttribute("aria-busy"),
         {},
         { timeout: 30000 },
       );
       check(
-        (await toggle.innerText()) === "Pause context clip",
-        "Keyboard starts video and exposes pause",
+        (await heroToggle.innerText()) === "Pause clips",
+        "Keyboard starts both title videos and exposes pause",
       );
       await page.keyboard.press("Space");
-      check(await video.evaluate((v) => v.paused), "Keyboard pauses video");
-      await video.evaluate((v) => {
-        v.textTracks[0].mode = "hidden";
+      check(
+        await heroVideos.evaluateAll((videos) => videos.every((v) => v.paused)),
+        "Keyboard pauses both title videos together",
+      );
+      await page.locator("#context-video").evaluate((v) => v.play());
+      await page.waitForFunction(
+        () =>
+          document.querySelector("#hero-playback-toggle").textContent.trim() ===
+          "Pause clips",
+      );
+      check(
+        await page.locator("#simulation-video").evaluate((v) => v.paused),
+        "Native playback updates the group control without starting the other video",
+      );
+      await page.locator("#context-video").evaluate((v) => {
+        if (v instanceof HTMLVideoElement) v.pause();
       });
       await page.waitForFunction(
-        () => document.querySelector("video").textTracks[0].cues?.length > 0,
+        () =>
+          document.querySelector("#hero-playback-toggle").textContent.trim() ===
+          "Play both clips",
       );
       check(
-        await video.evaluate((v) => v.textTracks[0].kind === "descriptions"),
-        "Timed visual description track loads",
+        true,
+        "Native pause keeps the combined playback label synchronized",
       );
-      await video.evaluate((v) => {
-        v.currentTime = v.duration - 0.25;
-      });
-      await toggle.click();
-      await page.waitForFunction(() => document.querySelector("video").ended);
+      await viewToggle.focus();
+      await page.keyboard.press("Enter");
       check(
-        (await toggle.innerText()) === "Replay context clip",
-        "Video ends without looping and exposes replay",
+        (await viewToggle.getAttribute("aria-pressed")) === "true" &&
+          (await viewToggle.innerText()) === "Restore title overlay" &&
+          (await page
+            .locator("#hero-stage")
+            .evaluate((el) => el.classList.contains("full-frames"))),
+        "Keyboard activates full-frame mode with an accurate pressed state and label",
       );
-      await toggle.click();
-      await page.waitForFunction(() => {
-        const v = document.querySelector("video");
-        return !v.paused && v.currentTime < 2;
+      check(
+        await heroVideos.evaluateAll((videos) =>
+          videos.every((v) => getComputedStyle(v).objectFit === "contain"),
+        ),
+        "Full-frame mode shows both complete video frames",
+      );
+      check(
+        await page.evaluate(
+          () =>
+            document.querySelector(".hero-backdrops").getBoundingClientRect()
+              .top >=
+            document.querySelector(".hero-text").getBoundingClientRect()
+              .bottom -
+              1,
+        ),
+        "Full-frame mode places both videos below the title text",
+      );
+      await page.keyboard.press("Space");
+      check(
+        (await viewToggle.getAttribute("aria-pressed")) === "false" &&
+          (await viewToggle.innerText()) === "Show full video frames" &&
+          !(await page
+            .locator("#hero-stage")
+            .evaluate((el) => el.classList.contains("full-frames"))),
+        "Keyboard restores the title overlay and unpressed state",
+      );
+      for (const id of ["context-video", "simulation-video"]) {
+        const video = page.locator("#" + id);
+        await page.waitForFunction((videoId) => {
+          const v = document.getElementById(videoId);
+          return (
+            v.readyState >= 1 && Number.isFinite(v.duration) && v.duration > 0
+          );
+        }, id);
+        check(
+          true,
+          id + ": finite positive duration is available from media metadata",
+        );
+        await video.evaluate((v) => {
+          v.textTracks[0].mode = "hidden";
+        });
+        await page.waitForFunction(
+          (videoId) =>
+            document.getElementById(videoId).textTracks[0]?.cues?.length > 0,
+          id,
+        );
+        check(
+          await video.evaluate((v) => v.textTracks[0].kind === "descriptions"),
+          id + ": timed visual-description track loads",
+        );
+      }
+      await heroVideos.evaluateAll((videos) => {
+        videos.forEach((v) => {
+          v.currentTime = v.duration - 0.3;
+        });
       });
-      check(true, "Replay restarts video");
-      await toggle.click();
+      await heroToggle.click();
+      await page.waitForFunction(() =>
+        [
+          ...document.querySelectorAll("#context-video, #simulation-video"),
+        ].every((v) => v.ended),
+      );
+      check(
+        (await heroToggle.innerText()) === "Replay both clips",
+        "Both videos end without looping and expose replay",
+      );
+      await heroToggle.click();
+      await page.waitForFunction(
+        () =>
+          [
+            ...document.querySelectorAll("#context-video, #simulation-video"),
+          ].every((v) => !v.paused && v.currentTime > 0 && v.currentTime < 2) &&
+          !document
+            .querySelector("#hero-playback-toggle")
+            .hasAttribute("aria-busy"),
+      );
+      check(true, "Replay restarts both title videos from the beginning");
+      await heroToggle.click();
       await page
         .getByRole("button", { name: "Copy citation", exact: true })
         .focus();
@@ -246,6 +373,40 @@ try {
         ),
         route + `: no page-level horizontal overflow at ${width} CSS px`,
       );
+      if (route === "/") {
+        check(
+          await page.evaluate(
+            () =>
+              document.querySelector(".hero-backdrops").getBoundingClientRect()
+                .top >=
+              document.querySelector(".hero-text").getBoundingClientRect()
+                .bottom -
+                1,
+          ),
+          `Homepage places title text above the videos at ${width} CSS px`,
+        );
+        check(
+          await page
+            .locator("#context-video, #simulation-video")
+            .evaluateAll((videos) =>
+              videos.every((v) => getComputedStyle(v).objectFit === "contain"),
+            ),
+          `Homepage shows complete video frames at ${width} CSS px`,
+        );
+        if (width === 320)
+          check(
+            await page.evaluate(
+              () =>
+                document
+                  .querySelector("#simulation-video")
+                  .getBoundingClientRect().top >=
+                document.querySelector("#context-video").getBoundingClientRect()
+                  .bottom -
+                  1,
+            ),
+            "Homepage stacks both videos vertically at 320 CSS px",
+          );
+      }
     }
     await page.setViewportSize({ width: 320, height: 900 });
     const spacing = await page.addStyleTag({
@@ -285,8 +446,17 @@ try {
       "Comparison " + d.label + " remains visible without JavaScript",
     );
   check(
-    (await n.locator("video[controls]").count()) === 1,
-    "Native video controls remain available without JavaScript",
+    (await n.locator("video[controls]").count()) === 2,
+    "Both native video controls remain available without JavaScript",
+  );
+  check(
+    (await n.locator("#hero-playback-toggle").isHidden()) &&
+      (await n.locator("#hero-view-toggle").isHidden()),
+    "Unavailable JavaScript media controls are hidden without JavaScript",
+  );
+  check(
+    await n.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    "Homepage reflows at 320 CSS px without JavaScript",
   );
   check(
     (await n.locator("#citation-text").innerText()).includes(site.citationKey),
@@ -301,8 +471,14 @@ try {
   const rp = await reduced.newPage();
   await rp.goto(base + "/");
   check(
-    await rp.locator("video").evaluate((v) => v.paused),
-    "Reduced-motion visit does not start media",
+    await rp
+      .locator("video")
+      .evaluateAll(
+        (videos) =>
+          videos.length === 2 &&
+          videos.every((v) => v.paused && v.currentTime === 0),
+      ),
+    "Reduced-motion visit does not start either title video",
   );
   await reduced.close();
 } catch (e) {

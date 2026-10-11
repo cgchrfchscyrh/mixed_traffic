@@ -1,0 +1,17 @@
+{
+  "title": "SUMO network simulation",
+  "caption": "Vehicle movement across connected intersections.",
+  "video": "media/mixed-traffic-simulation.mp4",
+  "poster": "media/mixed-traffic-simulation.jpg",
+  "track": "media/mixed-traffic-simulation-descriptions.vtt",
+  "duration": 22,
+  "width": 1920,
+  "height": 1080,
+  "description": [
+    "A 22-second continuous excerpt of a SUMO road-network screen recording. The top-down view shows multilane roads, turning connections, and several linked intersections on a white background. Small vehicle symbols travel along lanes, form queues on approaches, and pass through intersections.",
+    "The recorded view pans and zooms between junctions, including closer views of traffic at two four-way intersections, then moves along connecting roads. The SUMO toolbar, simulation clock, status area, and desktop taskbar remain visible in the complete frame. The title bar identifies colorado_medium.sumocfg.",
+    "The excerpt runs from 00:24 to 00:46 of the supplied TL_medium.mp4 recording. It retains the original recording speed, which should not be interpreted as real-world vehicle speed. The source audio is digitally silent and has been removed from this web version.",
+    "This recording illustrates simulated traffic movements. The controller settings, robot-vehicle share, and U/S configuration are not identified in the selected footage. Quantitative comparisons are provided in the paper and result tables. The Waymo clip separately illustrates real-world autonomous driving."
+  ],
+  "credit": "Source: author-supplied TL_medium.mp4. A continuous excerpt; original recording preserved. No video frames have been cropped from the downloadable file."
+}

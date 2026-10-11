@@ -24,13 +24,19 @@ import { asset } from "../data/paths";
             The first keyboard link skips to the main content. Keyboard focus is
             visible throughout the page.
           </li><li>
-            Videos start only when you choose to play them. Native player
-            controls and a separate play/pause button are available. No video
-            loops automatically.
+            Videos start only when you choose to play them. Both native players
+            retain their controls from initial load. A shared button can play,
+            pause, or replay both title clips together. Neither video loops
+            automatically.
           </li><li>
-            The local 20-second Waymo context clip has no audio track. A
-            complete visual description appears below the main content; a timed
-            description track is also provided.
+            The local 20-second Waymo context clip and 22-second SUMO simulation
+            clip have no audio tracks. Each has a complete HTML visual
+            description and a timed WebVTT description track.
+          </li><li>
+            On desktop, choose “Show full video frames” to view the complete
+            videos outside the title overlay. On smaller screens, the title
+            appears before the complete frames; on narrow screens, the videos
+            stack vertically.
           </li><li>
             Paper figures have descriptive alternatives and longer explanations.
             Results appear as labeled values and structured tables, so color is
@@ -43,6 +49,23 @@ import { asset } from "../data/paths";
             remain available without JavaScript.
           </li>
         </ul>
+      </section>
+      <section>
+        <h2>Title video sources and scope</h2><p>
+          The left video retains the Waymo Los Angeles context footage. It
+          illustrates real-world autonomous driving and is not a road test of
+          the paper’s controller. The right video is a continuous SUMO
+          simulation excerpt from the user-supplied <cite>TL_medium.mp4</cite>,
+          source time 00:24–00:46, presented at 1080p and the recording’s
+          original speed. Its near-silent audio track is omitted; the original
+          recording remains unchanged.
+        </p><p>
+          The simulation recording does not by itself identify the controller or
+          robot-vehicle penetration rate. It illustrates the simulation setting;
+          quantitative findings remain those reported in the paper’s tables.
+          Complete visual descriptions and source details for both clips appear
+          below.
+        </p>
       </section>
       <section id="attachments">
         <h2>Papers, figures & data attachments</h2><p>
@@ -66,10 +89,11 @@ import { asset } from "../data/paths";
       <section>
         <h2>Research presentation figures</h2><p>
           The homepage follows seven research sections: problem, existing work,
-          knowledge gap, method, experiments, results, and conclusion with limitations. Its
-          narrative draws on the ground-traffic portion, slides 15–23, of the
-          authors’ <cite>Proposal_defense_narrow.pptx</cite>. Quantitative
-          claims remain grounded in the published mixed-traffic paper.
+          knowledge gap, method, experiments, results, and conclusion with
+          limitations. Its narrative draws on the ground-traffic portion, slides
+          15–23, of the authors’ <cite>Proposal_defense_narrow.pptx</cite>.
+          Quantitative claims remain grounded in the published mixed-traffic
+          paper.
         </p><p>
           The method diagram from slide 18 and the signalized (S) / unsignalized
           (U) intersection illustration from slide 19 have descriptive alt text
@@ -112,7 +136,7 @@ import { asset } from "../data/paths";
           institutional disclaimer appears on every page. A neutral visual
           design is not a substitute for institutional brand approval.
         </p><p>
-          This static site loads its fonts, figures, and short video excerpt
+          This static site loads its fonts, figures, and short video excerpts
           locally. It uses no analytics, advertising, or embedded third-party
           players. Following an external link opens the provider’s site, where
           that provider’s privacy practices apply.
@@ -130,9 +154,9 @@ import { asset } from "../data/paths";
         >. Rights in published papers and third-party media remain with their
         respective holders.
       </p><p>
-        The additional presentation figures are credited to the authors’ ground-traffic
-        slides 18 and 19. Their source slide numbers and text alternatives
-        appear with the figures on the homepage.
+        The additional presentation figures are credited to the authors’
+        ground-traffic slides 18 and 19. Their source slide numbers and text
+        alternatives appear with the figures on the homepage.
       </p>
     </section>
   </div>

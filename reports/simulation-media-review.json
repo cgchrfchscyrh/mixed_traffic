@@ -1,0 +1,141 @@
+{
+  "source": {
+    "path": "/home/liusongyang/Videos/mixed_traffic/TL_medium.mp4",
+    "sha256": "f99d452386efcfba20c97b7b5f1b4ac5c0ac9a24b6fddd2064f23e7ed7bd8bc4",
+    "duration_seconds": 99.5,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_check": {
+      "decoded_float32_samples": 9549824,
+      "maximum_absolute_sample": 0.0,
+      "nonzero_samples": 0,
+      "conclusion": "Decoded source audio is digital silence."
+    }
+  },
+  "selection": {
+    "start_seconds": 24,
+    "end_seconds_exclusive": 46,
+    "duration_seconds": 22,
+    "speed": 1,
+    "continuous": true,
+    "cuts": 0,
+    "reason": "Excludes the opening recording-software overlay and shows continuous panning between connected intersections, with close views of vehicle movement and queues at two junctions.",
+    "crop": null,
+    "rescale": null
+  },
+  "output": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "frames": 660,
+    "duration_seconds": 22,
+    "video_codec": "h264",
+    "audio_streams": 0,
+    "pixel_format": "yuv420p",
+    "faststart": true,
+    "mp4_atoms": [
+      {
+        "type": "ftyp",
+        "offset": 0,
+        "size": 32
+      },
+      {
+        "type": "moov",
+        "offset": 32,
+        "size": 8444
+      },
+      {
+        "type": "free",
+        "offset": 8476,
+        "size": 8
+      },
+      {
+        "type": "mdat",
+        "offset": 8484,
+        "size": 4380895
+      }
+    ],
+    "decode_validation": "Complete ffmpeg null-output decode finished successfully."
+  },
+  "poster": {
+    "source_time_seconds": 36,
+    "clip_time_seconds": 12,
+    "description": "A close view of a four-way SUMO intersection with visible vehicle symbols on its approaches."
+  },
+  "clip_type": {
+    "confirmed": "User-supplied SUMO 1.21.0 road-network screen recording. The source-window title shows colorado_medium.sumocfg.",
+    "filename_inference": "TL_medium.mp4 suggests traffic-light baseline control; no exact controller/configuration label was visibly confirmed in the selected frames.",
+    "recommended_public_label": "SUMO network simulation",
+    "do_not_claim": [
+      "Learned-controller demonstration",
+      "Specific robot-vehicle penetration rate",
+      "Specific U/S assignment",
+      "Measured reduction in waiting time",
+      "Real-world autonomous vehicle validation",
+      "Real-time simulation speed"
+    ]
+  },
+  "visual_description": "A 22-second continuous excerpt of a SUMO road-network screen recording. The top-down view shows multilane roads, turning connections, and several linked intersections on a white background. Small vehicle symbols travel along lanes, form queues on approaches, and pass through intersections. The recorded view pans and zooms between junctions, including closer views of traffic at two four-way intersections, then moves along connecting roads. The SUMO toolbar, simulation clock, status area, and desktop taskbar remain visible because the complete source frame is retained. The title bar identifies colorado_medium.sumocfg. The excerpt runs from 00:24 to 00:46 of the supplied TL_medium.mp4 file at the original recording speed. The source recording has a silent audio track, which is removed from this web version. The displayed recording speed should not be interpreted as real-world vehicle speed. The filename suggests traffic-light control; the clip alone does not verify the controller, robot-vehicle share, U/S configuration, or quantitative performance. This is a simulation recording, not evidence of the learned controller operating on public roads.",
+  "files": {
+    "mixed-traffic-simulation.mp4": {
+      "path": "/tmp/mixed-hero-media/mixed-traffic-simulation.mp4",
+      "bytes": 4389379,
+      "sha256": "4fd3195fed0aa5c48e07909bbb75aeecb317d00a2bf0496ce4f589f11378897d"
+    },
+    "mixed-traffic-simulation.jpg": {
+      "path": "/tmp/mixed-hero-media/mixed-traffic-simulation.jpg",
+      "bytes": 188433,
+      "sha256": "f5e5b178b80a187e37df9996974556791e77efe029b4daafafaa939cd00a3d80"
+    },
+    "mixed-traffic-simulation-descriptions.vtt": {
+      "path": "/tmp/mixed-hero-media/mixed-traffic-simulation-descriptions.vtt",
+      "bytes": 682,
+      "sha256": "d59c16610870657dd4cf19e876a1c74a3ce39835bfafec74aed207be982b646e"
+    },
+    "visual-description.txt": {
+      "path": "/tmp/mixed-hero-media/visual-description.txt",
+      "bytes": 1160,
+      "sha256": "a93efae69d75037441a486d4b004256c181f70e7bc4b9f0e302373218b6f5d6a"
+    }
+  },
+  "source_integrity": "Read-only input. No changes to original video.",
+  "inspection": {
+    "whole_recording_contact_sheet": "/tmp/mixed-hero-media/contact.jpg",
+    "selection_contact_sheet": "/tmp/mixed-hero-media/selection-contact.jpg",
+    "inspected_source_times_seconds": [
+      0,
+      5,
+      10,
+      20,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40,
+      42,
+      44,
+      46,
+      50,
+      60,
+      70,
+      80,
+      90,
+      98
+    ]
+  },
+  "publishing_requirements": [
+    "No autoplay or automatic looping.",
+    "Use native accessible controls and a keyboard-operable explicit play/pause control.",
+    "Provide the complete visual description and the English description track.",
+    "Keep a full-frame option if cinematic hero cropping is used.",
+    "Label the clip as simulation and distinguish it from independent Waymo context footage."
+  ],
+  "reviewedOn": "2026-10-11"
+}

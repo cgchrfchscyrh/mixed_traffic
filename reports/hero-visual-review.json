@@ -1,0 +1,148 @@
+{
+  "checkedOn": "2026-10-11",
+  "desktopWidth": 1440,
+  "mobileWidth": 320,
+  "screenshotsReviewed": [
+    "Desktop title overlays two visible background scenes",
+    "Full-frame mode places complete recordings below title",
+    "Mobile title and both complete videos stack without horizontal overflow"
+  ],
+  "contrast": {
+    "overlay": "rgba(17, 17, 17, 0.733)",
+    "worstCaseVideoPixel": [
+      255,
+      255,
+      255
+    ],
+    "compositedBackground": [
+      80.546,
+      80.546,
+      80.546
+    ],
+    "measurements": [
+      {
+        "text": "Mixed traffic · IROS 2025",
+        "foreground": "rgb(238, 238, 238)",
+        "ratio": 6.890332585492312,
+        "insideOverlay": true
+      },
+      {
+        "text": "Large-Scale Mixed-Traffic and Intersection Control using Multi-agent Reinforceme",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "Can robot vehicles improve traffic flow while conventional signals remain in the",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "Songyang Liu",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "1",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "Muyang Fan",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "2",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "Weizi Li",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "3",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "Jing Du",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "1",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "Shuai Li",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "1",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 7.994373821198942,
+        "insideOverlay": true
+      },
+      {
+        "text": "Department of Civil and Coastal Engineering, University of Florida, Gainesville,",
+        "foreground": "rgb(238, 238, 238)",
+        "ratio": 6.890332585492312,
+        "insideOverlay": true
+      },
+      {
+        "text": "Department of Computer Science, University of Memphis, Memphis, TN, USA",
+        "foreground": "rgb(238, 238, 238)",
+        "ratio": 6.890332585492312,
+        "insideOverlay": true
+      },
+      {
+        "text": "Min H. Kao Department of Electrical Engineering and Computer Science, University",
+        "foreground": "rgb(238, 238, 238)",
+        "ratio": 6.890332585492312,
+        "insideOverlay": true
+      },
+      {
+        "text": "Read published paper ↗",
+        "foreground": "rgb(32, 32, 32)",
+        "ratio": 16.29325535858735,
+        "insideOverlay": true
+      },
+      {
+        "text": "Research code ↗",
+        "foreground": "rgb(32, 32, 32)",
+        "ratio": 16.29325535858735,
+        "insideOverlay": true
+      },
+      {
+        "text": "Explore the research",
+        "foreground": "rgb(32, 32, 32)",
+        "ratio": 16.29325535858735,
+        "insideOverlay": true
+      }
+    ]
+  },
+  "mediaNotes": [
+    "Original video speed and no autoplay or loop.",
+    "Source and web output are silent; HTML descriptions and WebVTT are supplied.",
+    "Two clips are contextual views, not synchronized comparative evidence."
+  ],
+  "limitations": [
+    "Automated scans cannot infer raster media contrast or validate external PDF accessibility.",
+    "This visual review does not replace a full assistive-technology or institutional review."
+  ]
+}

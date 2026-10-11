@@ -1,19 +1,27 @@
 ---
 import site from "../data/site.json";
+import simulation from "../data/hero-media.json";
+import { asset } from "../data/paths";
 ---
 
-<section
-  id="media-description"
-  class="media-description"
-  aria-labelledby="media-heading"
->
-  <p class="eyebrow">Context, with a source</p><h2 id="media-heading">
-    Video description & credit
-  </h2>
-  <p><a href={site.contextUrl}>{site.contextCredit}</a></p>
-  {site.contextDetails.map((p) => <p>{p}</p>)}
-  <p class="fine-print">
-    {site.contextLicense}
-    <a href={site.contextLicenseUrl}>Source and media-use information</a>.
-  </p>
+<section id="media-description" class="media-description" aria-labelledby="media-heading">
+  <p class="eyebrow">Real-world context and simulation</p>
+  <h2 id="media-heading">Video descriptions & sources</h2>
+  <section aria-labelledby="context-description-heading">
+    <h3 id="context-description-heading">Waymo on city streets</h3>
+    <p><a href={site.contextUrl}>{site.contextCredit}</a></p>
+    <div id="context-visual-description">
+      {site.contextDetails.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <p class="fine-print">{site.contextLicense}{" "}<a href={site.contextLicenseUrl}>Source and media-use information</a>.</p>
+  </section>
+  <section aria-labelledby="simulation-description-heading">
+    <h3 id="simulation-description-heading">{simulation.title}</h3>
+    <div id="simulation-visual-description">
+      {simulation.description.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <p class="fine-print">{simulation.credit}</p>
+    <p><a href={asset(simulation.video)}>Download the {simulation.duration}-second simulation excerpt (MP4)</a> · <a href={asset(simulation.track)}>Read the timed simulation descriptions (VTT)</a></p>
+  </section>
+  <p class="fine-print">Both clips are silent and play only on request. The title view crops the backgrounds to fill their panels. Choose “Show full video frames” to move the title above the uncropped recordings; smaller screens show complete frames automatically. The two recordings illustrate different settings and are not a synchronized experimental comparison.</p>
 </section>

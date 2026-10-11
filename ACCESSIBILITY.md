@@ -8,13 +8,19 @@ The 11 October 2026 revision reorganizes the homepage into seven sections: probl
 
 The method diagram from slide 18 and the signalized (S) / unsignalized (U) intersection illustration from slide 19 include alt text, complete HTML explanations, and source slide numbers. Original scientific diagram colors are retained as research content, not adopted as UF interface branding; labels and text explain the distinctions without requiring color identification. The original PPT is unchanged, and the complete presentation is not published as an attachment.
 
-The existing local Waymo excerpt remains a 20-second silent context video with native playback controls, no autoplay or loop, a full visual alternative, and timed descriptions. It illustrates real-world autonomous driving and is not presented as a real-vehicle test of the paper’s controller.
+The title now overlays two local videos on desktop: the unchanged 20-second Waymo context excerpt on the left and a continuous 22-second SUMO excerpt on the right. The SUMO viewing copy uses source time 00:24–00:46 from the user-supplied `Videos/mixed_traffic/TL_medium.mp4`, at 1080p and the recording’s original speed. Its digitally silent audio track is removed; the original source file is unchanged. The filename and video alone do not establish which controller or RV penetration rate is shown, and the excerpt is not labeled as proof of learned-policy performance. The Waymo footage continues to illustrate real-world autonomous driving, not a real-vehicle test of the paper’s controller.
 
-The 11 October production build passed lint, Astro/TypeScript checks, 11 axe scans, and 95 functional checks with zero violations or check errors. Desktop and 320 CSS-pixel screenshots were reviewed. The new method and intersection images retain complete labels; full text explanations supplement small or low-contrast scientific annotations. Native video controls now remain visible from initial load, alongside the keyboard-operable play/pause/replay button. Source and numeric checks are recorded in `reports/presentation-content-review.json`; asset provenance is in `reports/presentation-assets.json`.
+Both players retain native controls from initial load and have no autoplay or loop. The shared title control offers Play both clips, Pause clips, and Replay both clips. The desktop Show full video frames control provides an uncropped view outside the title overlay. At widths up to 1000 CSS pixels, the title is placed before the complete video frames; at widths up to 700 CSS pixels, the videos stack vertically. Both silent clips have complete HTML visual alternatives and WebVTT description tracks. Native playback and text alternatives remain available without JavaScript.
 
-## Automated results — 11 October 2026
+The dual-video production build passed lint and Astro/TypeScript checks, 11 axe scans, and 115 functional checks with zero violations or check errors. Both players passed keyboard playback/pause/end/replay, native-control state synchronization, description-track loading, full-frame switching, no-JavaScript and reduced-motion checks. Desktop, complete-frame and 320 CSS-pixel layouts were visually reviewed. See `reports/axe-wcag21aa.json`, `reports/hero-visual-review.json`, and `reports/simulation-media-review.json`.
 
-The current local production build with its GitHub Pages base path passed **11 axe scans and 95 additional checks, with zero violations or check errors**. The workflow repeats these checks before publishing; `reports/axe-wcag21aa.json` records the current local run.
+Axe cannot automatically determine contrast over video. The title overlay was checked against a worst-case white video pixel; the minimum computed contrast for title, author, affiliation and action text was 6.89:1. Text bounds remain inside the overlay. The recordings are video-only and have HTML descriptions plus timed description tracks; no speech captions are needed. Decorative arrows and original research raster figures retain their existing review limitations. The source video was read-only; its decoded audio samples are all zero. The complete 22-second web file decoded successfully and contains no audio stream.
+
+## Previous automated results — presentation revision, 11 October 2026
+
+The preceding local production build with its GitHub Pages base path passed **11 axe scans and 95 additional checks, with zero violations or check errors**. The workflow repeats these checks before publishing; `reports/axe-wcag21aa.json` must be refreshed for the dual-video revision.
+
+That production build also passed lint and Astro/TypeScript checks. Desktop and 320 CSS-pixel screenshots were reviewed. The method and intersection images retained complete labels; full text explanations supplemented small or low-contrast scientific annotations. Native video controls remained visible from initial load, alongside the keyboard-operable play/pause/replay button. Source and numeric checks are recorded in `reports/presentation-content-review.json`; asset provenance is in `reports/presentation-assets.json`.
 
 Coverage includes the homepage, research guide, result tables, accessibility page, and 404 page at desktop and mobile sizes; the traffic website also scans its alternate result-tab state. Keyboard checks cover the first skip link, visible focus, main-content focus, result tab keys where applicable, video playback/pause/end/replay, copying BibTeX, and scrolling wide tables. The tests check 320 CSS-pixel reflow, increased text spacing, no autoplay/loop, media descriptions, no-JavaScript content, reduced-motion visits, heading hierarchy, unique IDs, and internal anchors.
 
@@ -28,7 +34,7 @@ Coverage includes the homepage, research guide, result tables, accessibility pag
 - The initial explicit Play button reveals native controls when playback begins, avoiding a browser loading indicator over the still poster. With JavaScript disabled, native controls remain present from the start.
 - Every page, including 404, retains the UF non-endorsement disclaimer. There is no UF logo or UF blue/orange interface palette. Affiliations are preserved as text.
 
-## Current axe items requiring interpretation
+## Previous axe items requiring interpretation
 
 Remaining incomplete rules: color-contrast, video-caption.
 
@@ -48,9 +54,11 @@ For official requirements, consult [UF Web Standards](https://brandcenter.ufl.ed
 
 On 4 October 2026, the generic street time-lapse was replaced with official Waymo Los Angeles autonomous-driving B-roll, using source time 01:08–01:28. The selected excerpt is video-only, has no autoplay or loop, and is paired with a complete visual alternative and a synchronized description track. The original shot boundaries (4.546 s and 13.221 s within the excerpt) were checked for the VTT cues. Attribution appears next to the player and in the media-credit section. New asset filenames ensure previous browser caches cannot display the old clip with the new description. Details are in `reports/media-review.json`.
 
-## Published build verification — 11 October 2026
+## Previous published build verification — presentation revision, 11 October 2026
 
 GitHub Actions run [38170438150](https://github.com/cgchrfchscyrh/mixed_traffic/actions/runs/38170438150) deployed content commit `37ba3cde11385dce5111848bb60d187b0b0e88c1` after 11 axe scans and 95 functional checks passed with zero violations or errors. CI also passed the dependency audit, lint, and Astro/TypeScript build.
+
+This was the presentation-based revision before the dual-video title change; it does not verify the current two-player interaction or the new SUMO media asset.
 
 The live check verified five pages, 25 linked resources, 41 internal fragment links, the custom 404 response, HTTPS enforcement, and video byte-range support. Published asset hashes match the local sources, including all three new presentation figures. Browser checks confirmed the seven research sections, complete figure descriptions, keyboard video playback/pause, result-tab navigation, and no page-level horizontal overflow at 320 CSS pixels. No browser errors were observed.
 

@@ -181,7 +181,7 @@
       "width": 1512,
       "height": 378,
       "alt": "Four box plots compare waiting time and throughput at robot-vehicle rates of 40, 50, 60, 70, and 80 percent, for the 8U + 6S and 4U + 10S configurations.",
-      "description": "The left pair of panels uses 8U + 6S; the right pair uses 4U + 10S. Each pair reports waiting time in seconds and throughput in vehicles per 500 seconds. The rightmost item labeled TL in each panel marks the fully signalized baseline. Performance varies across RV rates and configurations. The exact 50% and 80% network values are available in the tables on this page. The raw samples underlying the box plots are not supplied by the uploaded PDF and have not been reconstructed from pixels.",
+      "description": "The left pair of panels uses 8U + 6S; the right pair uses 4U + 10S. Each pair reports waiting time in seconds and throughput in vehicles per 500 seconds. The rightmost item labeled TL in each panel marks the fully signalized baseline. Performance varies across RV rates and configurations. The exact 50% and 80% network values are available in the complete results tables. The raw samples underlying the box plots are not supplied by the uploaded PDF and have not been reconstructed from pixels.",
       "credit": "Figure 2, published IROS paper, p. 13782."
     },
     {

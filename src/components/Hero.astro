@@ -65,7 +65,7 @@ const fig = site.figures.find((f) => f.id === site.heroFigure)!;
         width="1280"
         height="720"
         aria-label={site.contextTitle}
-        aria-describedby="context-summary"
+        aria-describedby="context-summary media-description"
       >
         <source src={asset(site.contextVideo)} type="video/mp4" />
         <track
@@ -122,11 +122,6 @@ const fig = site.figures.find((f) => f.id === site.heroFigure)!;
   const status = document.querySelector<HTMLElement>("#video-status");
   if (video && button) {
     button.hidden = false;
-    // The explicit button is the initial control; reveal native controls on play.
-    video.controls = false;
-    video.addEventListener("play", () => {
-      video.controls = true;
-    });
     const update = () => {
       button.textContent = video.ended
         ? "Replay context clip"
@@ -142,7 +137,8 @@ const fig = site.figures.find((f) => f.id === site.heroFigure)!;
         try {
           video.controls = true;
           await video.play();
-        } catch {
+        } catch (error) {
+          if (error instanceof DOMException && error.name === "AbortError") return;
           if (status)
             status.textContent =
               "The clip could not play. Use the video source link or read its description.";

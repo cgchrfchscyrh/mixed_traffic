@@ -25,12 +25,12 @@ import { asset } from "../data/paths";
             visible throughout the page.
           </li><li>
             Videos start only when you choose to play them. Native player
-            controls and a separate play/pause button is also available. No
-            video loops automatically.
+            controls and a separate play/pause button are available. No video
+            loops automatically.
           </li><li>
-            The context clip has no audio track. A complete visual description
-            appears below the main content; a timed description track is also
-            provided.
+            The local 20-second Waymo context clip has no audio track. A
+            complete visual description appears below the main content; a timed
+            description track is also provided.
           </li><li>
             Paper figures have descriptive alternatives and longer explanations.
             Results appear as labeled values and structured tables, so color is
@@ -39,8 +39,8 @@ import { asset } from "../data/paths";
             At narrow widths, content reflows into a single column. Wide data
             tables and BibTeX text scroll within their own focusable areas.
           </li><li>
-            Core content, all result comparisons, and media controls remain
-            available without JavaScript.
+            Core content, all result comparisons, and native player controls
+            remain available without JavaScript.
           </li>
         </ul>
       </section>
@@ -51,16 +51,33 @@ import { asset } from "../data/paths";
             >HTML result tables and figure descriptions</a
           > accompany the downloadable CSV data and images.
         </p><p>
-          {
-            site.id === "mixed_traffic"
-              ? "The supplied IEEE publisher PDF is untagged. We link to the published article and to the full arXiv preprint in HTML; the latter is a preprint version, not a guaranteed identical copy of the published paper. The external preprint PDF has not been fully assessed for accessibility."
-              : "The supplied Elsevier PDF reports that it contains tags. Tag presence alone does not verify heading structure, figure alternatives, equation reading, or reading order. We link to the publisher’s version of record, whose full-text availability may depend on access rights."
-          }
+          The supplied IEEE publisher PDF is untagged. We link to the published
+          article and to the full arXiv preprint in HTML; the latter is a
+          preprint version, not a guaranteed identical copy of the published
+          paper. The external preprint PDF has not been fully assessed for
+          accessibility.
         </p><p>
           The original uploaded PDF has not been altered or republished here. We
           have not certified external PDF reading order, mathematical
           accessibility, or assistive-technology behavior. CSV files are plain
           data; the HTML tables provide captions and row/column headers.
+        </p>
+      </section>
+      <section>
+        <h2>Research presentation figures</h2><p>
+          The homepage follows seven research sections: problem, existing work,
+          knowledge gap, method, experiments, results, and conclusion with limitations. Its
+          narrative draws on the ground-traffic portion, slides 15–23, of the
+          authors’ <cite>Proposal_defense_narrow.pptx</cite>. Quantitative
+          claims remain grounded in the published mixed-traffic paper.
+        </p><p>
+          The method diagram from slide 18 and the signalized (S) / unsignalized
+          (U) intersection illustration from slide 19 have descriptive alt text
+          and complete explanations in HTML. Original diagram colors are
+          preserved as scientific content; their meaning is also explained in
+          words and labels. They are not the website’s interface or UF branding
+          palette. The source presentation is unchanged and is not published as
+          a complete downloadable attachment.
         </p>
       </section>
       <section>
@@ -112,17 +129,11 @@ import { asset } from "../data/paths";
           href={asset("results/#figures")}>results and figures page</a
         >. Rights in published papers and third-party media remain with their
         respective holders.
-      </p>{
-        site.id === "eVTOL_webpage" && (
-          <p>
-            Figure 7 uses city geometry from{" "}
-            <a href="https://www.openstreetmap.org/copyright">
-              OpenStreetMap contributors
-            </a>
-            .
-          </p>
-        )
-      }
+      </p><p>
+        The additional presentation figures are credited to the authors’ ground-traffic
+        slides 18 and 19. Their source slide numbers and text alternatives
+        appear with the figures on the homepage.
+      </p>
     </section>
   </div>
 </Layout>

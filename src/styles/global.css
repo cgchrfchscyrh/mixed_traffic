@@ -1315,3 +1315,134 @@ tbody tr:hover {
     color: black;
   }
 }
+
+/* Ground-transportation presentation narrative. */
+.research-nav {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.research-nav .eyebrow {
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+.research-nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.4rem 1.5rem;
+}
+.research-nav li {
+  margin: 0;
+}
+.research-nav a {
+  display: inline-block;
+  padding: 0.45rem 0;
+  font-size: 0.9rem;
+}
+.approach-grid,
+.finding-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.approach-grid > div,
+.finding-grid > div {
+  border-top: 1px solid #93938e;
+  padding-top: 1.4rem;
+}
+.approach-grid p,
+.finding-grid p {
+  color: #525252;
+  font-size: 0.97rem;
+}
+.research-question {
+  padding: clamp(1.4rem, 4vw, 3rem);
+  background: #202020;
+  color: #fff;
+  border-radius: 6px;
+  max-width: 1000px;
+}
+.research-question .eyebrow {
+  color: #d6d6d6;
+}
+.research-question p:last-child {
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1.45;
+  max-width: 42ch;
+  margin: 0;
+}
+.measure-note {
+  margin: 1.5rem 0;
+  max-width: 90ch;
+}
+.presentation-method {
+  max-width: 900px;
+  margin-inline: auto;
+}
+.presentation-method .figure-image {
+  padding: 0;
+}
+.presentation-method .figure-image img {
+  max-height: 680px;
+}
+.intersection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.intersection-grid .research-figure {
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.intersection-grid .figure-image {
+  aspect-ratio: 1.7;
+  padding: 1rem;
+}
+.intersection-grid .figure-image img {
+  min-height: 0;
+}
+.intersection-grid figcaption {
+  flex: 1;
+}
+.protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  margin: 2.5rem 0;
+  column-gap: 2.5rem;
+}
+.protocol-grid > div {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.protocol-grid dt {
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  font-size: 1.08rem;
+}
+.protocol-grid dd {
+  margin: 0;
+  color: #525252;
+}
+.source-note {
+  margin: 1.5rem 0 0;
+}
+@media (max-width: 700px) {
+  .approach-grid,
+  .finding-grid,
+  .intersection-grid,
+  .protocol-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .approach-grid,
+  .finding-grid {
+    gap: 1rem;
+  }
+  .intersection-grid .figure-image {
+    aspect-ratio: auto;
+  }
+}

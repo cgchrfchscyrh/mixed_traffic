@@ -1,10 +1,10 @@
-# Security review — 4 October 2026
+# Security review — 11 October 2026
 
 This is a static GitHub Pages site. Only the `dist/` artifact is deployed. Node.js, Astro, ESLint, and their dependency trees are build tools, not a running application server. There are no accounts, forms, analytics, remote-image transformations, or shared authenticated caches. Fonts and media are served locally. A restrictive hash-based Content Security Policy is added to every generated HTML page.
 
 ## Dependencies
 
-The 4 October 2026 dependency audit reports zero vulnerabilities. The previously affected transitive dependency `http-cache-semantics` is now patched at 4.3.0. The audit script no longer has advisory exceptions: any audit failure or reported vulnerability blocks deployment. Raw findings and the dated summary are in `reports/security-audit.json` and `reports/security-review.json`. This is a point-in-time check, not a guarantee against future vulnerabilities.
+The 11 October 2026 dependency audit reports zero vulnerabilities. The unused `@eslint/markdown` checker was removed together with its transitive KaTeX dependency after [GHSA-238p-pmpm-9mq7](https://github.com/advisories/GHSA-238p-pmpm-9mq7) was reported. The site has no Markdown or MDX source pages; JavaScript, TypeScript, Astro, CSS, and JSON linting remain enabled. No unrelated dependency versions were changed. The previously affected transitive dependency `http-cache-semantics` remains patched at 4.3.0. The audit script has no advisory exceptions: any audit failure or reported vulnerability blocks deployment. Raw findings and the dated summary are in `reports/security-audit.json` and `reports/security-review.json`. This is a point-in-time check, not a guarantee against future vulnerabilities.
 
 ## Deployment checks
 

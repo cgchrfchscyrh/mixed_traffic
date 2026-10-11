@@ -1,0 +1,213 @@
+{
+  "problem": {
+    "title": "01 / The problem",
+    "heading": "Autonomy arrives one vehicle at a time.",
+    "intro": "Human-driven and robot vehicles will coexist during the transition to autonomous driving. Congestion makes efficient control essential, but a city cannot assume that every vehicle is autonomous or that every intersection can abandon traffic signals at once.",
+    "sourceSlides": [
+      15,
+      16
+    ]
+  },
+  "relatedWork": {
+    "title": "02 / Existing approaches",
+    "heading": "From traffic signals to vehicle-level decisions.",
+    "intro": "Traffic signals organize right of way at intersections. Reinforcement learning offers another approach: robot vehicles can respond to local traffic and decide when to stop or proceed. Existing mixed-traffic studies often examine isolated intersections or small networks, leaving the larger transition less understood.",
+    "approaches": [
+      {
+        "title": "Traffic signal control",
+        "text": "Signalized intersections provide the conventional comparison for evaluating network waiting time and vehicle throughput."
+      },
+      {
+        "title": "Robot-vehicle control",
+        "text": "Learning-based control lets robot vehicles adapt their intersection decisions to surrounding traffic, including human-driven vehicles."
+      },
+      {
+        "title": "A mixed network",
+        "text": "The transition combines both approaches: some intersections keep their traffic signals while others rely on robot-vehicle decisions."
+      }
+    ],
+    "sourceSlides": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "gap": {
+    "title": "03 / The knowledge gap",
+    "heading": "Can the transition work across a whole network?",
+    "intro": "A decision that improves one intersection does not establish how queues and vehicle interactions will behave across a larger network. The open question is how signalized and unsignalized control should coexist when human-driven and robot vehicles share the same roads.",
+    "question": "How do the number of robot-managed intersections and the share of robot vehicles affect network efficiency\u2014and who benefits at individual intersections?",
+    "hypothesis": "The experiments test whether shifting more intersections toward RL-controlled robot vehicles can alleviate congestion and improve traffic efficiency. The results assess this hypothesis across configurations rather than assume that every additional unsignalized intersection helps.",
+    "sourceSlides": [
+      16,
+      19,
+      20,
+      22
+    ]
+  },
+  "method": {
+    "title": "04 / Our method",
+    "heading": "Observe local traffic. Choose Stop or Go.",
+    "intro": "A reinforcement-learning policy controls robot vehicles near intersections through two discrete actions: Stop and Go. Human-driven vehicles follow the Intelligent Driver Model (IDM); robot vehicles also use IDM away from intersections and switch to the learned policy in the control zone.",
+    "steps": [
+      {
+        "title": "Observe the intersection",
+        "text": "Each robot vehicle observes queue lengths, mean waiting times, and occupancy at its intersection. Vehicles share a policy but make decisions independently.",
+        "sourceSlides": [
+          18
+        ],
+        "sourcePaper": "Published paper method; research guide, Local observations and actions: queue lengths, mean waiting times, occupancy, shared policy with independent decisions."
+      },
+      {
+        "title": "Choose a discrete action",
+        "text": "Within 30 m of an intersection, the policy selects Stop or Go. Rainbow DQN trains this discrete decision policy; outside the zone, vehicles use IDM.",
+        "sourceSlides": [
+          18,
+          20
+        ],
+        "sourcePaper": "Published paper method and protocol; research guide: 30 m control zone and IDM outside the zone."
+      },
+      {
+        "title": "Combine vehicle and signal control",
+        "text": "Robot-managed unsignalized intersections coexist with conventional signalized intersections, allowing the two control approaches to be evaluated in one network.",
+        "sourceSlides": [
+          17,
+          19
+        ]
+      }
+    ],
+    "sourceSlides": [
+      17,
+      18,
+      19,
+      20
+    ]
+  },
+  "experiments": {
+    "title": "05 / Experiments",
+    "heading": "Two transition choices. Fourteen intersections.",
+    "intro": "The study uses a SUMO road network from Colorado Springs, Colorado, with human-driven and robot vehicles travelling through 14 intersections. The experiments vary both robot-vehicle penetration and the number of intersections managed without conventional signals.",
+    "protocol": [
+      {
+        "title": "Study network",
+        "text": "14 intersections in Colorado Springs, Colorado, USA, evaluated in simulation.",
+        "sourceSlides": [
+          17
+        ]
+      },
+      {
+        "title": "Signalized baseline",
+        "text": "The fully signalized 0U + 14S network provides the traffic-light baseline. U denotes an unsignalized intersection managed by robot vehicles; S denotes a signalized intersection.",
+        "sourceSlides": [
+          17,
+          19,
+          21
+        ],
+        "sourcePaper": "Tables I\u2013II: 0U + 14S baseline"
+      },
+      {
+        "title": "Five mixed configurations",
+        "text": "2U + 12S, 4U + 10S, 6U + 8S, 8U + 6S, and 10U + 4S.",
+        "sourceSlides": [
+          19
+        ]
+      },
+      {
+        "title": "Robot-vehicle penetration",
+        "text": "40%, 50%, 60%, 70%, and 80% robot vehicles, spanning human-dominated to robot-dominated traffic.",
+        "sourceSlides": [
+          20,
+          21
+        ]
+      },
+      {
+        "title": "Average waiting time \u00b7 W",
+        "text": "Total time vehicles remain motionless within the control zone, averaged over vehicles. Lower waiting time indicates better traffic efficiency.",
+        "sourceSlides": [
+          20
+        ]
+      },
+      {
+        "title": "Vehicle throughput \u00b7 Q",
+        "text": "The number of vehicles reaching their destinations within the measurement window. Higher destination-arrival throughput indicates better network flow. The paper reports network throughput per 500 seconds.",
+        "sourceSlides": [
+          20,
+          21
+        ],
+        "sourcePaper": "Tables I\u2013II and experimental protocol: vehicles per 500 seconds"
+      }
+    ],
+    "metricNote": "Network throughput counts destination arrivals. The per-intersection tables instead count vehicles passing each intersection; these two quantities should not be added together or treated as interchangeable.",
+    "sourceSlides": [
+      17,
+      19,
+      20,
+      21
+    ],
+    "sourcePaper": "Existing published paper experimental protocol and Tables I\u2013II supply the exact baseline and measurement-window details."
+  },
+  "results": {
+    "title": "06 / Results",
+    "heading": "The gains depend on participation and configuration.",
+    "intro": "The plotted configurations generally achieve lower waiting times and higher throughput as robot-vehicle penetration increases. However, the gains are not monotonic, and the best configuration depends on both the penetration rate and the metric.",
+    "keyFindings": [
+      {
+        "title": "At 80% robot vehicles",
+        "text": "8U + 6S achieves the lowest network waiting time and highest throughput among the configurations in Table II: 5.09 seconds and 493 arrivals per 500 seconds. The fully signalized baseline records 6.17 seconds and 454 arrivals per 500 seconds.",
+        "sourceSlides": [
+          21
+        ],
+        "sourcePaper": "Table II, network row"
+      },
+      {
+        "title": "At 50% robot vehicles",
+        "text": "The objectives select different configurations: 2U + 12S minimizes network waiting time at 5.86 seconds, while 10U + 4S produces the highest throughput at 473 arrivals per 500 seconds.",
+        "sourceSlides": [
+          21
+        ],
+        "sourcePaper": "Table I, network row"
+      },
+      {
+        "title": "Benefits vary across intersections",
+        "text": "Some intersections retain lower waiting times with traffic signals. The per-intersection comparison uses the best waiting time across configurations separately for each intersection; it does not represent one configuration that simultaneously achieves every displayed minimum.",
+        "sourceSlides": [
+          22
+        ],
+        "sourcePaper": "Figure 3 and Tables I\u2013II"
+      },
+      {
+        "title": "More unsignalized intersections is not always better",
+        "text": "At 50% robot vehicles, 6U + 8S records 7.92 seconds of waiting and 448 destination arrivals per 500 seconds, compared with 6.17 seconds and 454 for the fully signalized baseline. The complete tables retain these less favorable cases.",
+        "sourceSlides": [
+          19,
+          21,
+          23
+        ],
+        "sourcePaper": "Table I, network row; qualifies the hypothesis and conclusion in slides 19 and 23"
+      }
+    ],
+    "comparisonNote": "Use the 50% and 80% controls to compare the full network results. U = unsignalized, robot-vehicle control; S = signalized. Waiting time and throughput need not improve together.",
+    "trendNote": "The penetration plots show 8U + 6S and 4U + 10S at five RV rates. Their overall trends should not be read as a guarantee of improvement at every intermediate rate or every intersection.",
+    "sourceSlides": [
+      21,
+      22
+    ],
+    "sourcePaper": "Published paper Figure 2, Figure 3, Table I, and Table II. Exact values remain those of the paper; no values reconstructed from plot pixels."
+  },
+  "conclusion": {
+    "title": "07 / Conclusion",
+    "heading": "A staged transition, supported by simulation.",
+    "intro": "Mixed intersection management can improve traffic efficiency in the studied network while human-driven vehicles and traffic signals remain present. The results support choosing the control configuration together with robot-vehicle penetration, rather than treating signal removal alone as a sufficient strategy.",
+    "limitations": [
+      "The experiments evaluate one simulated urban network. They do not establish a universal result for every city, demand pattern, or driver behaviour.",
+      "Network-level gains can coexist with longer waits at individual intersections, and configurations can trade waiting time against throughput.",
+      "The Waymo footage illustrates real-world autonomous vehicles. It is separate from the authors\u2019 SUMO experiments and does not validate this controller or demonstrate a field deployment."
+    ],
+    "sourceSlides": [
+      23
+    ],
+    "sourcePaper": "Scope qualified by the published experimental setting and complete Tables I\u2013II."
+  }
+}

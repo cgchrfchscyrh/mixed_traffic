@@ -1,8 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Figure from "../components/Figure.astro";
+import PresentationFigure from "../components/PresentationFigure.astro";
+import narrative from "../data/narrative.json";
 import site from "../data/site.json";
 import { asset } from "../data/paths";
+
+const openingSections = [
+  { id: "guide-problem", title: "The problem", content: narrative.problem },
+  {
+    id: "guide-existing-work",
+    title: "Existing approaches",
+    content: narrative.relatedWork,
+  },
+  { id: "guide-gap", title: "The knowledge gap", content: narrative.gap },
+];
+const guideContents = [
+  ...openingSections.map(({ id, title }) => ({ id, title })),
+  ...site.guideSections.map((section, i) => ({
+    id: `guide-${i + 1}`,
+    title: section.title,
+  })),
+];
 ---
 
 <Layout title={`Research guide — ${site.wordmark}`}>
@@ -29,25 +48,46 @@ import { asset } from "../data/paths";
     <nav class="contents" aria-label="Research guide contents">
       <h2>In this guide</h2><ol>
         {
-          site.guideSections.map((section, i) => (
+          guideContents.map((section) => (
             <li>
-              <a href={`#guide-${i + 1}`}>{section.title}</a>
+              <a href={`#${section.id}`}>{section.title}</a>
             </li>
           ))
         }
       </ol>
     </nav>
     <div class="prose">
-      {
-        site.guideSections.map((section, i) => (
-          <section id={`guide-${i + 1}`}>
-            <h2>{section.title}</h2>
-            {section.paragraphs.map((p) => (
-              <p>{p}</p>
-            ))}
-          </section>
-        ))
-      }<section>
+      <p class="fine-print">
+        The opening overview adapts the ground-transportation discussion in the
+        author’s proposal presentation, slides 15–16. The method illustration
+        below is adapted from slide 18. Technical details and numeric results
+        follow the published paper, including cases that qualify the
+        presentation’s broader conclusions.
+      </p>
+      <Fragment>
+        {
+          openingSections.map((section) => (
+            <section id={section.id}>
+              <h2>{section.title}</h2>
+              <p>{section.content.intro}</p>
+            </section>
+          ))
+        }
+      </Fragment>
+      <Fragment>
+        {
+          site.guideSections.map((section, i) => (
+            <section id={`guide-${i + 1}`}>
+              <h2>{section.title}</h2>
+              {section.paragraphs.map((p) => (
+                <p>{p}</p>
+              ))}
+              {i === 1 && <PresentationFigure id="method" />}
+            </section>
+          ))
+        }
+      </Fragment>
+      <section>
         <h2>Boundaries of the evidence</h2><ul>
           {site.limitations.map((p) => <li>{p}</li>)}
         </ul>

@@ -1,0 +1,32 @@
+---
+import presentation from "../data/presentation.json";
+import { asset } from "../data/paths";
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const fig = presentation.figures.find((item) => item.id === id)!;
+---
+
+<figure class:list={["research-figure", "presentation-figure", `presentation-${id}`]} id={`presentation-${id}`}>
+  <div class="figure-image">
+    <img
+      src={asset(`figures/presentation/${fig.file}`)}
+      width={fig.width}
+      height={fig.height}
+      alt={fig.alt}
+      aria-describedby={`presentation-${id}-description`}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>
+    <span class="eyebrow">Presentation / Slide {fig.slide}</span>
+    <strong>{fig.title}</strong>
+    <p id={`presentation-${id}-description`}>{fig.description}</p>
+    <p class="fine-print">
+      {fig.credit}{" "}
+      <a href={asset(`figures/presentation/${fig.file}`)}>View {fig.title.toLowerCase()} at full size</a>.
+    </p>
+  </figcaption>
+</figure>

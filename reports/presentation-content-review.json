@@ -1,0 +1,367 @@
+{
+  "source": {
+    "path": "/home/liusongyang/Downloads/Proposal_defense_narrow.pptx",
+    "sha256": "7990ea0ce23f4446bd584a3f31619852b2ec12d12c3941e78d45fdc83ba153e8",
+    "slideCount": 34,
+    "scope": "Ground transportation only",
+    "relevantSlides": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "dividerSlide": 14,
+    "excludedRanges": [
+      [
+        3,
+        12
+      ],
+      [
+        24,
+        33
+      ]
+    ],
+    "extraction": "OOXML body text, OMML math labels, speaker notes, relationship targets, embedded raster figures"
+  },
+  "status": {
+    "groundTraffic": "Presented as completed experiments and results in slides 17–23, consistent with the existing published IROS 2025 study. The proposal filename alone does not make these results future work.",
+    "plannedWork": "No separate proposed/future-work ground-traffic experimental programme is described in slides 15–23. Do not invent a future deployment or promise.",
+    "metadata": "Retain the published article title, all authors, affiliations, DOI, IROS 2025 citation, and numeric paper tables. The deck title and single presenting author are for the broader proposal."
+  },
+  "supportedClaims": [
+    {
+      "section": "Problem / background",
+      "slides": [
+        15
+      ],
+      "claim": "Human-driven and robot vehicles will coexist during the transition to autonomous driving. Congestion motivates more efficient mixed-traffic control.",
+      "caution": "The slide gives 43 h and $771 for 2024 US congestion, while speaker notes say $700. No explicit primary citation is embedded. Omit the numeric cost claim unless independently sourced. The cited potential for collision reduction is background, not this study’s measured outcome."
+    },
+    {
+      "section": "Existing work / gap",
+      "slides": [
+        16,
+        17
+      ],
+      "claim": "Prior mixed-traffic studies often use small networks or isolated intersections; network interactions and staged transition from signalized to autonomous intersection management need investigation.",
+      "caution": "No specific existing algorithm names, references, quantitative road-network sizes, or matched benchmark results are provided in this part of the deck. Do not claim all prior work is single-intersection."
+    },
+    {
+      "section": "Setting",
+      "slides": [
+        17
+      ],
+      "claim": "Fourteen intersections in Colorado Springs, Colorado, USA, with both human-driven and robot vehicles; mixed control compared with traffic signal control. SUMO is explicit in speaker notes.",
+      "caution": "The map is a simulated study setting, not a field deployment."
+    },
+    {
+      "section": "Method",
+      "slides": [
+        18,
+        20
+      ],
+      "claim": "Human-driven vehicles use the Intelligent Driver Model (IDM). Robot vehicles also use IDM away from intersections; near an intersection they switch to an RL policy. Observing local traffic, they choose binary Stop or Go. Policy trained with Rainbow DQN.",
+      "caution": "Thirty-metre control zone, shared-policy architecture, queue/wait/occupancy state details, reward formulas, and 1,000 training iterations are paper-supported existing site details; they are not specified in these PPT slides."
+    },
+    {
+      "section": "Experiment configurations",
+      "slides": [
+        19
+      ],
+      "claim": "Five mixed configurations: 2U + 12S, 4U + 10S, 6U + 8S, 8U + 6S, 10U + 4S. U denotes unsignalized, RV-managed intersections; S denotes signalized intersections.",
+      "caution": "Fully signalized 0U + 14S numeric baseline and evaluation-window details come from existing paper tables/protocol. Slide 19 states the monotonic-improvement hypothesis, not a generally established rule."
+    },
+    {
+      "section": "Robot-vehicle rates",
+      "slides": [
+        20,
+        21
+      ],
+      "claim": "Robot-vehicle penetration spans 40%–80%; figure x axes show 40%, 50%, 60%, 70%, 80%.",
+      "caution": "Do not imply the endpoints 0% and 100% in the conceptual background slide were experimentally evaluated."
+    },
+    {
+      "section": "Metrics",
+      "slides": [
+        20
+      ],
+      "claim": "Average waiting time W is mean motionless time per vehicle within the control zone; lower is better. Vehicle throughput Q counts vehicles arriving at their destinations; higher is better. Figure 21 axis uses vehicles per 500 seconds.",
+      "caution": "Network destination-arrival Q is not interchangeable with individual intersection pass-through counts. Existing complete table notes must remain."
+    },
+    {
+      "section": "Results",
+      "slides": [
+        21
+      ],
+      "claim": "Higher RV penetration generally improves waiting time and throughput in the plotted settings. Four plots show 8U + 6S (a,b) and 4U + 10S (c,d), with TL as fully signalized baseline.",
+      "caution": "Curves are not strictly monotonic. For example 8U + 6S waiting rises from 40% to 50% and 60% to 70%; throughput likewise has nonmonotonic intervals. Avoid “steadily,” “all configurations,” and “consistent improvement” from overstrong speaker notes."
+    },
+    {
+      "section": "Local results",
+      "slides": [
+        22
+      ],
+      "claim": "Benefits vary across the 14 intersections; bar panels compare 50% and 80% RV penetration.",
+      "caution": "Ours is a per-intersection minimum across configurations, not one deployable configuration. Slide says nine improved intersections at 50%, conflicting with complete table minimum count ten. Do not republish nine without resolving."
+    },
+    {
+      "section": "Conclusion",
+      "slides": [
+        23
+      ],
+      "claim": "The results motivate combining vehicle-level RL with remaining traffic signals as a potential staged transition strategy.",
+      "caution": "Replace “prove our hypothesis” and automatic monotonic benefit with conditional evidence limited to this SUMO network."
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "monotonic-signals",
+      "slides": [
+        19,
+        23
+      ],
+      "ppt": "More intersections managed by RVs always alleviates congestion and improves efficiency.",
+      "existingEvidence": "At 50% RV, 2U + 12S waiting is 5.86 s, 6U + 8S is 7.92 s, and 10U + 4S is 7.02 s. At 80% RV, 8U + 6S has 5.09 s and 493 arrivals/500 s; adding U to 10U + 4S yields 5.95 s and 478.",
+      "resolution": "Keep full tables and say selected configurations improve efficiency; penetration rate and placement/number of U intersections matter."
+    },
+    {
+      "id": "intersection-count",
+      "slides": [
+        22
+      ],
+      "ppt": "Nine intersections have lower waiting at 50%; eleven at 80%.",
+      "existingEvidence": "Table I per-intersection minimum across five configurations is lower at IDs 1,3,4,5,6,8,10,11,12,14: ten. ID 5 is 9.65 versus 9.74 s. Table II count is eleven.",
+      "resolution": "Avoid the disputed headline count. Describe heterogeneous local gains with accessible exact tables. Preserve original PPT content in provenance rather than silently rewriting source."
+    },
+    {
+      "id": "trend-strength",
+      "slides": [
+        21
+      ],
+      "ppt": "Speaker notes claim steadily decreasing W, increasing Q, and consistent improvements across all configurations.",
+      "existingEvidence": "Slide plots show only two configurations, nonmonotonic rate-to-rate changes, and some mixed results worse than TL.",
+      "resolution": "Use “generally” and show both metrics, exact values, and adverse cases."
+    },
+    {
+      "id": "congestion-cost",
+      "slides": [
+        15
+      ],
+      "ppt": "Body says $771; notes say $700. Both mention 43 hours and 2024.",
+      "resolution": "Use qualitative congestion motivation without unsupported background numbers unless verified using primary source."
+    }
+  ],
+  "materialNotes": [
+    {
+      "slide": 14,
+      "file": "ppt/media/image15.gif",
+      "note": "330-frame background GIF, 800×467. Do not embed as unpausable autoplay; unrelated source status unclear. Existing manually controlled credited Waymo context video is preferable."
+    },
+    {
+      "slide": 15,
+      "file": "ppt/media/image16.jpeg",
+      "note": "Alt metadata explicitly identifies Shutterstock stock image. Avoid copying this decorative car asset as a new web hero."
+    },
+    {
+      "slide": 17,
+      "file": "ppt/media/image17.png",
+      "note": "3420×2011 network visual. Potential higher-resolution study illustration. Accompany with full text network description."
+    },
+    {
+      "slide": 17,
+      "file": "ppt/media/image20.png",
+      "note": "1294×1297 smaller-network illustration. Unnamed prior-work network; do not assign it a publication or quantitative size without a source."
+    },
+    {
+      "slide": 18,
+      "file": "ppt/media/image21.png",
+      "note": "3154×1881 conceptual rendered intersection with red and white vehicles. Meaningful Stop/Go labels are separate PowerPoint text shapes, not in the raster image. If used, add explicit labels and text-based vehicle/action description; do not rely only on color or call it a real-world recording."
+    },
+    {
+      "slide": 18,
+      "file": "ppt/media/image22.png",
+      "note": "665×451 neural-network glyph, an explanatory illustration rather than a precise architecture schematic."
+    },
+    {
+      "slide": 19,
+      "file": "ppt/media/image23.png; ppt/media/image24.png",
+      "note": "Signalized and unsignalized SUMO scenes can explain S/U semantics; explicitly label in text."
+    },
+    {
+      "slide": 21,
+      "file": "ppt/media/image25.png",
+      "note": "6175×1445 high-resolution original plot; labels/linework preserved, body/notes mapped configs a,b to 8U + 6S and c,d to 4U + 10S."
+    },
+    {
+      "slide": 22,
+      "file": "ppt/media/image26.png",
+      "note": "5249×878 high-resolution original per-intersection bars; red/blue coding must be complemented by legend text and complete table."
+    }
+  ],
+  "suggestedCopy": {
+    "problem": {
+      "title": "A transition with people still in the loop.",
+      "text": "Autonomous vehicles will share urban streets with human drivers for years. The control problem is therefore a mixed one: how can robot vehicles improve traffic flow while conventional traffic signals remain part of the network?",
+      "slides": [
+        15,
+        16
+      ]
+    },
+    "existingWork": {
+      "title": "Beyond an isolated intersection.",
+      "text": "Much mixed-traffic control research has studied individual intersections or small networks. Decisions that work locally do not automatically resolve queues and vehicle interactions across a larger urban network.",
+      "slides": [
+        16,
+        17
+      ]
+    },
+    "gap": {
+      "title": "How should vehicle control and traffic signals coexist?",
+      "text": "The study asks how a network performs as selected intersections move from signalized control to management by robot vehicles, while the vehicle fleet remains mixed. The transition must be evaluated at both network and individual-intersection scales.",
+      "slides": [
+        16,
+        19,
+        22
+      ]
+    },
+    "method": {
+      "title": "Observe local traffic. Decide Stop or Go.",
+      "text": "Each robot vehicle uses local traffic information to select a binary action through a policy trained with Rainbow DQN. Human-driven vehicles follow the Intelligent Driver Model; robot vehicles follow the same model away from intersections and switch to RL in the control zone.",
+      "slides": [
+        18,
+        20
+      ]
+    },
+    "experiments": {
+      "title": "Two transition choices, one 14-intersection network.",
+      "text": "In a SUMO model of Colorado Springs, the study varies both the share of robot vehicles and the number of unsignalized intersections. Five mixed-control configurations are evaluated at robot-vehicle rates from 40% to 80% and compared with the fully signalized baseline.",
+      "slides": [
+        17,
+        19,
+        20
+      ]
+    },
+    "results": {
+      "title": "Higher participation helps; configuration still matters.",
+      "text": "The plotted cases generally improve as robot-vehicle penetration rises, but gains are not monotonic and are not shared equally by every intersection. The full paper tables identify which combinations reduce waiting time, increase destination arrivals, or produce a trade-off.",
+      "slides": [
+        21,
+        22
+      ],
+      "additionalSource": "Paper Tables I–II"
+    },
+    "conclusion": {
+      "title": "A staged transition, supported by simulation.",
+      "text": "The results support mixed intersection management as a potential route toward more efficient traffic. They also show why replacing more signals is not a sufficient strategy on its own: the network configuration and robot-vehicle penetration must be considered together.",
+      "slides": [
+        23
+      ],
+      "additionalSource": "Paper Tables I–II"
+    }
+  },
+  "narrativePath": "/tmp/mixed-ppt-content/narrative.json",
+  "numericPolicy": "No new experimental numeric values added. PPT supplies 14 intersections, five U/S configurations, five 40–80% RV rates, binary actions, and 500-second plot units. Exact headline numbers and counterexamples are preserved from existing published-paper Tables I–II in site.json. Congestion cost numbers and disputed 50% count are not in the proposed narrative.",
+  "finalScientificReview": {
+    "checkedAt": "2026-10-11T20:00:58.713474+00:00",
+    "status": "pass",
+    "blockingIssues": [],
+    "baseCommit": "6804cdb41c3b03b334d545c68e8422e592b6c21b",
+    "reviewedFileSha256": {
+      "src/pages/index.astro": "b1dd1c1a07e0761fb6437570ba0d76ad5f8119f9193b9231bcb6e8040e961a55",
+      "src/data/narrative.json": "18c9ae583bcbbaa6b1ef69dc9a5d09aa068fa02532c3ae15f5e0e4ac2faac8e9",
+      "src/data/presentation.json": "b9a07e4ba30dc74147ebeefc897074d3b39623cb30127de804d850a62a81ad5a",
+      "src/data/site.json": "84f23c220e350f148ceb1be29489bd74cbfd5ab79d2be543be387f6d7429db65",
+      "src/pages/paper.astro": "17554573e2bced0c24fb10b51feac9656ff88c801bba5f9d321341b9d0f65c22"
+    },
+    "protectedPaperData": {
+      "authors": true,
+      "affiliations": true,
+      "title": true,
+      "venue": true,
+      "publication": true,
+      "doi": true,
+      "year": true,
+      "bibtex": true,
+      "citationKey": true,
+      "tables": true,
+      "comparisons": true,
+      "guideSections": true,
+      "limitations": true,
+      "highlights": true
+    },
+    "csvPreservation": [
+      {
+        "path": "public/data/intersections-50.csv",
+        "unchanged": true,
+        "sha256": "a7470c46ff3cad1e654f98629714850a7abeb24815c0f2ab02daa31396559e2c"
+      },
+      {
+        "path": "public/data/intersections-80.csv",
+        "unchanged": true,
+        "sha256": "a7bc6d109fe17b1dfcec6f3644763e0c61fe238e584d1e74abbf93d472cf55e5"
+      }
+    ],
+    "onlySiteDataChange": "Figure 2 description now points to complete results tables rather than saying tables on this page. Original figure files, values, author/publication metadata, full tables, comparison controls, highlights, limitations, and guide sections remain unchanged.",
+    "sourceMapping": [
+      {
+        "claim": "Problem, research gap, coexistence of human and robot vehicles, transition from signals",
+        "source": "PPT slides 15–16 and 19"
+      },
+      {
+        "claim": "14-intersection Colorado Springs SUMO setting",
+        "source": "PPT slide 17 and speaker notes; unchanged original guide experimental protocol"
+      },
+      {
+        "claim": "IDM outside intersection control, binary Stop/Go, Rainbow DQN",
+        "source": "PPT slides 18 and 20"
+      },
+      {
+        "claim": "Queue lengths, mean waiting times, occupancy, shared policy, independent vehicle decisions, 30 m control zone",
+        "source": "Unchanged site.guideSections[1], Local observations and actions. These details are from the paper, not specified in PPT slide 18."
+      },
+      {
+        "claim": "1,000 training iterations; 100 evaluation episodes of 1,000 seconds; second-half 500-second throughput window",
+        "source": "Unchanged site.guideSections[2].paragraphs[1], Experimental protocol"
+      },
+      {
+        "claim": "Five U/S configurations and five RV rates 40–80%",
+        "source": "PPT slides 19–21"
+      },
+      {
+        "claim": "W waiting metric and Q destination-arrival metric; distinction from intersection throughput",
+        "source": "PPT slide 20 plus unchanged original guide How to read the metrics"
+      },
+      {
+        "claim": "At 80% RV, 8U + 6S has 5.09 s and 493 arrivals/500 s versus baseline 6.17 s and 454",
+        "source": "Unchanged Table II network row"
+      },
+      {
+        "claim": "At 50% RV, 2U + 12S minimum waiting 5.86 s; 10U + 4S maximum throughput 473; unfavorable 6U + 8S case 7.92 s and 448",
+        "source": "Unchanged Table I network row"
+      },
+      {
+        "claim": "Figure 3 per-intersection minimum is not one simultaneous deployable configuration",
+        "source": "Unchanged original guide Reading the figures, figure description, and full Tables I–II"
+      }
+    ],
+    "visualChecks": [
+      "Method graphic visually checked against rendered source labels: top and right robot vehicles STOP; left robot vehicle GO; arrow identifies human vehicle within intersection; traffic information feeds RL policy and GO/STOP decision. Description is accurate and does not imply a field experiment.",
+      "Signalized illustration has traffic lights and approaches A–D; unsignalized illustration has yield signs and approaches A–D. Neither is assigned to numbered study intersections. No on-road validation is claimed."
+    ],
+    "retainedQualifications": [
+      "Results remain simulation-specific and do not claim deployment safety or communications reliability.",
+      "Nonmonotonic configuration and penetration effects are explicit.",
+      "Different objectives choose different best configurations at 50% RV.",
+      "The unfavorable 50% 6U + 8S network outcome is visible on the homepage.",
+      "The disputed nine-intersection count and unsupported congestion dollar statistic are excluded.",
+      "Waymo footage remains context, distinct from the authors’ controller and simulation.",
+      "The guide remains a companion, not a full paper transcription; PDF accessibility is not certified."
+    ],
+    "sourceMetadataNote": "The first two method steps currently retain sourceSlides but incorporate unchanged paper-derived guide facts. Optional sourcePaper metadata would improve per-field traceability; scientific claims are supported and the mapping is recorded above."
+  }
+}

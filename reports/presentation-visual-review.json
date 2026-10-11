@@ -1,0 +1,27 @@
+{
+  "checkedOn": "2026-10-11",
+  "desktop": {
+    "width": 1440,
+    "sections": [
+      "problem",
+      "related-work",
+      "gap",
+      "method",
+      "experiments",
+      "results",
+      "conclusion"
+    ],
+    "methodFigure": "Complete STOP/GO, Robot/Human labels and traffic-information/policy/action diagram retained.",
+    "intersectionFigures": "S/U labels, original diagram boundaries, source notes and full text alternatives visible."
+  },
+  "mobile": {
+    "width": 320,
+    "horizontalOverflow": false,
+    "review": "Reviewed title, media, method and experiment excerpts; figures and text reflow with full-size image links."
+  },
+  "sourceIntegrity": "Only derived figures copied; original PPT and paper not altered.",
+  "accessibilityReport": "axe-wcag21aa.json",
+  "limitations": [
+    "Visual checks do not certify screen-reader experience, scientific raster-image contrast, or external PDF reading order."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "source": "Proposal_defense_narrow.pptx",
+  "sha256": "7990ea0ce23f4446bd584a3f31619852b2ec12d12c3941e78d45fdc83ba153e8",
+  "figures": [
+    {
+      "id": "method",
+      "slide": 18,
+      "source_zip_entry": "ppt/slides/slide18.xml and ppt/media/image21.png, image22.png",
+      "file": "mixed-traffic-method-slide18.webp",
+      "alt": "Mixed traffic control illustration with labelled robot and human vehicles, stop and go actions, and the traffic-information-to-RL-policy decision process.",
+      "description": "An overhead illustration shows vehicles approaching a four-way urban intersection. The top and right robot vehicles are marked STOP, while the left robot vehicle is marked GO. An arrow identifies a human-driven vehicle within the intersection. Under the street scene, traffic information feeds a reinforcement-learning policy, which selects one of two robot-vehicle actions, GO or STOP. These written labels state the actions independently of their colors. In the model described on the slide, human-driven vehicles use the Intelligent Driver Model. Robot vehicles use the same driver model away from an intersection and switch to the RL policy near an intersection. This is a control illustration, not a photograph of a field experiment.",
+      "transformation": "Rendered the original PPT slide to PDF using LibreOffice, rasterized at 3840\u00d72160 pixels, and cropped the right-hand method figure at x=1764, y=200, x2=3840, y2=2080. All figure labels and policy-flow components retained. Saved as lossless WebP. No illustration was drawn or modified.",
+      "notes": [
+        "Original image annotations use red and green; include the full text equivalent and explicit STOP/GO labels in the HTML caption.",
+        "The crop excludes the slide title and explanatory bullet list; the prose is transcribed in this description."
+      ],
+      "width": 2076,
+      "height": 1880,
+      "bytes": 1944628,
+      "sha256": "3bbd6eaf3cdbd9f593f9afbdf274415ee9e9088957ce13c4bcbe17ca6ef53859",
+      "title": "From traffic information to Stop or Go",
+      "credit": "Author-supplied proposal presentation, slide 18. Original scientific annotations retained."
+    },
+    {
+      "id": "signalized",
+      "slide": 19,
+      "source_zip_entry": "ppt/media/image23.png",
+      "file": "signalized-intersection-slide19.webp",
+      "alt": "Illustration of a signalized four-way intersection, with traffic lights and four approaches labelled A through D.",
+      "description": "A four-way intersection contains traffic lights on its approaches, lane markings, and pedestrian crossings. The four approaches are labelled A, B, C, and D. The source slide calls this a signalized intersection, abbreviated S. Colored lane overlays illustrate different movement states. The letters identify approaches, not particular intersections in the 14-intersection network.",
+      "transformation": "Original embedded RGBA image saved as lossless WebP, without cropping or recoloring.",
+      "notes": [
+        "No specific U/S assignment by intersection number can be inferred from this illustration."
+      ],
+      "width": 976,
+      "height": 583,
+      "bytes": 439834,
+      "sha256": "cc3a878b9cce8562ff287901b5bb7bfd813cad4b718b6539eb13a704f879f89b",
+      "title": "S / Signalized intersection",
+      "credit": "Author-supplied proposal presentation, slide 19. Original scientific annotations retained."
+    },
+    {
+      "id": "unsignalized",
+      "slide": 19,
+      "source_zip_entry": "ppt/media/image24.png",
+      "file": "unsignalized-intersection-slide19.webp",
+      "alt": "Illustration of an unsignalized four-way intersection, with yield signs and four approaches labelled A through D.",
+      "description": "A four-way intersection has pedestrian crossings, yield signs, and approaches labelled A, B, C, and D. The source slide calls this an unsignalized intersection, abbreviated U, where robot vehicles are managed by the learned stop/go control policy in the simulation. Colored approach overlays illustrate movement regions. The letters identify approaches, not selected intersection numbers in the study network.",
+      "transformation": "Original embedded RGBA image saved as lossless WebP, without cropping or recoloring.",
+      "notes": [
+        "The illustrated yield signs are part of the source figure. Do not claim that the experiment validates on-road operation using these signs."
+      ],
+      "width": 1028,
+      "height": 484,
+      "bytes": 374822,
+      "sha256": "e59b2f1e5eed20f7c250b2ca0c47467ac28355fa8f8844c234e0fb9c3c199ff7",
+      "title": "U / Robot-managed unsignalized intersection",
+      "credit": "Author-supplied proposal presentation, slide 19. Original scientific annotations retained."
+    }
+  ]
+}

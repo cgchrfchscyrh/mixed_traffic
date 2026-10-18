@@ -1,0 +1,18 @@
+---
+import manifest from "../../public/media/mixed-clips.json";
+import { asset } from "../data/paths";
+interface Props { id: string; }
+const { id } = Astro.props;
+const clip = manifest.clips.find((item) => item.id === id)!;
+---
+<figure class="research-clip">
+  <video id={`mixed-${id}-video`} data-playback-group="research" data-duration={clip.duration} controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(`media/${clip.poster}`)} width={clip.width} height={clip.height} aria-label={clip.title} aria-describedby={`mixed-${id}-caption mixed-${id}-description`}>
+    <source src={asset(`media/${clip.file}`)} type="video/mp4" />
+    <track kind="descriptions" src={asset(`media/${clip.track}`)} srclang="en" label="English visual descriptions" />
+    <a href={asset(`media/${clip.file}`)}>View {clip.title.toLowerCase()}.</a>
+  </video>
+  <figcaption>
+    <p id={`mixed-${id}-caption`}>{clip.caption}</p>
+    <details class="clip-description"><summary>Video description & source</summary><p id={`mixed-${id}-description`}>{clip.description}</p></details>
+  </figcaption>
+</figure>

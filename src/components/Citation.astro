@@ -1,6 +1,5 @@
 ---
 import site from "../data/site.json";
-import { asset } from "../data/paths";
 ---
 
 <section
@@ -20,10 +19,7 @@ import { asset } from "../data/paths";
   <div class="citation-box">
     <div class="citation-toolbar">
       <span>BibTeX</span><div>
-        <button id="copy-citation" hidden>Copy citation</button><a
-          href={asset("citation.bib")}
-          download>Download BibTeX</a
-        >
+        <button id="copy-citation" hidden>Copy citation</button>
       </div>
     </div><pre
       role="region"
@@ -44,7 +40,7 @@ import { asset } from "../data/paths";
         status.textContent = "Citation copied.";
       } catch {
         status.textContent =
-          "Copy is unavailable in this browser. Select the citation text or download the BibTeX file.";
+          "Copy is unavailable in this browser. Select the citation text.";
       }
     });
   }

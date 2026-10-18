@@ -6,18 +6,17 @@ import { asset } from "../data/paths";
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
-const { title = site.title, description = site.description } = Astro.props;
+const { title = site.title, description = site.description, noindex = false } = Astro.props;
 const isNotFound = /\/404(?:\/|\.html)?$/.test(Astro.url.pathname);
 const canonical =
   Astro.site && !isNotFound
     ? new URL(Astro.url.pathname, Astro.site).href
     : undefined;
-const nav = [
-  { name: "Overview", href: asset() },
-  { name: "Research guide", href: asset("paper/") },
-  { name: "Results & figures", href: asset("results/") },
-];
+const nav = ["Abstract", "Method", "Results", "Citation"].map((name) => ({
+  name, href: `${asset()}#${name.toLowerCase()}`,
+}));
 ---
 
 <!doctype html>
@@ -28,7 +27,7 @@ const nav = [
     <meta name="description" content={description} />
     <meta name="theme-color" content="#202020" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    {isNotFound && <meta name="robots" content="noindex" />}
+    {(isNotFound || noindex) && <meta name="robots" content="noindex" />}
     <meta name="citation_title" content={site.title} />
     {
       site.authors.map((author) => (
@@ -100,7 +99,7 @@ const nav = [
       <div class="footer-links">
         <a href={asset("accessibility/")}>Accessibility & media credits</a><a
           href="mailto:liusongyang@ufl.edu">Contact Songyang Liu</a
-        ><a href={site.siteRepo}>Website source</a>
+        >
       </div>
       <p class="fine-print">
         Based on the <a

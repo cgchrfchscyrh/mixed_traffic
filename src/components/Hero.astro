@@ -15,33 +15,27 @@ import { asset } from "../data/paths";
       </ul>
       <div class="actions">
         <a class="button dark" href={site.paperUrl}>Paper ↗</a>
-        <a class="button" href={site.repo}>Code ↗</a>
-        <a class="button" href={asset("paper/")}>Research guide</a>
       </div>
     </div>
     <div class="hero-backdrops">
       <figure>
-        <video id="context-video" data-playback-group="hero" controls muted playsinline loop preload="metadata" poster={asset(site.contextPoster)} width="1280" height="720" aria-label={site.contextTitle} aria-describedby="context-summary context-visual-description">
+        <video id="context-video" data-playback-group="hero" controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(site.contextPoster)} width="1280" height="720" aria-label={site.contextTitle} aria-describedby="context-summary context-visual-description">
           <source src={asset(site.contextVideo)} type="video/mp4" />
           <track kind="descriptions" src={asset(site.contextTrack)} srclang="en" label="English visual descriptions" />
-          <a href={asset(site.contextVideo)}>Download the silent Waymo context video (MP4).</a>
+          <a href={asset(site.contextVideo)}>View the silent Waymo context video.</a>
         </video>
         <figcaption id="context-summary">Real-world autonomy · <a href={site.contextUrl}>Source: Waymo</a></figcaption>
       </figure>
       <figure>
-        <video id="simulation-video" data-playback-group="hero" controls muted playsinline loop preload="metadata" poster={asset(simulation.poster)} width={simulation.width} height={simulation.height} aria-label={simulation.title} aria-describedby="simulation-summary simulation-visual-description">
+        <video id="simulation-video" data-playback-group="hero" controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(simulation.poster)} width={simulation.width} height={simulation.height} aria-label={simulation.title} aria-describedby="simulation-summary simulation-visual-description">
           <source src={asset(simulation.video)} type="video/mp4" />
           <track kind="descriptions" src={asset(simulation.track)} srclang="en" label="English visual descriptions" />
-          <a href={asset(simulation.video)}>Download the silent traffic simulation video (MP4).</a>
+          <a href={asset(simulation.video)}>View the silent traffic simulation video.</a>
         </video>
         <figcaption id="simulation-summary">Mixed traffic in SUMO · Author-supplied simulation</figcaption>
       </figure>
     </div>
   </div>
-  <div class="hero-playback">
-    <button class="button dark" id="hero-playback-toggle" aria-controls="context-video simulation-video" type="button" hidden>Play videos</button>
-    <a href="#media-descriptions">Video descriptions & sources</a>
-    <p id="media-status" class="sr-only" role="status"></p>
-  </div>
+  <p id="media-status" class="sr-only" role="status"></p>
 </section>
 <MediaControls />

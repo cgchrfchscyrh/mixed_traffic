@@ -1,7 +1,6 @@
 ---
 import site from "../data/site.json";
 import simulation from "../data/hero-media.json";
-import { asset } from "../data/paths";
 ---
 
 <section id="media-description" class="media-description" aria-labelledby="media-heading">
@@ -21,7 +20,7 @@ import { asset } from "../data/paths";
       {simulation.description.map((paragraph) => <p>{paragraph}</p>)}
     </div>
     <p class="fine-print">{simulation.credit}</p>
-    <p><a href={asset(simulation.video)}>Download the simulation excerpt (MP4)</a> · <a href={asset(simulation.track)}>Read the timed simulation descriptions (VTT)</a></p>
+
   </section>
-  <p class="fine-print">Both clips are silent and show complete frames. They start automatically when visible unless reduced motion or data saving is enabled. Use Pause videos or either native player to stop motion; a manual pause is respected when you return to the videos. The two recordings illustrate different settings and are not a synchronized experimental comparison.</p>
+  <p class="fine-print">Both clips are silent and show complete frames. They start automatically when visible unless reduced motion or data saving is enabled. Use the native controls on each player to stop motion; a manual pause is respected when you return to the videos. The two recordings illustrate different settings and are not a synchronized experimental comparison.</p>
 </section>

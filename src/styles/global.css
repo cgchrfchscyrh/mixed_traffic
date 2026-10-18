@@ -1457,8 +1457,6 @@ tbody tr:hover {
 .visual-hero .hero-backdrops { max-width: 1600px; margin: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; padding: 0 1rem; }
 .visual-hero video { width: 100%; aspect-ratio: 16/9; object-fit: contain; background: #111; border-radius: 5px; }
 .visual-hero figcaption { padding: 0.75rem 0.25rem; font-size: 0.82rem; color: #505050; }
-.hero-playback { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: center; padding: 0.75rem 1.25rem; }
-.hero-playback > a { font-size: 0.83rem; }
 .visual-overview { max-width: 1180px; }
 .visual-overview .research-nav { display: flex; justify-content: center; padding: 1.5rem 0; }
 .visual-overview .section { padding: 3.5rem 0; }
@@ -1494,4 +1492,32 @@ summary:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
   .visual-overview .intersection-grid .figure-image { aspect-ratio: auto; }
   .abstract-section p { font-size: 1rem; }
 }
-@media print { .hero-backdrops, .hero-playback { display: none; } details > * { display: block; } }
+@media print { .hero-backdrops { display: none; } details > * { display: block; } }
+
+/* A concise research narrative with complete, controllable media. */
+.visual-overview { max-width: 1160px; }
+.visual-overview .abstract-section { max-width: none; }
+.visual-overview .section { padding-block: clamp(2.8rem, 5vw, 4.5rem); }
+.visual-overview .section > .section-deck { max-width: 82ch; font-size: 1.08rem; line-height: 1.75; margin-bottom: 1.8rem; }
+.research-clip { margin: 0; min-width: 0; }
+.research-clip video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #111; border-radius: 6px; }
+.research-clip figcaption { padding: 0.8rem 0 0; color: #4d4d4d; }
+.research-clip figcaption > p { font-size: 0.92rem; margin-bottom: 0.25rem; line-height: 1.6; }
+.clip-description summary { font-size: 0.82rem; font-weight: 400; }
+.clip-description p { font-size: 0.9rem; line-height: 1.7; margin-block: 0.7rem; }
+.abstract-section .research-clip { max-width: 1000px; margin-inline: auto; }
+.method-media, .results-media { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: start; margin: 2rem 0; }
+.method-media .presentation-method, .results-media .research-figure { margin: 0; }
+.method-context > p { font-size: 0.96rem; margin-top: 1.6rem; color: #505050; line-height: 1.75; }
+.visual-overview .research-figure figcaption { background: transparent; border: 0; }
+.visual-overview .intersection-grid { gap: 2rem; margin-top: 2.5rem; }
+.visual-overview .intersection-grid .figure-image { aspect-ratio: 1.85; padding: 0.8rem; }
+.results-media .figure-image { aspect-ratio: 16 / 9; }
+.results-media .figure-image img { height: 100%; }
+.scope-note { color: #575757; font-size: 0.9rem; max-width: 88ch; line-height: 1.7; margin-top: 1.5rem; }
+@media (max-width: 760px) {
+  .method-media, .results-media { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .visual-overview .section > .section-deck { font-size: 1rem; }
+  .visual-overview .intersection-grid .figure-image { aspect-ratio: auto; }
+  .visual-hero .actions { justify-content: flex-start; }
+}

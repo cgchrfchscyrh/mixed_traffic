@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-18",
+  "scope": "Concise research content revision",
+  "sections": [
+    "Abstract",
+    "Method",
+    "Results",
+    "Citation"
+  ],
+  "heroActions": [
+    "Paper: existing published DOI"
+  ],
+  "removed": [
+    "Standalone global play/pause button",
+    "Research guide and Results & figures navigation",
+    "Numerical highlights, statistics, comparison tabs, tables and penetration plot",
+    "Extra hero Code button and website-source/download links"
+  ],
+  "preserved": [
+    "Native keyboard-operable video controls",
+    "Reduced-motion and data-saving protection",
+    "Persistent manual pause and offscreen/hidden-tab pause",
+    "Original source materials, data and figures",
+    "Concise qualitative findings and limitations"
+  ],
+  "media": {
+    "titlePlayers": 2,
+    "bodyPlayers": 3,
+    "bodySource": "One unchanged author-supplied TL_medium.mp4 SUMO recording; clips are illustrative context, not different experiments or controller-performance evidence.",
+    "selectedSourceIntervalsSeconds": [
+      [
+        17,
+        24
+      ],
+      [
+        48,
+        54
+      ],
+      [
+        80,
+        88
+      ]
+    ],
+    "fullFrames": true,
+    "speed": 1,
+    "newAudioStreams": 0,
+    "allNewClipsDecode": true
+  },
+  "visualReview": {
+    "desktopWidth": 1440,
+    "mobileWidth": 320,
+    "imagesFullyDecodedBeforeScreenshots": true,
+    "screenshots": [
+      "/tmp/mixed-content-desktop.png",
+      "/tmp/mixed-content-mobile.png",
+      "/tmp/mixed-content-method.png",
+      "/tmp/mixed-content-results.png"
+    ],
+    "observations": [
+      "Title and author names remain above full-frame paired media.",
+      "Method illustration and short junction clip align in two columns on desktop; setting figures follow.",
+      "Results pairs a simulation-context clip with the original network figure.",
+      "Mobile stacks media, retains captions, and has no page-width overflow."
+    ]
+  },
+  "verification": {
+    "lint": "pass",
+    "astroBuild": "pass, zero errors/warnings/hints",
+    "axeScans": 11,
+    "functionalChecks": 188,
+    "violations": 0,
+    "errors": 0
+  },
+  "limits": [
+    "Original scientific raster-label contrast and full screen-reader experience are not certified.",
+    "External PDF accessibility remains unverified.",
+    "These local checks do not certify complete ADA/WCAG conformance."
+  ]
+}

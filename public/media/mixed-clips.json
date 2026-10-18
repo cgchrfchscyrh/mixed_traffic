@@ -1,0 +1,57 @@
+{
+  "source": "TL_medium.mp4",
+  "sourceSha256": "f99d452386efcfba20c97b7b5f1b4ac5c0ac9a24b6fddd2064f23e7ed7bd8bc4",
+  "clips": [
+    {
+      "id": "network",
+      "posterTime": 20,
+      "title": "Sharing a connected road network",
+      "caption": "Vehicles move between neighboring intersections in SUMO.",
+      "description": "The overhead view follows two neighboring intersections linked by a multilane road. Vehicle symbols travel on the approaches and through the junctions as the screen recording pans across the network. These excerpts come from the same author-supplied SUMO recording, TL_medium.mp4. The window identifies colorado_medium.sumocfg. Vehicle symbols move along lane-marked roads on a white background; the complete application window and taskbar remain visible. The recording does not identify the controller, robot-vehicle share, or intersection-control configuration, and does not establish the performance findings. Original recording speed is retained; the source audio is digitally silent and is omitted. Source excerpt: 17–24 seconds.",
+      "file": "mixed-network.mp4",
+      "poster": "mixed-network.jpg",
+      "track": "mixed-network-descriptions.vtt",
+      "duration": 7,
+      "width": 1280,
+      "height": 720,
+      "sourceStart": 17,
+      "sourceEnd": 24,
+      "verifiedAudioStreams": 0,
+      "verifiedDuration": 7.0
+    },
+    {
+      "id": "junction",
+      "posterTime": 48,
+      "title": "At the intersection",
+      "caption": "A closer view of vehicle movements through a simulated junction.",
+      "description": "A close overhead view shows a four-way junction with turning connections, lane markings, and vehicle symbols on its approaches. The recorded view then zooms out to reveal the curved connecting road. These excerpts come from the same author-supplied SUMO recording, TL_medium.mp4. The window identifies colorado_medium.sumocfg. Vehicle symbols move along lane-marked roads on a white background; the complete application window and taskbar remain visible. The recording does not identify the controller, robot-vehicle share, or intersection-control configuration, and does not establish the performance findings. Original recording speed is retained; the source audio is digitally silent and is omitted. Source excerpt: 48–54 seconds.",
+      "file": "mixed-junction.mp4",
+      "poster": "mixed-junction.jpg",
+      "track": "mixed-junction-descriptions.vtt",
+      "duration": 6,
+      "width": 1280,
+      "height": 720,
+      "sourceStart": 48,
+      "sourceEnd": 54,
+      "verifiedAudioStreams": 0,
+      "verifiedDuration": 6.0
+    },
+    {
+      "id": "flow",
+      "posterTime": 84,
+      "title": "From junctions to the network",
+      "caption": "Connected intersections illustrate the network-wide evaluation setting.",
+      "description": "The recorded view pans across connected four-way intersections and their curved approach roads. Small vehicle symbols move and queue along the lanes; the view changes scale to reveal links between junctions. These excerpts come from the same author-supplied SUMO recording, TL_medium.mp4. The window identifies colorado_medium.sumocfg. Vehicle symbols move along lane-marked roads on a white background; the complete application window and taskbar remain visible. The recording does not identify the controller, robot-vehicle share, or intersection-control configuration, and does not establish the performance findings. Original recording speed is retained; the source audio is digitally silent and is omitted. Source excerpt: 80–88 seconds.",
+      "file": "mixed-flow.mp4",
+      "poster": "mixed-flow.jpg",
+      "track": "mixed-flow-descriptions.vtt",
+      "duration": 8,
+      "width": 1280,
+      "height": 720,
+      "sourceStart": 80,
+      "sourceEnd": 88,
+      "verifiedAudioStreams": 0,
+      "verifiedDuration": 8.0
+    }
+  ]
+}

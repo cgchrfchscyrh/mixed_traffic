@@ -4,19 +4,21 @@ The site targets WCAG 2.1 A/AA. Automated checks and manual inspection do not co
 
 ## Current presentation
 
-The overview uses Abstract, Method, Experiments, Results and Citation sections. Full figure explanations, experimental details, adverse results and scope limitations remain available through native details/summary disclosures or the research guide and complete data tables. Every informative image retains alt text. Original paper data, figures and downloadable CSV files are preserved.
+The homepage uses Abstract, Method, Results and Citation. Research-guide and results-index navigation, statistics, numerical result cards, tables and quantitative plots are removed. Method, intersection and network-setting figures retain alt text and complete descriptions. Original data, figures, CSV files and manuscript materials are preserved. Old paper/results routes are noindex compatibility pages linking to the relevant homepage section.
 
-The title and author names sit above two full-frame videos. Affiliations and the institutional disclaimer are no longer rendered, following the user’s 18 October request. The interface remains charcoal, gray and off-white without institutional logos.
+The title and author names sit above two full-frame videos. Affiliations and the institutional disclaimer are not rendered. The interface remains charcoal, gray and off-white without institutional logos.
 
-Both local videos are silent, muted and inline, with native controls and timed visual-description tracks. They autoplay through JavaScript only while the media area is visible, with looping and an obvious Pause videos / Play videos button. Reduced-motion or data-saving preferences prevent automatic playback. Scrolling away or hiding the document pauses playback. Manual pause prevents an automatic restart on re-entry. Without JavaScript, the videos are initially still and retain native controls.
+Five local videos are silent, muted and inline, with native play/pause controls and timed visual-description tracks. There is no separate global playback button. Media plays through JavaScript only while visible. Reduced-motion or data-saving preferences prevent automatic playback; explicit native playback remains available. Scrolling away or hiding the document pauses playback. A manual pause is remembered on re-entry, including while the media is buffering. Without JavaScript, videos are initially still and retain native controls.
 
-The Waymo recording is independent industry context. The SUMO recording illustrates the simulation setting and does not establish a particular controller, robot-vehicle rate or quantitative performance. Complete media descriptions and original sources are on the accessibility page and in a homepage disclosure.
+The Waymo recording is independent industry context. Four SUMO excerpts (one title clip and three body clips) come from the same original recording. They illustrate the setting without establishing a controller, robot-vehicle rate or performance. The body excerpts are distributed across Abstract, Method and Results, with complete expandable descriptions. Their source intervals and read-only provenance are recorded in `public/media/mixed-clips.json` and `reports/clip-review.json`.
 
-## Verification
+## Current local verification — 18 October 2026
 
-Local verification on 18 October 2026 passed lint, Astro/TypeScript build and the strict dependency audit (zero vulnerabilities, no exceptions). The five-route browser suite completed 11 axe scans and 116 functional checks with zero violations and zero check errors. Desktop, method-figure and 320 CSS-pixel screenshots were visually inspected. The visible homepage has 433 English words, including authors, navigation, citation and footer; its Abstract through Results narrative has 257 words. The deployment workflow runs lint, build, a strict dependency audit and axe. The functional suite verifies automatic playback, keyboard pause/resume, native-control synchronization, persistent manual pause, reduced motion, data saving, offscreen pause, description tracks, no-JavaScript playback controls, visible focus, result tabs, table scrolling, 320 CSS-pixel reflow and text spacing.
+Lint and the Astro/TypeScript build pass. The five-route browser suite completed **11 axe scans and 188 functional checks with zero violations and zero errors**. Tests cover real Tab/Space operation of native players, pause persistence, offscreen pause, loops, reduced-motion/data-saving preferences and explicit native play, dynamic preference changes, pending-buffer pause, descriptions and resource loading, no-JavaScript fallback, keyboard disclosures, citation copy, visible focus, 320/768 CSS-pixel reflow and text spacing. Desktop and 320 CSS-pixel screenshots were inspected. All three new MP4 files passed complete decoding; each has no audio stream and retains the original recording speed and full frame. No dependencies were changed.
 
-## Published-site verification
+The deployment workflow runs its own lint, build, security audit and axe suite. Local automated success is not a complete ADA or WCAG certification.
+
+## Earlier published-site verification (before this content revision)
 
 The visual revision was published to https://cgchrfchscyrh.github.io/mixed_traffic/ on 18 October 2026 from content commit `ea0336240cd594adfaf0d495f4010c8e789d12ce`. [GitHub Actions run 39156508443](https://github.com/cgchrfchscyrh/mixed_traffic/actions/runs/39156508443) passed, including strict dependency auditing, lint, build, 11 axe scans and 116 functional checks. Its downloaded report is saved in `reports/ci/axe-wcag21aa.json`.
 
@@ -26,6 +28,6 @@ Online browser checks confirmed visible silent autoplay, keyboard play/pause, pe
 
 ## Remaining limits
 
-Original scientific raster figures are supplemented by full text and numeric tables; automatic tools cannot certify every embedded label. The supplied publisher PDF is untagged and unchanged. External PDFs, mathematical reading order, multiple screen-reader workflows and review with disabled users have not been fully verified. Table 1 and Table 2 are available as structured HTML and CSV. Security-response headers are controlled partly by GitHub Pages; the actual available headers are recorded above and in the live deployment report.
+Original scientific raster figures have full text alternatives; automatic tools cannot certify every embedded label or contrast combination. The supplied publisher PDF is untagged and unchanged. External PDFs, mathematical reading order, multiple screen-reader workflows and review with disabled users have not been fully verified. Original CSV data remain in the repository, while numerical tables are no longer rendered on the website. Security-response headers are controlled partly by GitHub Pages; prior observed headers are recorded above, and publication requires a fresh deployment/resource check.
 
-See the generated reports in reports/ for actual checks and limitations. Contact: liusongyang@ufl.edu.
+See reports/ for actual checks and limitations. Contact: liusongyang@ufl.edu.

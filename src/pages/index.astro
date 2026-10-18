@@ -3,59 +3,37 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Figure from "../components/Figure.astro";
 import PresentationFigure from "../components/PresentationFigure.astro";
-import Comparison from "../components/Comparison.astro";
+import ResearchClip from "../components/ResearchClip.astro";
 import Citation from "../components/Citation.astro";
 import MediaCredit from "../components/MediaCredit.astro";
-import site from "../data/site.json";
-import { asset } from "../data/paths";
-const sections = ["Abstract", "Method", "Experiments", "Results", "Citation"];
 ---
-
 <Layout>
   <Hero />
   <div class="container visual-overview">
-    <nav class="research-nav" aria-label="Research sections"><ol>{sections.map((name) => <li><a href={`#${name.toLowerCase()}`}>{name}</a></li>)}</ol></nav>
     <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
       <h2 id="abstract-title">Abstract</h2>
-      <p>Human-driven and robot vehicles will share urban roads during the transition to autonomous driving. We study how learned vehicle control can coexist with conventional traffic signals across a 14-intersection network in Colorado Springs. A shared Rainbow DQN policy lets robot vehicles choose Stop or Go from local traffic observations. In SUMO, we vary robot-vehicle penetration and the number of unsignalized intersections. Selected combinations reduce waiting time and increase destination arrivals, but replacing more signals does not guarantee improvement. The results support evaluating the transition at both network and individual-intersection scales.</p>
+      <p class="section-deck">How can robot vehicles share urban roads with human drivers while traffic signals remain in use? We learn local Stop or Go decisions with a shared reinforcement-learning policy and evaluate mixed vehicle and intersection control in a connected SUMO road network.</p>
+      <ResearchClip id="network" />
     </section>
     <section class="section" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Method</h2>
       <p class="section-deck">Observe local traffic. Choose Stop or Go. Coordinate through shared roads.</p>
-      <PresentationFigure id="method" concise />
-      <p>Robot vehicles use Rainbow DQN within a 30 m control zone and the Intelligent Driver Model elsewhere. Human-driven vehicles follow IDM.</p>
-      <a class="text-link" href={asset("paper/#guide-2")}>Observation, action & reward details →</a>
-    </section>
-    <section class="section" id="experiments" aria-labelledby="experiments-title">
-      <h2 id="experiments-title">Experiments</h2>
-      <dl class="stats">
-        <div><dt>Intersections</dt><dd>14</dd></div>
-        <div><dt>Control configurations</dt><dd>5</dd></div>
-        <div><dt>Robot vehicles</dt><dd>40–80%</dd></div>
-      </dl>
-      <Figure id="network" concise />
+      <div class="method-media">
+        <PresentationFigure id="method" concise />
+        <div class="method-context">
+          <ResearchClip id="junction" />
+          <p>A shared Rainbow DQN policy controls robot vehicles near intersections. Human-driven vehicles follow the Intelligent Driver Model; robot vehicles use the same driver model outside the control zone.</p>
+        </div>
+      </div>
       <div class="intersection-grid"><PresentationFigure id="signalized" concise /><PresentationFigure id="unsignalized" concise /></div>
-      <p>Five configurations combine 2–10 robot-managed intersections with conventional signals. The baseline retains all 14 signals.</p>
-      <details class="reading-details"><summary>Experiment protocol & simulation scope</summary>
-        {site.guideSections[2].paragraphs.map((text) => <p>{text}</p>)}
-        <p>The opening SUMO recording illustrates the setting; it does not identify a controller or robot-vehicle rate. Waymo footage provides independent real-world context.</p>
-      </details>
     </section>
     <section class="section" id="results" aria-labelledby="results-title">
       <h2 id="results-title">Results</h2>
-      <p class="section-deck">At 80% robot vehicles, 8U + 6S improves both network metrics.</p>
-      <div class="highlights">{site.highlights.map((item) => <div><><h3>{item.label}</h3><p class="numeric-pair"><><span>{item.before}</span><span aria-hidden="true">→</span><span class="sr-only">to</span><strong>{item.after}</strong></></p></></div>)}</div>
-      <p class="fine-print">Fully signalized baseline → 8U + 6S. Throughput: destination arrivals per 500 s.</p>
-      <Figure id="penetration" concise />
-      <p>Gains depend on the configuration and penetration rate. Some intersections retain lower waiting times under traffic signals.</p>
-      <details class="reading-details" id="comparison-details"><summary>Compare configurations & review limitations</summary>
-        <Comparison />
-        <p>At 50% robot vehicles, 6U + 8S increases waiting to 7.92 s and lowers throughput to 448, versus 6.17 s and 454 for the baseline.</p>
-        <ul>{site.limitations.map((text) => <li>{text}</li>)}</ul>
-      </details>
-      <a class="button dark" href={asset("results/")}>Full results & CSV data →</a>
+      <p class="section-deck">Selected combinations of robot vehicles and signal control improve network flow in simulation. The benefit depends on the configuration and robot-vehicle share; adding unsignalized intersections does not always help, and some junctions still benefit from signals.</p>
+      <div class="results-media"><ResearchClip id="flow" /><Figure id="network" concise /></div>
+      <p class="scope-note">The clips illustrate the simulation setting. They do not identify the controller or demonstrate the reported improvements; Waymo footage provides independent real-world context.</p>
     </section>
     <Citation />
-    <details class="reading-details media-details" id="media-descriptions"><summary>Video descriptions & sources</summary><MediaCredit /></details>
+    <details class="reading-details media-details" id="media-descriptions"><summary>Title video descriptions & sources</summary><MediaCredit /></details>
   </div>
 </Layout>

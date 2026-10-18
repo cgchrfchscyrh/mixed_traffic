@@ -4,8 +4,9 @@ import { asset } from "../data/paths";
 interface Props {
   id: string;
   compact?: boolean;
+  concise?: boolean;
 }
-const { id, compact = false } = Astro.props;
+const { id, compact = false, concise = false } = Astro.props;
 const fig = site.figures.find((f) => f.id === id)!;
 ---
 
@@ -22,6 +23,7 @@ const fig = site.figures.find((f) => f.id === id)!;
     />
   </div>
   <figcaption>
+    {concise ? <><strong>{fig.title}</strong><details><summary>Figure description & source</summary><p>{fig.description}</p><p class="fine-print">{fig.credit} <a href={asset(`figures/${fig.file}`)}>Open figure {fig.number} at full size</a>.</p></details></> : <>
     <span class="eyebrow">Paper figure {fig.number}</span><strong
       >{fig.title}</strong
     ><p>{fig.description}</p><p class="fine-print">
@@ -30,5 +32,6 @@ const fig = site.figures.find((f) => f.id === id)!;
         >Open figure {fig.number} at full size</a
       >.
     </p>
+    </>}
   </figcaption>
 </figure>

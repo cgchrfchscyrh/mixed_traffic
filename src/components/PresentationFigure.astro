@@ -3,8 +3,9 @@ import presentation from "../data/presentation.json";
 import { asset } from "../data/paths";
 interface Props {
   id: string;
+  concise?: boolean;
 }
-const { id } = Astro.props;
+const { id, concise = false } = Astro.props;
 const fig = presentation.figures.find((item) => item.id === id)!;
 ---
 
@@ -21,6 +22,7 @@ const fig = presentation.figures.find((item) => item.id === id)!;
     />
   </div>
   <figcaption>
+    {concise ? <><strong>{fig.title}</strong><details><summary>Figure description & source</summary><p id={`presentation-${id}-description`}>{fig.description}</p><p class="fine-print">{fig.credit} <a href={asset(`figures/presentation/${fig.file}`)}>View the complete figure</a>.</p></details></> : <>
     <span class="eyebrow">Presentation / Slide {fig.slide}</span>
     <strong>{fig.title}</strong>
     <p id={`presentation-${id}-description`}>{fig.description}</p>
@@ -28,5 +30,6 @@ const fig = presentation.figures.find((item) => item.id === id)!;
       {fig.credit}{" "}
       <a href={asset(`figures/presentation/${fig.file}`)}>View {fig.title.toLowerCase()} at full size</a>.
     </p>
+    </>}
   </figcaption>
 </figure>

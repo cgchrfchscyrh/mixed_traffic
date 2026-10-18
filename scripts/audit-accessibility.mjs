@@ -89,14 +89,14 @@ try {
       route + ": informative images have nonempty alternatives",
     );
     check(
-      (await page.locator("video[autoplay],video[loop],iframe").count()) === 0,
-      route + ": no autoplay, loops, or third-party players",
+      (await page.locator("video[autoplay],iframe").count()) === 0,
+      route + ": no unconditional HTML autoplay or third-party players",
     );
     check(
-      (await page.locator("footer").innerText()).includes(
-        "do not represent the official views or policies",
+      !/\bUF\b|University of Florida|official views or policies/.test(
+        await page.locator("body").innerText(),
       ),
-      route + ": institutional disclaimer is present",
+      route + ": no visible institutional introduction or disclaimer",
     );
     check(
       await page.evaluate(() => {
@@ -145,6 +145,168 @@ try {
     );
     await scan(route + " desktop");
     if (route === "/") {
+      const heroVideos = page.locator("#context-video, #simulation-video");
+      const heroToggle = page.locator("#hero-playback-toggle");
+      const mediaArea = page.locator(".hero-backdrops");
+      const playing = () =>
+        page.waitForFunction(
+          () =>
+            [...document.querySelectorAll("video")].every(
+              (v) => !v.paused && v.currentTime > 0.1,
+            ) &&
+            !document
+              .querySelector("#hero-playback-toggle")
+              .hasAttribute("aria-busy"),
+          {},
+          { timeout: 30000 },
+        );
+      check(
+        (await heroVideos.count()) === 2,
+        "Both research-context videos are present",
+      );
+      check(
+        await heroVideos.evaluateAll((videos) =>
+          videos.every((v) => v.muted && v.controls && v.playsInline && v.loop),
+        ),
+        "Automatic videos are muted, inline, looped, and retain native controls",
+      );
+      check(
+        await heroVideos.evaluateAll((videos) =>
+          videos.every((v) => {
+            const ids = v.getAttribute("aria-describedby")?.split(/\s+/);
+            return (
+              v.getAttribute("aria-label") &&
+              ids?.length &&
+              ids.every((id) => document.getElementById(id)?.textContent.trim())
+            );
+          }),
+        ),
+        "Both videos have names and complete text alternatives",
+      );
+      await mediaArea.scrollIntoViewIfNeeded();
+      await playing();
+      check(
+        (await heroToggle.innerText()) === "Pause videos",
+        "Visible videos autoplay and expose a clear pause control",
+      );
+      await heroToggle.focus();
+      check(
+        await heroToggle.evaluate(
+          (el) => getComputedStyle(el).outlineStyle !== "none",
+        ),
+        "Playback control has a visible keyboard focus outline",
+      );
+      await page.keyboard.press("Enter");
+      check(
+        await heroVideos.evaluateAll((videos) => videos.every((v) => v.paused)),
+        "Keyboard pauses both autoplaying videos",
+      );
+      const pausedTimes = await heroVideos.evaluateAll((videos) =>
+        videos.map((v) => v.currentTime),
+      );
+      await page.locator("#citation").scrollIntoViewIfNeeded();
+      await page.waitForTimeout(150);
+      await mediaArea.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(250);
+      check(
+        await heroVideos.evaluateAll(
+          (videos, times) =>
+            videos.every((v, i) => v.paused && v.currentTime === times[i]),
+          pausedTimes,
+        ),
+        "Manual pause survives scrolling away and returning",
+      );
+      await heroToggle.focus();
+      await page.keyboard.press("Space");
+      await playing();
+      check(true, "Keyboard explicitly resumes both paused videos");
+      await heroVideos.evaluateAll((videos) =>
+        videos.forEach((v) => {
+          if (v instanceof HTMLVideoElement) v.pause();
+        }),
+      );
+      await page.waitForFunction(
+        () =>
+          document.querySelector("#hero-playback-toggle").textContent.trim() ===
+          "Play videos",
+      );
+      check(true, "Native pause synchronizes the shared control");
+      await page.locator("#citation").scrollIntoViewIfNeeded();
+      await page.waitForTimeout(150);
+      await mediaArea.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(200);
+      check(
+        await heroVideos.evaluateAll((videos) => videos.every((v) => v.paused)),
+        "Native manual pause also prevents automatic restart",
+      );
+      for (const id of ["context-video", "simulation-video"]) {
+        await page.locator("#" + id).evaluate((v) => {
+          v.textTracks[0].mode = "hidden";
+        });
+        await page.waitForFunction(
+          (id) => document.getElementById(id).textTracks[0]?.cues?.length > 0,
+          id,
+        );
+        check(
+          await page
+            .locator("#" + id)
+            .evaluate(
+              (v) =>
+                v.textTracks[0].kind === "descriptions" &&
+                Number.isFinite(v.duration) &&
+                v.duration > 0,
+            ),
+          id + ": metadata and timed visual descriptions load",
+        );
+      }
+      check(
+        await heroVideos.evaluateAll((videos) =>
+          videos.every((v) => getComputedStyle(v).objectFit === "contain"),
+        ),
+        "Both videos always show complete frames",
+      );
+      check(
+        await page.evaluate(
+          () =>
+            document.querySelector(".hero-backdrops").getBoundingClientRect()
+              .top >=
+            document.querySelector(".hero-text").getBoundingClientRect()
+              .bottom -
+              1,
+        ),
+        "Title sits above the media without obscuring it",
+      );
+      // A fresh visit has no manual-pause preference: offscreen playback pauses and re-entry resumes.
+      await page.reload({ waitUntil: "networkidle" });
+      await mediaArea.scrollIntoViewIfNeeded();
+      await playing();
+      await page.locator("#citation").scrollIntoViewIfNeeded();
+      await page.waitForFunction(() =>
+        [...document.querySelectorAll("video")].every((v) => v.paused),
+      );
+      check(true, "Videos pause when scrolled out of view");
+      await mediaArea.scrollIntoViewIfNeeded();
+      await playing();
+      check(
+        true,
+        "Automatic playback resumes on re-entry when the user has not paused",
+      );
+      await heroVideos.evaluateAll((videos) =>
+        videos.forEach((v) => {
+          v.currentTime = v.duration - 0.25;
+        }),
+      );
+      await page.waitForFunction(() =>
+        [...document.querySelectorAll("video")].every(
+          (v) => !v.paused && v.currentTime < 2,
+        ),
+      );
+      await heroToggle.click();
+      check(
+        await heroVideos.evaluateAll((videos) => videos.every((v) => v.paused)),
+        "Looping playback can still be stopped immediately",
+      );
+      await page.locator("#comparison-details > summary").click();
       if (site.comparisons.length > 1) {
         await page.getByRole("tab").first().focus();
         await page.keyboard.press("ArrowRight");
@@ -156,190 +318,23 @@ try {
         await page.keyboard.press("Home");
         check(
           await page.locator("#panel-80").isVisible(),
-          "Home key selects first result tab",
+          "Home selects the first result tab",
         );
         await page.keyboard.press("End");
         check(
           await page.locator("#panel-50").isVisible(),
-          "End key selects last result tab",
+          "End selects the last result tab",
         );
         await page.keyboard.press("ArrowRight");
       }
-      const heroVideos = page.locator("#context-video, #simulation-video");
-      const heroToggle = page.locator("#hero-playback-toggle");
-      const viewToggle = page.locator("#hero-view-toggle");
-      check(
-        (await page.locator("video").count()) === 2 &&
-          (await heroVideos.count()) === 2,
-        "Waymo context and research simulation videos are both present",
-      );
-      check(
-        await heroVideos.evaluateAll((videos) =>
-          videos.every((v) => v.paused && v.currentTime === 0),
-        ),
-        "Both title videos are paused on initial load",
-      );
-      check(
-        await heroVideos.evaluateAll((videos) =>
-          videos.every((v) => v.muted && v.controls && v.playsInline),
-        ),
-        "Both title videos are muted, inline, and retain native controls",
-      );
-      check(
-        await heroVideos.evaluateAll((videos) =>
-          videos.every((v) => {
-            const describedBy = v
-              .getAttribute("aria-describedby")
-              ?.split(/\s+/);
-            return (
-              Boolean(v.getAttribute("aria-label")) &&
-              describedBy?.length > 0 &&
-              describedBy.every((id) =>
-                document.getElementById(id)?.textContent.trim(),
-              )
-            );
-          }),
-        ),
-        "Both videos have accessible names and existing text-description targets",
-      );
-      await heroToggle.focus();
-      check(
-        await heroToggle.evaluate(
-          (el) => getComputedStyle(el).outlineStyle !== "none",
-        ),
-        "Combined playback control has a visible keyboard focus outline",
-      );
-      await page.keyboard.press("Enter");
-      await page.waitForFunction(
-        () =>
-          [
-            ...document.querySelectorAll("#context-video, #simulation-video"),
-          ].every((v) => !v.paused && v.currentTime > 0.2) &&
-          !document
-            .querySelector("#hero-playback-toggle")
-            .hasAttribute("aria-busy"),
-        {},
-        { timeout: 30000 },
-      );
-      check(
-        (await heroToggle.innerText()) === "Pause clips",
-        "Keyboard starts both title videos and exposes pause",
-      );
-      await page.keyboard.press("Space");
-      check(
-        await heroVideos.evaluateAll((videos) => videos.every((v) => v.paused)),
-        "Keyboard pauses both title videos together",
-      );
-      await page.locator("#context-video").evaluate((v) => v.play());
-      await page.waitForFunction(
-        () =>
-          document.querySelector("#hero-playback-toggle").textContent.trim() ===
-          "Pause clips",
-      );
-      check(
-        await page.locator("#simulation-video").evaluate((v) => v.paused),
-        "Native playback updates the group control without starting the other video",
-      );
-      await page.locator("#context-video").evaluate((v) => {
-        if (v instanceof HTMLVideoElement) v.pause();
-      });
-      await page.waitForFunction(
-        () =>
-          document.querySelector("#hero-playback-toggle").textContent.trim() ===
-          "Play both clips",
-      );
-      check(
-        true,
-        "Native pause keeps the combined playback label synchronized",
-      );
-      await viewToggle.focus();
+      await page.locator("#media-descriptions > summary").focus();
       await page.keyboard.press("Enter");
       check(
-        (await viewToggle.getAttribute("aria-pressed")) === "true" &&
-          (await viewToggle.innerText()) === "Restore title overlay" &&
-          (await page
-            .locator("#hero-stage")
-            .evaluate((el) => el.classList.contains("full-frames"))),
-        "Keyboard activates full-frame mode with an accurate pressed state and label",
+        (await page.locator("#context-visual-description").isVisible()) &&
+          (await page.locator("#simulation-visual-description").isVisible()),
+        "Media descriptions expand by keyboard",
       );
-      check(
-        await heroVideos.evaluateAll((videos) =>
-          videos.every((v) => getComputedStyle(v).objectFit === "contain"),
-        ),
-        "Full-frame mode shows both complete video frames",
-      );
-      check(
-        await page.evaluate(
-          () =>
-            document.querySelector(".hero-backdrops").getBoundingClientRect()
-              .top >=
-            document.querySelector(".hero-text").getBoundingClientRect()
-              .bottom -
-              1,
-        ),
-        "Full-frame mode places both videos below the title text",
-      );
-      await page.keyboard.press("Space");
-      check(
-        (await viewToggle.getAttribute("aria-pressed")) === "false" &&
-          (await viewToggle.innerText()) === "Show full video frames" &&
-          !(await page
-            .locator("#hero-stage")
-            .evaluate((el) => el.classList.contains("full-frames"))),
-        "Keyboard restores the title overlay and unpressed state",
-      );
-      for (const id of ["context-video", "simulation-video"]) {
-        const video = page.locator("#" + id);
-        await page.waitForFunction((videoId) => {
-          const v = document.getElementById(videoId);
-          return (
-            v.readyState >= 1 && Number.isFinite(v.duration) && v.duration > 0
-          );
-        }, id);
-        check(
-          true,
-          id + ": finite positive duration is available from media metadata",
-        );
-        await video.evaluate((v) => {
-          v.textTracks[0].mode = "hidden";
-        });
-        await page.waitForFunction(
-          (videoId) =>
-            document.getElementById(videoId).textTracks[0]?.cues?.length > 0,
-          id,
-        );
-        check(
-          await video.evaluate((v) => v.textTracks[0].kind === "descriptions"),
-          id + ": timed visual-description track loads",
-        );
-      }
-      await heroVideos.evaluateAll((videos) => {
-        videos.forEach((v) => {
-          v.currentTime = v.duration - 0.3;
-        });
-      });
-      await heroToggle.click();
-      await page.waitForFunction(() =>
-        [
-          ...document.querySelectorAll("#context-video, #simulation-video"),
-        ].every((v) => v.ended),
-      );
-      check(
-        (await heroToggle.innerText()) === "Replay both clips",
-        "Both videos end without looping and expose replay",
-      );
-      await heroToggle.click();
-      await page.waitForFunction(
-        () =>
-          [
-            ...document.querySelectorAll("#context-video, #simulation-video"),
-          ].every((v) => !v.paused && v.currentTime > 0 && v.currentTime < 2) &&
-          !document
-            .querySelector("#hero-playback-toggle")
-            .hasAttribute("aria-busy"),
-      );
-      check(true, "Replay restarts both title videos from the beginning");
-      await heroToggle.click();
+      await page.keyboard.press("Enter");
       await page
         .getByRole("button", { name: "Copy citation", exact: true })
         .focus();
@@ -440,6 +435,7 @@ try {
   });
   const n = await nojs.newPage();
   await n.goto(base + "/");
+  await n.locator("#comparison-details > summary").click();
   for (const d of site.comparisons)
     check(
       await n.locator("#panel-" + d.id).isVisible(),
@@ -450,8 +446,7 @@ try {
     "Both native video controls remain available without JavaScript",
   );
   check(
-    (await n.locator("#hero-playback-toggle").isHidden()) &&
-      (await n.locator("#hero-view-toggle").isHidden()),
+    await n.locator("#hero-playback-toggle").isHidden(),
     "Unavailable JavaScript media controls are hidden without JavaScript",
   );
   check(
@@ -480,7 +475,33 @@ try {
       ),
     "Reduced-motion visit does not start either title video",
   );
+  await rp.locator("#hero-playback-toggle").click();
+  await rp.waitForFunction(() =>
+    [...document.querySelectorAll("video")].every((v) => !v.paused),
+  );
+  check(true, "Reduced-motion users can explicitly choose playback");
+  await rp.locator("#hero-playback-toggle").click();
   await reduced.close();
+  const saved = await browser.newContext();
+  await saved.addInitScript(() => {
+    Object.defineProperty(navigator, "connection", {
+      configurable: true,
+      value: { saveData: true, addEventListener() {} },
+    });
+  });
+  const sp = await saved.newPage();
+  await sp.goto(base + "/", { waitUntil: "networkidle" });
+  await sp.locator(".hero-backdrops").scrollIntoViewIfNeeded();
+  await sp.waitForTimeout(250);
+  check(
+    await sp
+      .locator("video")
+      .evaluateAll((videos) =>
+        videos.every((v) => v.paused && v.currentTime === 0),
+      ),
+    "Data-saving preference prevents autoplay",
+  );
+  await saved.close();
 } catch (e) {
   report.errors.push(e.stack || String(e));
 } finally {

@@ -7,114 +7,55 @@ import Comparison from "../components/Comparison.astro";
 import Citation from "../components/Citation.astro";
 import MediaCredit from "../components/MediaCredit.astro";
 import site from "../data/site.json";
-import narrative from "../data/narrative.json";
 import { asset } from "../data/paths";
-const sections = [
-  ["problem", "Problem"], ["related-work", "Existing work"],
-  ["gap", "Knowledge gap"], ["method", "Method"],
-  ["experiments", "Experiments"], ["results", "Results"],
-  ["conclusion", "Conclusion"],
-];
+const sections = ["Abstract", "Method", "Experiments", "Results", "Citation"];
 ---
 
 <Layout>
   <Hero />
-  <div class="container">
-    <nav class="research-nav" aria-label="Research story">
-      <p class="eyebrow">Inside the study</p>
-      <ol>{sections.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}</ol>
-    </nav>
-    <section class="section introduction" id="problem" aria-labelledby="problem-title">
-      <div><p class="eyebrow">{narrative.problem.title}</p><h2 id="problem-title">{narrative.problem.heading}</h2></div>
-      <div><p class="lead">{narrative.problem.intro}</p><p>{site.insight}</p></div>
-    </section>
-    <dl class="stats">
-      {site.stats.map((stat) => <div><><dt>{stat.label}</dt><dd>{stat.value}</dd></></div>)}
-    </dl>
-    <section class="section" id="related-work" aria-labelledby="related-title">
-      <div class="section-heading">
-        <p class="eyebrow">{narrative.relatedWork.title}</p>
-        <h2 id="related-title">{narrative.relatedWork.heading}</h2>
-        <p class="lead">{narrative.relatedWork.intro}</p>
-      </div>
-      <div class="approach-grid">
-        {narrative.relatedWork.approaches.map((item) => <div><><h3>{item.title}</h3><p>{item.text}</p></></div>)}
-      </div>
-      <p class="fine-print">The paper’s related-work discussion provides the cited studies behind this overview. <a href={site.paperUrl}>Read the published related work</a>.</p>
-    </section>
-    <section class="section" id="gap" aria-labelledby="gap-title">
-      <div class="section-heading">
-        <p class="eyebrow">{narrative.gap.title}</p>
-        <h2 id="gap-title">{narrative.gap.heading}</h2>
-        <p class="lead">{narrative.gap.intro}</p>
-      </div>
-      <div class="research-question"><p class="eyebrow">The research question</p><p>{narrative.gap.question}</p></div>
-      <p class="measure-note">{narrative.gap.hypothesis}</p>
+  <div class="container visual-overview">
+    <nav class="research-nav" aria-label="Research sections"><ol>{sections.map((name) => <li><a href={`#${name.toLowerCase()}`}>{name}</a></li>)}</ol></nav>
+    <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Abstract</h2>
+      <p>Human-driven and robot vehicles will share urban roads during the transition to autonomous driving. We study how learned vehicle control can coexist with conventional traffic signals across a 14-intersection network in Colorado Springs. A shared Rainbow DQN policy lets robot vehicles choose Stop or Go from local traffic observations. In SUMO, we vary robot-vehicle penetration and the number of unsignalized intersections. Selected combinations reduce waiting time and increase destination arrivals, but replacing more signals does not guarantee improvement. The results support evaluating the transition at both network and individual-intersection scales.</p>
     </section>
     <section class="section" id="method" aria-labelledby="method-title">
-      <div class="section-heading">
-        <p class="eyebrow">{narrative.method.title}</p>
-        <h2 id="method-title">{narrative.method.heading}</h2>
-        <p class="lead">{narrative.method.intro}</p>
-      </div>
-      <ol class="steps">
-        {narrative.method.steps.map((step, i) => <li><><span class="step-number" aria-hidden="true">0{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></></li>)}
-      </ol>
-      <PresentationFigure id="method" />
-      <a class="text-link" href={asset("paper/#guide-2")}>Read the observation, action, and reward details <span aria-hidden="true">→</span></a>
+      <h2 id="method-title">Method</h2>
+      <p class="section-deck">Observe local traffic. Choose Stop or Go. Coordinate through shared roads.</p>
+      <PresentationFigure id="method" concise />
+      <p>Robot vehicles use Rainbow DQN within a 30 m control zone and the Intelligent Driver Model elsewhere. Human-driven vehicles follow IDM.</p>
+      <a class="text-link" href={asset("paper/#guide-2")}>Observation, action & reward details →</a>
     </section>
     <section class="section" id="experiments" aria-labelledby="experiments-title">
-      <div class="section-heading">
-        <p class="eyebrow">{narrative.experiments.title}</p>
-        <h2 id="experiments-title">{narrative.experiments.heading}</h2>
-        <p class="lead">{narrative.experiments.intro}</p>
-      </div>
-      <div class="intersection-grid"><PresentationFigure id="signalized" /><PresentationFigure id="unsignalized" /></div>
-      <p class="fine-print">These illustrations define the two intersection types. Labels A–D mark approaches; they do not identify the numbered intersections in the study network.</p>
-      <dl class="protocol-grid">
-        {narrative.experiments.protocol.map((item) => <div><><dt>{item.title}</dt><dd>{item.text}</dd></></div>)}
+      <h2 id="experiments-title">Experiments</h2>
+      <dl class="stats">
+        <div><dt>Intersections</dt><dd>14</dd></div>
+        <div><dt>Control configurations</dt><dd>5</dd></div>
+        <div><dt>Robot vehicles</dt><dd>40–80%</dd></div>
       </dl>
-      <p class="evidence-note">{site.guideSections[2].paragraphs[1]}</p>
-      <p class="measure-note">{narrative.experiments.metricNote}</p>
-      <a class="text-link" href={asset("results/#figure-network")}>Explore the original 14-intersection network map <span aria-hidden="true">→</span></a>
+      <Figure id="network" concise />
+      <div class="intersection-grid"><PresentationFigure id="signalized" concise /><PresentationFigure id="unsignalized" concise /></div>
+      <p>Five configurations combine 2–10 robot-managed intersections with conventional signals. The baseline retains all 14 signals.</p>
+      <details class="reading-details"><summary>Experiment protocol & simulation scope</summary>
+        {site.guideSections[2].paragraphs.map((text) => <p>{text}</p>)}
+        <p>The opening SUMO recording illustrates the setting; it does not identify a controller or robot-vehicle rate. Waymo footage provides independent real-world context.</p>
+      </details>
     </section>
     <section class="section" id="results" aria-labelledby="results-title">
-      <div class="section-heading">
-        <p class="eyebrow">{narrative.results.title}</p>
-        <h2 id="results-title">{narrative.results.heading}</h2>
-        <p class="lead">{narrative.results.intro}</p>
-      </div>
-      <div class="highlights">
-        {site.highlights.map((item) => <div><><h3>{item.label}</h3><p class="numeric-pair"><span>{item.before}</span><span aria-hidden="true">→</span><span class="sr-only">to</span><strong>{item.after}</strong></p><p>{item.note}</p></></div>)}
-      </div>
-      <p class="evidence-note">{site.resultNote}</p>
-      <p>{narrative.results.comparisonNote}</p>
-      <Comparison />
-      <div class="finding-grid">
-        {narrative.results.keyFindings.slice(1).map((item) => <div><><h3>{item.title}</h3><p>{item.text}</p></></div>)}
-      </div>
-      <Figure id="penetration" />
-      <p class="measure-note">{narrative.results.trendNote}</p>
-      <a class="text-link" href={asset("results/")}>Read all intersection results and download the data <span aria-hidden="true">→</span></a>
-    </section>
-    <section class="section" id="conclusion" aria-labelledby="conclusion-title">
-      <div class="section-heading">
-        <p class="eyebrow">{narrative.conclusion.title}</p>
-        <h2 id="conclusion-title">{narrative.conclusion.heading}</h2>
-        <p class="lead">{narrative.conclusion.intro}</p>
-      </div>
-      <div class="scope"><h3>What this evidence establishes</h3><ul>{site.limitations.map((item) => <li>{item}</li>)}<li>{narrative.conclusion.limitations[2]}</li></ul></div>
-    </section>
-    <section class="section resources" aria-labelledby="resources-title">
-      <div class="section-heading"><p class="eyebrow">Continue exploring</p><h2 id="resources-title">Paper, data & implementation.</h2></div>
-      <div class="resource-grid">
-        <a class="resource-card" href={site.paperUrl}><span class="eyebrow">Publication ↗</span><h3>Published paper</h3><p>{site.publication}</p></a>
-        <a class="resource-card" href={asset("results/")}><span class="eyebrow">HTML + CSV →</span><h3>Results & original figures</h3><p>Read the numeric comparisons as accessible tables or download the data.</p></a>
-        <a class="resource-card" href={site.repo}><span class="eyebrow">GitHub ↗</span><h3>{site.repoLabel}</h3><p>{site.repoNote}</p></a>
-      </div>
-      <p class="fine-print source-note">The research story and additional method illustrations draw on the ground-transportation section of the authors’ proposal presentation (slides 15–23). Quantitative results are checked against the published IROS paper. The original presentation and paper remain unchanged. <a href={asset("accessibility/#attachments")}>Read the source and attachment notes</a>.</p>
+      <h2 id="results-title">Results</h2>
+      <p class="section-deck">At 80% robot vehicles, 8U + 6S improves both network metrics.</p>
+      <div class="highlights">{site.highlights.map((item) => <div><><h3>{item.label}</h3><p class="numeric-pair"><><span>{item.before}</span><span aria-hidden="true">→</span><span class="sr-only">to</span><strong>{item.after}</strong></></p></></div>)}</div>
+      <p class="fine-print">Fully signalized baseline → 8U + 6S. Throughput: destination arrivals per 500 s.</p>
+      <Figure id="penetration" concise />
+      <p>Gains depend on the configuration and penetration rate. Some intersections retain lower waiting times under traffic signals.</p>
+      <details class="reading-details" id="comparison-details"><summary>Compare configurations & review limitations</summary>
+        <Comparison />
+        <p>At 50% robot vehicles, 6U + 8S increases waiting to 7.92 s and lowers throughput to 448, versus 6.17 s and 454 for the baseline.</p>
+        <ul>{site.limitations.map((text) => <li>{text}</li>)}</ul>
+      </details>
+      <a class="button dark" href={asset("results/")}>Full results & CSV data →</a>
     </section>
     <Citation />
-    <div class="section"><MediaCredit /></div>
+    <details class="reading-details media-details" id="media-descriptions"><summary>Video descriptions & sources</summary><MediaCredit /></details>
   </div>
 </Layout>

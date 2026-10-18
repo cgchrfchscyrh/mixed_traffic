@@ -24,19 +24,18 @@ import { asset } from "../data/paths";
             The first keyboard link skips to the main content. Keyboard focus is
             visible throughout the page.
           </li><li>
-            Videos start only when you choose to play them. Both native players
-            retain their controls from initial load. A shared button can play,
-            pause, or replay both title clips together. Neither video loops
-            automatically.
+            Silent videos start automatically when their media area is visible,
+            and loop while playing. “Pause videos” stops both players. Native
+            controls remain available. A manual pause prevents automatic restart
+            when you scroll away and return.
           </li><li>
-            The local 20-second Waymo context clip and 22-second SUMO simulation
-            clip have no audio tracks. Each has a complete HTML visual
-            description and a timed WebVTT description track.
+            Reduced-motion and data-saving preferences disable automatic playback.
+            You can still choose “Play videos”. Moving the media out of view or
+            hiding the browser tab pauses it.
           </li><li>
-            On desktop, choose “Show full video frames” to view the complete
-            videos outside the title overlay. On smaller screens, the title
-            appears before the complete frames; on narrow screens, the videos
-            stack vertically.
+            Videos show complete frames, with the title above them. On narrow
+            screens they stack vertically. Both files have no audio tracks;
+            complete HTML descriptions and timed WebVTT descriptions are provided.
           </li><li>
             Paper figures have descriptive alternatives and longer explanations.
             Results appear as labeled values and structured tables, so color is
@@ -88,9 +87,10 @@ import { asset } from "../data/paths";
       </section>
       <section>
         <h2>Research presentation figures</h2><p>
-          The homepage follows seven research sections: problem, existing work,
-          knowledge gap, method, experiments, results, and conclusion with
-          limitations. Its narrative draws on the ground-traffic portion, slides
+          The homepage uses concise Abstract, Method, Experiments, Results, and
+          Citation sections. Figure explanations and evidence limits can be
+          expanded with keyboard-operable disclosure controls. Its narrative
+          draws on the ground-traffic portion, slides
           15–23, of the authors’ <cite>Proposal_defense_narrow.pptx</cite>.
           Quantitative claims remain grounded in the published mixed-traffic
           paper.
@@ -99,8 +99,7 @@ import { asset } from "../data/paths";
           (U) intersection illustration from slide 19 have descriptive alt text
           and complete explanations in HTML. Original diagram colors are
           preserved as scientific content; their meaning is also explained in
-          words and labels. They are not the website’s interface or UF branding
-          palette. The source presentation is unchanged and is not published as
+          words and labels. The interface uses a neutral palette. The source presentation is unchanged and is not published as
           a complete downloadable attachment.
         </p>
       </section>
@@ -130,12 +129,7 @@ import { asset } from "../data/paths";
         </p>
       </section>
       <section>
-        <h2>Institutional identity & privacy</h2><p>
-          Author affiliations are reproduced from the paper. The website does
-          not use the UF logo, seal, or blue/orange identity palette. The
-          institutional disclaimer appears on every page. A neutral visual
-          design is not a substitute for institutional brand approval.
-        </p><p>
+        <h2>Privacy</h2><p>
           This static site loads its fonts, figures, and short video excerpts
           locally. It uses no analytics, advertising, or embedded third-party
           players. Following an external link opens the provider’s site, where

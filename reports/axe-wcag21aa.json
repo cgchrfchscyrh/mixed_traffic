@@ -1,91 +1,22 @@
 {
-  "date": "2026-10-11T20:08:07.003Z",
+  "date": "2026-10-18T18:52:19.175Z",
   "project": "mixed_traffic",
   "target": "WCAG 2.1 A/AA",
   "engine": "axe-core via Playwright",
   "scans": [
     {
       "name": "/ desktop",
-      "passes": 29,
+      "passes": 28,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
             [
-              ".hero-text > .eyebrow"
-            ],
-            [
-              "#paper-title"
-            ],
-            [
-              ".hero-question"
-            ],
-            [
-              "li:nth-child(1) > a[href=\"mailto:liusongyang@ufl.edu\"]"
-            ],
-            [
-              "li:nth-child(1) > sup > a[href$=\"#affiliation-1\"][aria-label=\"Affiliation 1\"]"
-            ],
-            [
-              "a[href$=\"mailto:mfan1@memphis.edu\"]"
-            ],
-            [
-              "a[href$=\"#affiliation-2\"]"
-            ],
-            [
-              "a[href$=\"mailto:weizili@utk.edu\"]"
-            ],
-            [
-              "a[href$=\"#affiliation-3\"]"
-            ],
-            [
-              "a[href=\"mailto:eric.du@essie.ufl.edu\"]"
-            ],
-            [
-              "li:nth-child(4) > sup > a[href$=\"#affiliation-1\"][aria-label=\"Affiliation 1\"]"
-            ],
-            [
-              "a[href$=\"mailto:shuai.li@ufl.edu\"]"
-            ],
-            [
-              "li:nth-child(5) > sup > a[href$=\"#affiliation-1\"][aria-label=\"Affiliation 1\"]"
-            ],
-            [
-              "#affiliation-1"
-            ],
-            [
-              "#affiliation-2"
-            ],
-            [
-              "#affiliation-3"
-            ],
-            [
-              ".actions > .light.button:nth-child(1)"
-            ],
-            [
-              ".light.button:nth-child(2)"
-            ],
-            [
-              ".light.button[href$=\"paper/\"]"
-            ],
-            [
-              "a[href$=\"paper/#guide-2\"] > span[aria-hidden=\"true\"]"
-            ],
-            [
-              "#experiments > .text-link > span[aria-hidden=\"true\"]"
-            ],
-            [
               "div:nth-child(1) > .numeric-pair > span[aria-hidden=\"true\"]"
             ],
             [
               "div:nth-child(2) > .numeric-pair > span[aria-hidden=\"true\"]"
-            ],
-            [
-              ".comparison > .text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
-            ],
-            [
-              "#results > .text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
             ]
           ]
         },
@@ -104,75 +35,12 @@
     },
     {
       "name": "50% results selected",
-      "passes": 29,
+      "passes": 30,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
-            [
-              ".hero-text > .eyebrow"
-            ],
-            [
-              "#paper-title"
-            ],
-            [
-              ".hero-question"
-            ],
-            [
-              "li:nth-child(1) > a[href=\"mailto:liusongyang@ufl.edu\"]"
-            ],
-            [
-              "li:nth-child(1) > sup > a[href$=\"#affiliation-1\"][aria-label=\"Affiliation 1\"]"
-            ],
-            [
-              "a[href$=\"mailto:mfan1@memphis.edu\"]"
-            ],
-            [
-              "a[href$=\"#affiliation-2\"]"
-            ],
-            [
-              "a[href$=\"mailto:weizili@utk.edu\"]"
-            ],
-            [
-              "a[href$=\"#affiliation-3\"]"
-            ],
-            [
-              "a[href=\"mailto:eric.du@essie.ufl.edu\"]"
-            ],
-            [
-              "li:nth-child(4) > sup > a[href$=\"#affiliation-1\"][aria-label=\"Affiliation 1\"]"
-            ],
-            [
-              "a[href$=\"mailto:shuai.li@ufl.edu\"]"
-            ],
-            [
-              "li:nth-child(5) > sup > a[href$=\"#affiliation-1\"][aria-label=\"Affiliation 1\"]"
-            ],
-            [
-              "#affiliation-1"
-            ],
-            [
-              "#affiliation-2"
-            ],
-            [
-              "#affiliation-3"
-            ],
-            [
-              ".actions > .light.button:nth-child(1)"
-            ],
-            [
-              ".light.button:nth-child(2)"
-            ],
-            [
-              ".light.button[href$=\"paper/\"]"
-            ],
-            [
-              "a[href$=\"paper/#guide-2\"] > span[aria-hidden=\"true\"]"
-            ],
-            [
-              "#experiments > .text-link > span[aria-hidden=\"true\"]"
-            ],
             [
               "div:nth-child(1) > .numeric-pair > span[aria-hidden=\"true\"]"
             ],
@@ -180,10 +48,7 @@
               "div:nth-child(2) > .numeric-pair > span[aria-hidden=\"true\"]"
             ],
             [
-              ".comparison > .text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
-            ],
-            [
-              "#results > .text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
+              ".text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
             ]
           ]
         },
@@ -202,18 +67,12 @@
     },
     {
       "name": "/ mobile",
-      "passes": 29,
+      "passes": 30,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
-            [
-              "a[href$=\"paper/#guide-2\"] > span[aria-hidden=\"true\"]"
-            ],
-            [
-              "#experiments > .text-link > span[aria-hidden=\"true\"]"
-            ],
             [
               "div:nth-child(1) > .numeric-pair > span[aria-hidden=\"true\"]"
             ],
@@ -221,10 +80,7 @@
               "div:nth-child(2) > .numeric-pair > span[aria-hidden=\"true\"]"
             ],
             [
-              ".comparison > .text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
-            ],
-            [
-              "#results > .text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
+              ".text-link[href$=\"results/\"] > span[aria-hidden=\"true\"]"
             ]
           ]
         },
@@ -279,13 +135,13 @@
     },
     {
       "name": "/404.html desktop",
-      "passes": 15,
+      "passes": 14,
       "violations": [],
       "incomplete": []
     },
     {
       "name": "/404.html mobile",
-      "passes": 15,
+      "passes": 14,
       "violations": [],
       "incomplete": []
     }
@@ -295,36 +151,35 @@
     "/: one H1",
     "/: English language declared",
     "/: informative images have nonempty alternatives",
-    "/: no autoplay, loops, or third-party players",
-    "/: institutional disclaimer is present",
+    "/: no unconditional HTML autoplay or third-party players",
+    "/: no visible institutional introduction or disclaimer",
     "/: IDs are unique",
     "/: visible headings do not skip levels",
     "/: in-page links have targets",
     "/: skip link is first keyboard stop",
     "/: keyboard focus has visible outline",
     "/: skip link focuses main",
+    "Both research-context videos are present",
+    "Automatic videos are muted, inline, looped, and retain native controls",
+    "Both videos have names and complete text alternatives",
+    "Visible videos autoplay and expose a clear pause control",
+    "Playback control has a visible keyboard focus outline",
+    "Keyboard pauses both autoplaying videos",
+    "Manual pause survives scrolling away and returning",
+    "Keyboard explicitly resumes both paused videos",
+    "Native pause synchronizes the shared control",
+    "Native manual pause also prevents automatic restart",
+    "context-video: metadata and timed visual descriptions load",
+    "simulation-video: metadata and timed visual descriptions load",
+    "Both videos always show complete frames",
+    "Title sits above the media without obscuring it",
+    "Videos pause when scrolled out of view",
+    "Automatic playback resumes on re-entry when the user has not paused",
+    "Looping playback can still be stopped immediately",
     "Result tabs support arrow-key navigation",
-    "Home key selects first result tab",
-    "End key selects last result tab",
-    "Waymo context and research simulation videos are both present",
-    "Both title videos are paused on initial load",
-    "Both title videos are muted, inline, and retain native controls",
-    "Both videos have accessible names and existing text-description targets",
-    "Combined playback control has a visible keyboard focus outline",
-    "Keyboard starts both title videos and exposes pause",
-    "Keyboard pauses both title videos together",
-    "Native playback updates the group control without starting the other video",
-    "Native pause keeps the combined playback label synchronized",
-    "Keyboard activates full-frame mode with an accurate pressed state and label",
-    "Full-frame mode shows both complete video frames",
-    "Full-frame mode places both videos below the title text",
-    "Keyboard restores the title overlay and unpressed state",
-    "context-video: finite positive duration is available from media metadata",
-    "context-video: timed visual-description track loads",
-    "simulation-video: finite positive duration is available from media metadata",
-    "simulation-video: timed visual-description track loads",
-    "Both videos end without looping and expose replay",
-    "Replay restarts both title videos from the beginning",
+    "Home selects the first result tab",
+    "End selects the last result tab",
+    "Media descriptions expand by keyboard",
     "Citation can be copied with keyboard",
     "/: no page-level horizontal overflow at 320 CSS px",
     "Homepage places title text above the videos at 320 CSS px",
@@ -338,8 +193,8 @@
     "/paper/: one H1",
     "/paper/: English language declared",
     "/paper/: informative images have nonempty alternatives",
-    "/paper/: no autoplay, loops, or third-party players",
-    "/paper/: institutional disclaimer is present",
+    "/paper/: no unconditional HTML autoplay or third-party players",
+    "/paper/: no visible institutional introduction or disclaimer",
     "/paper/: IDs are unique",
     "/paper/: visible headings do not skip levels",
     "/paper/: in-page links have targets",
@@ -353,8 +208,8 @@
     "/results/: one H1",
     "/results/: English language declared",
     "/results/: informative images have nonempty alternatives",
-    "/results/: no autoplay, loops, or third-party players",
-    "/results/: institutional disclaimer is present",
+    "/results/: no unconditional HTML autoplay or third-party players",
+    "/results/: no visible institutional introduction or disclaimer",
     "/results/: IDs are unique",
     "/results/: visible headings do not skip levels",
     "/results/: in-page links have targets",
@@ -372,8 +227,8 @@
     "/accessibility/: one H1",
     "/accessibility/: English language declared",
     "/accessibility/: informative images have nonempty alternatives",
-    "/accessibility/: no autoplay, loops, or third-party players",
-    "/accessibility/: institutional disclaimer is present",
+    "/accessibility/: no unconditional HTML autoplay or third-party players",
+    "/accessibility/: no visible institutional introduction or disclaimer",
     "/accessibility/: IDs are unique",
     "/accessibility/: visible headings do not skip levels",
     "/accessibility/: in-page links have targets",
@@ -387,8 +242,8 @@
     "/404.html: one H1",
     "/404.html: English language declared",
     "/404.html: informative images have nonempty alternatives",
-    "/404.html: no autoplay, loops, or third-party players",
-    "/404.html: institutional disclaimer is present",
+    "/404.html: no unconditional HTML autoplay or third-party players",
+    "/404.html: no visible institutional introduction or disclaimer",
     "/404.html: IDs are unique",
     "/404.html: visible headings do not skip levels",
     "/404.html: in-page links have targets",
@@ -405,7 +260,9 @@
     "Homepage reflows at 320 CSS px without JavaScript",
     "Citation remains readable without JavaScript",
     "Unavailable JavaScript copy control is hidden",
-    "Reduced-motion visit does not start either title video"
+    "Reduced-motion visit does not start either title video",
+    "Reduced-motion users can explicitly choose playback",
+    "Data-saving preference prevents autoplay"
   ],
   "errors": [],
   "limitations": [

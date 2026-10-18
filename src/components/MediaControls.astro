@@ -1,93 +1,80 @@
 <script>
-  const videos = [
-    ...document.querySelectorAll<HTMLVideoElement>(
-      "video[data-playback-group]",
-    ),
-  ];
+  const videos = [...document.querySelectorAll<HTMLVideoElement>('video[data-playback-group="hero"]')];
+  const button = document.querySelector<HTMLButtonElement>("#hero-playback-toggle");
+  const region = document.querySelector<HTMLElement>(".hero-backdrops");
   const status = document.querySelector<HTMLElement>("#media-status");
-  for (const video of videos) {
-    video.addEventListener("play", () => {
-      for (const other of videos) {
-        if (
-          other !== video &&
-          other.dataset.playbackGroup !== video.dataset.playbackGroup
-        )
-          other.pause();
-      }
-    });
-  }
-  for (const button of document.querySelectorAll<HTMLButtonElement>(
-    "button[data-media-control]",
-  )) {
-    const ids = (button.getAttribute("aria-controls") || "").split(/\s+/);
-    const targets = ids
-      .map((id) => document.getElementById(id))
-      .filter(
-        (element): element is HTMLVideoElement =>
-          element instanceof HTMLVideoElement,
-      );
-    if (!targets.length) continue;
-    button.hidden = false;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const connection = (navigator as Navigator & {
+    connection?: EventTarget & { saveData?: boolean };
+  }).connection;
+  if (button && region && videos.length) {
+    let manuallyPaused = false;
+    let inView = false;
+    let request = 0;
+    const systemPauses = new WeakSet<HTMLVideoElement>();
+    const allowed = () => !reduced.matches && !connection?.saveData;
     const update = () => {
-      button.textContent = targets.some(
-        (video) => !video.paused && !video.ended,
-      )
-        ? button.dataset.pauseLabel!
-        : targets.some((video) => video.ended)
-          ? button.dataset.replayLabel!
-          : button.dataset.idleLabel!;
+      button.textContent = videos.some((v) => !v.paused && !v.ended)
+        ? "Pause videos" : "Play videos";
     };
-    for (const video of targets) {
-      for (const event of ["play", "pause", "ended", "error"])
-        video.addEventListener(event, update);
-    }
-    let playbackRequest = 0;
-    button.addEventListener("click", async () => {
-      if (targets.some((video) => !video.paused && !video.ended)) {
-        // A pending play() must remain cancellable while media is buffering.
-        playbackRequest++;
-        targets.forEach((video) => video.pause());
-        button.removeAttribute("aria-busy");
-        update();
-        return;
+    const pause = () => {
+      request++;
+      for (const video of videos) {
+        if (!video.paused) {
+          systemPauses.add(video);
+          video.pause();
+        }
       }
-      if (targets.some((video) => video.ended))
-        targets.forEach((video) => {
-          video.currentTime = 0;
-        });
-      const request = ++playbackRequest;
-      button.setAttribute("aria-busy", "true");
-      const results = await Promise.allSettled(
-        targets.map((video) => video.play()),
-      );
-      // An older, cancelled request must not change a newer playback request.
-      if (request !== playbackRequest) return;
-      if (
-        results.some(
-          (result) =>
-            result.status === "rejected" &&
-            result.reason?.name !== "AbortError",
-        )
-      ) {
-        targets.forEach((video) => video.pause());
-        if (status)
-          status.textContent =
-            "Playback could not start. Use the native player controls, download the clip, or read the video description.";
-      } else if (status) status.textContent = "";
       button.removeAttribute("aria-busy");
       update();
+    };
+    const play = async (manual = false) => {
+      if (!manual && (manuallyPaused || !allowed() || !inView || document.hidden)) return;
+      if (manual) manuallyPaused = false;
+      const current = ++request;
+      button.setAttribute("aria-busy", "true");
+      const outcomes = await Promise.allSettled(videos.map((video) => video.play()));
+      if (current !== request) return;
+      button.removeAttribute("aria-busy");
+      if (outcomes.some((outcome) => outcome.status === "rejected" && outcome.reason?.name !== "AbortError")) {
+        pause();
+        if (status) status.textContent = "Use Play videos or the player controls to start playback.";
+      } else if (status) status.textContent = "";
+      update();
+    };
+    for (const video of videos) {
+      video.addEventListener("play", update);
+      video.addEventListener("pause", () => {
+        if (systemPauses.has(video)) systemPauses.delete(video);
+        else manuallyPaused = true;
+        update();
+      });
+      video.addEventListener("ended", update);
+      video.addEventListener("error", update);
+    }
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      if (videos.some((v) => !v.paused && !v.ended)) {
+        manuallyPaused = true;
+        pause();
+      } else void play(true);
     });
-  }
-  const view = document.querySelector<HTMLButtonElement>("#hero-view-toggle");
-  const stage = document.querySelector<HTMLElement>("#hero-stage");
-  if (view && stage) {
-    view.hidden = false;
-    view.addEventListener("click", () => {
-      const full = stage.classList.toggle("full-frames");
-      view.setAttribute("aria-pressed", String(full));
-      view.textContent = full
-        ? "Restore title overlay"
-        : "Show full video frames";
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting && entry.intersectionRatio >= 0.15;
+      if (inView) void play();
+      else pause();
+    }, { threshold: [0, 0.15] });
+    observer.observe(region);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) pause();
+      else void play();
     });
+    const preferenceChanged = () => {
+      if (!allowed()) pause();
+      else void play();
+    };
+    reduced.addEventListener("change", preferenceChanged);
+    connection?.addEventListener("change", preferenceChanged);
+    update();
   }
 </script>

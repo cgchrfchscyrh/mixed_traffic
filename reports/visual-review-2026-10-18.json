@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-18",
+  "project": "mixed_traffic",
+  "preview": "http://127.0.0.1:4513/mixed_traffic/",
+  "change": "Compact visual research overview with full-frame dual videos, concise section headings, expandable scientific details and controlled silent autoplay.",
+  "coreNarrativeWords": 257,
+  "visibleHomepageWords": 433,
+  "wordCountMethod": "Rendered innerText; core excludes title, authors, navigation, citation, footer and closed disclosures.",
+  "sections": [
+    "Abstract",
+    "Method",
+    "Experiments",
+    "Results",
+    "Citation"
+  ],
+  "preserved": {
+    "authors": [
+      "Songyang Liu",
+      "Muyang Fan",
+      "Weizi Li",
+      "Jing Du",
+      "Shuai Li"
+    ],
+    "protectedPaths": [
+      "src/data",
+      "public",
+      "src/pages/paper.astro",
+      "src/pages/results.astro",
+      "package.json",
+      "package-lock.json"
+    ],
+    "changedProtectedPaths": [],
+    "note": "Original metadata, scientific data, BibTeX, paper guide, full results, CSV files, media and figures are unchanged from HEAD."
+  },
+  "validation": {
+    "lint": "pass",
+    "astroBuild": "pass: 0 errors, 0 warnings, 0 hints",
+    "securityAudit": "0 vulnerabilities; no exceptions",
+    "axeScans": 11,
+    "functionalChecks": 116,
+    "axeViolations": 0,
+    "functionalErrors": 0,
+    "manualReview": [
+      "1440px title and complete dual-video frames",
+      "Full desktop page and original method diagram",
+      "320 CSS-pixel title, stacked videos and full page",
+      "No visible institutional introduction or disclaimer",
+      "Negative results, source explanations and limitations retained in disclosures or guide"
+    ]
+  },
+  "autoplayChecks": [
+    "Autoplay only while visible and when preferences allow",
+    "Keyboard and native controls pause playback",
+    "Manual pause survives scrolling away and back",
+    "Offscreen playback pauses; re-entry resumes only without manual pause",
+    "Reduced motion and save-data disable autoplay",
+    "Explicit play remains available under reduced motion",
+    "Looping playback can be paused",
+    "No-JavaScript native controls remain available"
+  ],
+  "screenshots": {
+    "desktop": "/tmp/mixed-visual-review/desktop.png",
+    "desktop-top": "/tmp/mixed-visual-review/desktop-top.png",
+    "method": "/tmp/mixed-visual-review/method.png",
+    "mobile": "/tmp/mixed-visual-review/mobile.png",
+    "mobile-top": "/tmp/mixed-visual-review/mobile-top.png"
+  },
+  "limits": [
+    "Automated scans are not complete ADA/WCAG certification.",
+    "Original external PDF accessibility, mathematical reading order and multiple screen-reader workflows remain unverified.",
+    "GitHub Pages HTTPS, assets and security headers require post-publication verification."
+  ],
+  "publication": "Not committed or pushed by this agent."
+}

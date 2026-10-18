@@ -68,7 +68,13 @@
   "limits": [
     "Automated scans are not complete ADA/WCAG certification.",
     "Original external PDF accessibility, mathematical reading order and multiple screen-reader workflows remain unverified.",
-    "GitHub Pages HTTPS, assets and security headers require post-publication verification."
+    "GitHub Pages HTTP response header limitations are documented in the live deployment report."
   ],
-  "publication": "Not committed or pushed by this agent."
+  "publication": {
+    "site": "https://cgchrfchscyrh.github.io/mixed_traffic/",
+    "contentCommit": "ea0336240cd594adfaf0d495f4010c8e789d12ce",
+    "actionsRun": "https://github.com/cgchrfchscyrh/mixed_traffic/actions/runs/39156508443",
+    "conclusion": "success",
+    "liveVerification": "reports/live-deployment.json and reports/live-browser.json and reports/live-axe-wcag21aa.json"
+  }
 }

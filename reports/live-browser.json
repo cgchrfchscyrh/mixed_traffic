@@ -1,16 +1,14 @@
 {
-  "checkedOn": "2026-10-11",
-  "checkedAt": "2026-10-11T20:12:22.784Z",
+  "checkedOn": "2026-10-18",
+  "checkedAt": "2026-10-18T18:59:18.150Z",
   "url": "https://cgchrfchscyrh.github.io/mixed_traffic/",
-  "initiallyPaused": true,
+  "deployedContentCommit": "ea0336240cd594adfaf0d495f4010c8e789d12ce",
   "sections": [
-    "Problem",
-    "Existing work",
-    "Knowledge gap",
+    "Abstract",
     "Method",
     "Experiments",
     "Results",
-    "Conclusion"
+    "Citation"
   ],
   "media": [
     {
@@ -20,6 +18,7 @@
       "paused": true,
       "controls": true,
       "muted": true,
+      "loop": true,
       "describedBy": "context-summary context-visual-description"
     },
     {
@@ -29,12 +28,16 @@
       "paused": true,
       "controls": true,
       "muted": true,
+      "loop": true,
       "describedBy": "simulation-summary simulation-visual-description"
     }
   ],
+  "autoplayWhenVisible": true,
   "keyboardPairPlayPause": true,
-  "fullFrameToggle": true,
+  "persistentManualPause": true,
+  "reducedMotionDisablesAutoplay": true,
   "keyboardResults": true,
+  "noVisibleUfIntroductionOrDisclaimer": true,
   "narrow": {
     "width": 320,
     "documentWidth": 320,
@@ -42,6 +45,5 @@
     "stacked": true,
     "completeFrames": true
   },
-  "errors": [],
-  "deployedContentCommit": "e64740b7cddca2bffb1e683bd4fce3e09494eff4"
+  "errors": []
 }

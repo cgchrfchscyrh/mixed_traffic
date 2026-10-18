@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#202020"/><path d="M15 44 28 20l10 24 11-24M12 48h40" fill="none" stroke="#fafafa" stroke-width="4" stroke-linejoin="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Mixed Traffic: two vehicles sharing a road</title>
+  <rect width="64" height="64" rx="14" fill="#202020"/>
+  <path d="M32 12v7m0 10v7m0 10v6" fill="none" stroke="#fafafa" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#fafafa">
+    <rect x="10" y="13" width="15" height="29" rx="5"/>
+    <rect x="39" y="22" width="15" height="29" rx="5"/>
+  </g>
+  <g fill="#202020">
+    <rect x="13" y="19" width="9" height="6" rx="1"/>
+    <rect x="13" y="32" width="9" height="4" rx="1"/>
+    <rect x="42" y="28" width="9" height="6" rx="1"/>
+    <rect x="42" y="41" width="9" height="4" rx="1"/>
+  </g>
+</svg>

@@ -11,29 +11,30 @@ import MediaCredit from "../components/MediaCredit.astro";
   <Hero />
   <div class="container visual-overview">
     <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
-      <h2 id="abstract-title">Abstract</h2>
-      <p class="section-deck">How can robot vehicles share urban roads with human drivers while traffic signals remain in use? We learn local Stop or Go decisions with a shared reinforcement-learning policy and evaluate mixed vehicle and intersection control in a connected SUMO road network.</p>
+      <h2 id="abstract-title">A local decision. A shared road.</h2>
+      <p class="section-deck">At an intersection, a robot vehicle makes a small decision: Stop or Go. Repeated across a road network, those decisions interact with human drivers and traffic signals. We study how a shared reinforcement-learning policy can turn local choices into better mixed-traffic flow in simulation.</p>
       <ResearchClip id="network" />
     </section>
     <section class="section" id="method" aria-labelledby="method-title">
-      <h2 id="method-title">Method</h2>
+      <h2 id="method-title">Learn at the intersection.</h2>
       <p class="section-deck">Observe local traffic. Choose Stop or Go. Coordinate through shared roads.</p>
       <div class="method-media">
         <PresentationFigure id="method" concise />
         <div class="method-context">
-          <ResearchClip id="junction" />
           <p>A shared Rainbow DQN policy controls robot vehicles near intersections. Human-driven vehicles follow the Intelligent Driver Model; robot vehicles use the same driver model outside the control zone.</p>
+          <ResearchClip id="junction" />
         </div>
       </div>
       <div class="intersection-grid"><PresentationFigure id="signalized" concise /><PresentationFigure id="unsignalized" concise /></div>
     </section>
     <section class="section" id="results" aria-labelledby="results-title">
-      <h2 id="results-title">Results</h2>
+      <h2 id="results-title">Look beyond a single junction.</h2>
       <p class="section-deck">Selected combinations of robot vehicles and signal control improve network flow in simulation. The benefit depends on the configuration and robot-vehicle share; adding unsignalized intersections does not always help, and some junctions still benefit from signals.</p>
-      <div class="results-media"><ResearchClip id="flow" /><Figure id="network" concise /></div>
       <p class="scope-note">The clips illustrate the simulation setting. They do not identify the controller or demonstrate the reported improvements; Waymo footage provides independent real-world context.</p>
+      <div class="results-media"><ResearchClip id="flow" /><Figure id="network" concise /></div>
     </section>
+    <section class="section vision-section" id="vision" aria-labelledby="vision-title"><h2 id="vision-title">From shared roads to a shared transport system.</h2><p class="section-intro">A local policy is one piece of a city-scale transport system. Moving beyond these simulations requires traffic engineers, robot-learning researchers, public agencies, and human-behavior specialists to connect vehicle decisions with signal operations and real road conditions. The vision is coordinated mobility as automated and human-driven vehicles continue to share the network.</p></section>
     <Citation />
-    <details class="reading-details media-details" id="media-descriptions"><summary>Title video descriptions & sources</summary><MediaCredit /></details>
+    <details class="reading-details media-details" id="media-descriptions"><summary>Video descriptions & sources</summary><MediaCredit /></details>
   </div>
 </Layout>

@@ -14,9 +14,7 @@ const canonical =
   Astro.site && !isNotFound
     ? new URL(Astro.url.pathname, Astro.site).href
     : undefined;
-const nav = ["Abstract", "Method", "Results", "Citation"].map((name) => ({
-  name, href: `${asset()}#${name.toLowerCase()}`,
-}));
+const nav = [{ name: "Question", id: "abstract" }, { name: "Approach", id: "method" }, { name: "Evidence", id: "results" }, { name: "Vision", id: "vision" }, { name: "Citation", id: "citation" }].map(({name,id}) => ({name,href: `${asset()}#${id}`}));
 ---
 
 <!doctype html>

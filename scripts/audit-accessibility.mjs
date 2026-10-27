@@ -416,10 +416,10 @@ try {
         JSON.stringify(
           await page
             .locator(
-              ".visual-overview > section > h2, .visual-overview > section > .section-heading > h2",
+              ".visual-overview > section > h2, .visual-overview > section > .section-heading > h2, .visual-overview > section > .vision-heading > h2",
             )
             .allTextContents(),
-        ) === JSON.stringify(["A local decision. A shared road.", "Learn at the intersection.", "Look beyond a single junction.", "From shared roads to a shared transport system.", "Citation"]),
+        ) === JSON.stringify(["A local decision. A shared road.", "Learn at the intersection.", "Look beyond a single junction.", "One junction. A connected city.", "Citation"]),
         "Story progresses from a concrete question to a collaborative vision",
       );
       await page
@@ -432,6 +432,7 @@ try {
       );
       check(await page.locator("figure:has(video) > figcaption, details.clip-description").count() === 0, "Video captions and per-player description blocks are removed");
       check(await page.locator(".hero-text > .eyebrow, .hero-text .publication-line, .hero-venue").count() === 0, "Title area has no topic subtitle");
+      check(await page.locator(".vision-connections li").count() === 3 && await page.locator(".vision-scene svg[role=img]").count() === 1, "Visual bridge shows collaboration needs and an accessible future scene");
       const mediaNotes = page.locator("details.media-details");
       await mediaNotes.locator(":scope > summary").focus();
       await page.keyboard.press("Enter");

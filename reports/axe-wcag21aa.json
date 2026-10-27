@@ -1,14 +1,22 @@
 {
-  "date": "2026-10-27T15:47:40.496Z",
+  "date": "2026-10-27T16:22:57.215Z",
   "project": "mixed_traffic",
   "target": "WCAG 2.1 A/AA",
   "engine": "axe-core via Playwright",
   "scans": [
     {
       "name": "Consolidated video descriptions desktop",
-      "passes": 26,
+      "passes": 27,
       "violations": [],
       "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            [
+              "#vision-current-title"
+            ]
+          ]
+        },
         {
           "id": "video-caption",
           "nodes": [
@@ -33,9 +41,17 @@
     },
     {
       "name": "/ desktop",
-      "passes": 26,
+      "passes": 27,
       "violations": [],
       "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            [
+              "#vision-current-title"
+            ]
+          ]
+        },
         {
           "id": "video-caption",
           "nodes": [
@@ -60,9 +76,17 @@
     },
     {
       "name": "/ mobile",
-      "passes": 26,
+      "passes": 27,
       "violations": [],
       "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            [
+              "#vision-current-title"
+            ]
+          ]
+        },
         {
           "id": "video-caption",
           "nodes": [
@@ -224,6 +248,7 @@
     "Keyboard citation copy",
     "Video captions and per-player description blocks are removed",
     "Title area has no topic subtitle",
+    "Visual bridge shows collaboration needs and an accessible future scene",
     "Keyboard opens consolidated complete media notes",
     "Keyboard closes consolidated media notes",
     "/: no horizontal page overflow at 320px",

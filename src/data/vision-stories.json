@@ -1,0 +1,38 @@
+{
+  "mixed": {
+    "headline": "One road. Human and robot drivers.",
+    "title": "One junction. A connected city.",
+    "current": "Local Stop-or-Go decisions",
+    "evidence": "SUMO evaluation",
+    "image": "figures/presentation/mixed-traffic-method-slide18.webp",
+    "imageAlt": "Source presentation diagram of local traffic observations and shared-policy Stop-or-Go control.",
+    "sourceAnchor": "#method",
+    "scene": "traffic",
+    "future": "Vehicles, signals & street operations",
+    "systems": [
+      "Human drivers",
+      "Robot vehicles",
+      "Signals"
+    ],
+    "connections": [
+      {
+        "task": "Model human responses",
+        "partners": "Behavior research + traffic"
+      },
+      {
+        "task": "Coordinate junctions",
+        "partners": "Learning + traffic engineering"
+      },
+      {
+        "task": "Operate on real roads",
+        "partners": "Public agencies + vehicle teams"
+      }
+    ],
+    "sceneAlt": "Future concept: human-driven and robot vehicles, a pedestrian, and traffic signals share a connected street grid.",
+    "description": "The current research evaluates local robot-vehicle decisions and intersection configurations in SUMO. Connecting this to a city requires human-response modeling, coordinated signal operations, and real-road evaluation with agencies and vehicle developers. A road grid, vehicles, pedestrian, and traffic signal illustrate the shared system. This diagram is a future concept and does not assert deployment of the studied controller.",
+    "headlineLines": [
+      "One road.",
+      "Human and robot drivers."
+    ]
+  }
+}

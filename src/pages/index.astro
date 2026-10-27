@@ -1,4 +1,6 @@
 ---
+import Vision from "../components/Vision.astro";
+import stories from "../data/vision-stories.json";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Figure from "../components/Figure.astro";
@@ -7,7 +9,7 @@ import ResearchClip from "../components/ResearchClip.astro";
 import Citation from "../components/Citation.astro";
 import MediaCredit from "../components/MediaCredit.astro";
 ---
-<Layout>
+<Layout title={stories.mixed.headline}>
   <Hero />
   <div class="container visual-overview">
     <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
@@ -33,7 +35,7 @@ import MediaCredit from "../components/MediaCredit.astro";
       <p class="scope-note">The clips illustrate the simulation setting. They do not identify the controller or demonstrate the reported improvements; Waymo footage provides independent real-world context.</p>
       <div class="results-media"><ResearchClip id="flow" /><Figure id="network" concise /></div>
     </section>
-    <section class="section vision-section" id="vision" aria-labelledby="vision-title"><h2 id="vision-title">From shared roads to a shared transport system.</h2><p class="section-intro">A local policy is one piece of a city-scale transport system. Moving beyond these simulations requires traffic engineers, robot-learning researchers, public agencies, and human-behavior specialists to connect vehicle decisions with signal operations and real road conditions. The vision is coordinated mobility as automated and human-driven vehicles continue to share the network.</p></section>
+    <Vision project="mixed" />
     <Citation />
     <details class="reading-details media-details" id="media-descriptions"><summary>Video descriptions & sources</summary><MediaCredit /></details>
   </div>

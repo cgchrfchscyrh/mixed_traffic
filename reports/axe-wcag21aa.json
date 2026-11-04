@@ -1,19 +1,40 @@
 {
-  "date": "2026-10-27T19:15:24.333Z",
+  "date": "2026-11-04T15:40:50.631Z",
   "project": "mixed_traffic",
   "target": "WCAG 2.1 A/AA",
   "engine": "axe-core via Playwright",
   "scans": [
     {
       "name": "Consolidated video descriptions desktop",
-      "passes": 27,
+      "passes": 26,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
             [
-              "#vision-current-title"
+              ".display-line:nth-child(1)"
+            ],
+            [
+              ".display-line:nth-child(2)"
+            ],
+            [
+              ".hero-credit"
+            ],
+            [
+              ".method-bubble-robot"
+            ],
+            [
+              ".method-bubble-human"
+            ],
+            [
+              ".method-bubble-observe"
+            ],
+            [
+              ".method-bubble-policy"
+            ],
+            [
+              ".method-bubble-action"
             ]
           ]
         },
@@ -24,10 +45,10 @@
               "#context-video"
             ],
             [
-              "#simulation-video"
+              "#mixed-network-video"
             ],
             [
-              "#mixed-network-video"
+              "#simulation-video"
             ],
             [
               "#mixed-junction-video"
@@ -41,14 +62,35 @@
     },
     {
       "name": "/ desktop",
-      "passes": 27,
+      "passes": 26,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
             [
-              "#vision-current-title"
+              ".display-line:nth-child(1)"
+            ],
+            [
+              ".display-line:nth-child(2)"
+            ],
+            [
+              ".hero-credit"
+            ],
+            [
+              ".method-bubble-robot"
+            ],
+            [
+              ".method-bubble-human"
+            ],
+            [
+              ".method-bubble-observe"
+            ],
+            [
+              ".method-bubble-policy"
+            ],
+            [
+              ".method-bubble-action"
             ]
           ]
         },
@@ -59,10 +101,10 @@
               "#context-video"
             ],
             [
-              "#simulation-video"
+              "#mixed-network-video"
             ],
             [
-              "#mixed-network-video"
+              "#simulation-video"
             ],
             [
               "#mixed-junction-video"
@@ -76,14 +118,20 @@
     },
     {
       "name": "/ mobile",
-      "passes": 27,
+      "passes": 26,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
             [
-              "#vision-current-title"
+              ".display-line:nth-child(1)"
+            ],
+            [
+              ".display-line:nth-child(2)"
+            ],
+            [
+              ".hero-credit"
             ]
           ]
         },
@@ -94,10 +142,10 @@
               "#context-video"
             ],
             [
-              "#simulation-video"
+              "#mixed-network-video"
             ],
             [
-              "#mixed-network-video"
+              "#simulation-video"
             ],
             [
               "#mixed-junction-video"
@@ -178,19 +226,24 @@
     "Five expected context and simulation excerpts are distributed across the page",
     "The hero has only the Paper button linked to the published article",
     "abstract: the intended short excerpts accompany the research section",
-    "method: the intended short excerpts accompany the research section",
     "results: the intended short excerpts accompany the research section",
     "All expected video players are available",
     "Silent inline playback, original speed, native controls, and controllable loops",
-    "Desktop title media shows complete frames",
-    "Title and author names are above the footage",
+    "Opening video spans the full page width and most of the screen",
+    "The opening video shows the credit Waymo requires",
+    "Method bubbles flank the figure on wide screens",
+    "The study map and every research clip have a plain-language bubble",
+    "Method figure stays large beside its bubbles at desktop width",
+    "Citation heading uses a compact size",
+    "The vision diagram and removed explanations stay absent",
     "Native video playback controls are reachable through Tab",
     "Space on the native player pauses the video",
     "Research excerpt plays silently when visible: mixed-network-video",
+    "Research excerpt plays silently when visible: simulation-video",
     "Research excerpt plays silently when visible: mixed-junction-video",
     "Research excerpt plays silently when visible: mixed-flow-video",
     "Offscreen title videos pause automatically",
-    "Native manual pause remains remembered after scrolling while other media can play",
+    "Native manual pause remains remembered after scrolling",
     "Space on the native player explicitly resumes playback",
     "Video looping preserves playback and remains pausable",
     "Native keyboard pause still works after a loop",
@@ -244,17 +297,13 @@
     "mixed-flow-video: poster asset responds successfully",
     "mixed-flow-video: local description asset is declared",
     "mixed-flow-video: description asset responds successfully",
-    "Story progresses from a concrete question to a collaborative vision",
+    "Story moves from the network to the method and the simulation",
     "Keyboard citation copy",
     "Video captions and per-player description blocks are removed",
-    "Title area has no topic subtitle",
-    "Visual bridge shows collaboration needs and an accessible future scene",
     "Keyboard opens consolidated complete media notes",
     "Keyboard closes consolidated media notes",
     "/: no horizontal page overflow at 320px",
-    "Complete video frames at 320px",
     "/: no horizontal page overflow at 768px",
-    "Complete video frames at 768px",
     "/: 320px text-spacing reflow",
     "/paper/: page loads",
     "/paper/: one H1",

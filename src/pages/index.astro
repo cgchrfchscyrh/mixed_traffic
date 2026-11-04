@@ -1,5 +1,4 @@
 ---
-import Vision from "../components/Vision.astro";
 import stories from "../data/vision-stories.json";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
@@ -8,34 +7,61 @@ import PresentationFigure from "../components/PresentationFigure.astro";
 import ResearchClip from "../components/ResearchClip.astro";
 import Citation from "../components/Citation.astro";
 import MediaCredit from "../components/MediaCredit.astro";
+import simulation from "../data/hero-media.json";
+import { asset } from "../data/paths";
 ---
 <Layout title={stories.mixed.headline}>
   <Hero />
   <div class="container visual-overview">
     <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
-      <h2 id="abstract-title">A local decision. A shared road.</h2>
-      <p class="section-deck">At an intersection, a robot vehicle makes a small decision: Stop or Go. Repeated across a road network, those decisions interact with human drivers and traffic signals. We study how a shared reinforcement-learning policy can turn local choices into better mixed-traffic flow in simulation.</p>
-      <ResearchClip id="network" />
-    </section>
-    <section class="section" id="method" aria-labelledby="method-title">
-      <h2 id="method-title">Learn at the intersection.</h2>
-      <p class="section-deck">Observe local traffic. Choose Stop or Go. Coordinate through shared roads.</p>
-      <div class="method-media">
-        <PresentationFigure id="method" concise />
-        <div class="method-context">
-          <p>A shared Rainbow DQN policy controls robot vehicles near intersections. Human-driven vehicles follow the Intelligent Driver Model; robot vehicles use the same driver model outside the control zone.</p>
-          <ResearchClip id="junction" />
+      <h2 id="abstract-title">From one intersection to a road network</h2>
+      <div class="media-pair wide-media">
+        <div class="clip-with-bubble">
+          <Figure id="network" bare />
+          <p class="clip-bubble"><strong>The study network.</strong> 14 intersections in Colorado Springs, simulated in SUMO.</p>
+        </div>
+        <div class="clip-with-bubble">
+          <ResearchClip id="network" />
+          <p class="clip-bubble"><strong>Connected roads.</strong> Vehicles move between neighboring intersections.</p>
         </div>
       </div>
-      <div class="intersection-grid"><PresentationFigure id="signalized" concise /><PresentationFigure id="unsignalized" concise /></div>
+    </section>
+    <section class="section" id="method" aria-labelledby="method-title">
+      <h2 id="method-title">How we trained it</h2>
+      <div class="method-map wide-media">
+        <div class="method-map-figure"><PresentationFigure id="method" concise /></div>
+        <h3 class="sr-only">What the figure shows</h3>
+        <p class="method-bubble method-bubble-robot"><strong>Robot vehicles.</strong> Near an intersection, they switch to the learned policy.</p>
+        <p class="method-bubble method-bubble-human"><strong>Human vehicles.</strong> They follow the Intelligent Driver Model. So do robot vehicles away from intersections.</p>
+        <p class="method-bubble method-bubble-observe"><strong>What each robot sees.</strong> Queue lengths, waiting times, and occupancy at its intersection.</p>
+        <p class="method-bubble method-bubble-policy"><strong>One shared policy.</strong> Rainbow DQN trains it. Each vehicle decides on its own.</p>
+        <p class="method-bubble method-bubble-action"><strong>Stop or Go.</strong> Within 30 m of an intersection, the policy picks one of the two.</p>
+      </div>
+      <div class="intersection-grid wide-media"><PresentationFigure id="signalized" concise /><PresentationFigure id="unsignalized" concise /></div>
     </section>
     <section class="section" id="results" aria-labelledby="results-title">
-      <h2 id="results-title">Look beyond a single junction.</h2>
-      <p class="section-deck">Selected combinations of robot vehicles and signal control improve network flow in simulation. The benefit depends on the configuration and robot-vehicle share; adding unsignalized intersections does not always help, and some junctions still benefit from signals.</p>
-      <p class="scope-note">The clips illustrate the simulation setting. They do not identify the controller or demonstrate the reported improvements; Waymo footage provides independent real-world context.</p>
-      <div class="results-media"><ResearchClip id="flow" /><Figure id="network" concise /></div>
+      <h2 id="results-title" class="sr-only">Simulation</h2>
+      <div class="clip-with-bubble simulation-feature">
+        <figure class="research-clip">
+          <video id="simulation-video" data-playback-group="research" controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(simulation.poster)} width={simulation.width} height={simulation.height} aria-label={simulation.title} aria-describedby="simulation-visual-description">
+            <source src={asset(simulation.video)} type="video/mp4" />
+            <track kind="descriptions" src={asset(simulation.track)} srclang="en" label="English visual descriptions" />
+            <a href={asset(simulation.video)}>View the silent traffic simulation video.</a>
+          </video>
+        </figure>
+        <p class="clip-bubble"><strong>Junction to junction.</strong> The view follows traffic along the network in SUMO.</p>
+      </div>
+      <div class="media-pair wide-media">
+        <div class="clip-with-bubble">
+          <ResearchClip id="junction" />
+          <p class="clip-bubble"><strong>At the intersection.</strong> Vehicles pass through a four-way junction.</p>
+        </div>
+        <div class="clip-with-bubble">
+          <ResearchClip id="flow" />
+          <p class="clip-bubble"><strong>Across the network.</strong> Vehicles move and queue on the roads between junctions.</p>
+        </div>
+      </div>
     </section>
-    <Vision project="mixed" />
     <Citation />
     <details class="reading-details media-details" id="media-descriptions"><summary>Video descriptions & sources</summary><MediaCredit /></details>
   </div>

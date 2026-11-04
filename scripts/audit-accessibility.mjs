@@ -221,17 +221,16 @@ try {
         "Five expected context and simulation excerpts are distributed across the page",
       );
       check(
-        (await page.locator(".hero-text .actions a").count()) === 1 &&
+        (await page.locator(".hero-publication .actions a").count()) === 1 &&
           (await page
-            .locator(".hero-text .actions")
+            .locator(".hero-publication .actions")
             .getByRole("link", { name: /^Paper/ })
             .getAttribute("href")) === paperUrl,
         "The hero has only the Paper button linked to the published article",
       );
       for (const [section, ids] of [
         ["abstract", ["mixed-network-video"]],
-        ["method", ["mixed-junction-video"]],
-        ["results", ["mixed-flow-video"]],
+        ["results", ["simulation-video", "mixed-junction-video", "mixed-flow-video"]],
       ])
         check(
           JSON.stringify(
@@ -263,24 +262,58 @@ try {
       );
       check(
         await page
-          .locator(".hero-backdrops video")
-          .evaluateAll((videos) =>
-            videos.every((v) => getComputedStyle(v).objectFit === "contain"),
+          .locator("#context-video")
+          .evaluate(
+            (v) =>
+              Math.round(v.getBoundingClientRect().width) ===
+                document.documentElement.clientWidth &&
+              v.getBoundingClientRect().height >= innerHeight * 0.6,
           ),
-        "Desktop title media shows complete frames",
+        "Opening video spans the full page width and most of the screen",
       );
       check(
-        await page.evaluate(
-          () =>
-            document.querySelector(".hero-text").getBoundingClientRect()
-              .bottom <=
-            document.querySelector(".hero-backdrops").getBoundingClientRect()
-              .top +
-              1,
-        ),
-        "Title and author names are above the footage",
+        (await page.locator(".hero-credit").innerText()) === "Source: Waymo",
+        "The opening video shows the credit Waymo requires",
       );
-      const heroVideo = page.locator("#simulation-video");
+      check(
+        (await page.locator(".method-bubble").count()) === 5 &&
+          (await page.evaluate(() => {
+            const figure = document
+              .querySelector("#presentation-method img")
+              .getBoundingClientRect();
+            const box = (name) =>
+              document
+                .querySelector(`.method-bubble-${name}`)
+                .getBoundingClientRect();
+            return (
+              box("robot").right <= figure.left &&
+              box("human").right <= figure.left &&
+              box("observe").left >= figure.right &&
+              box("policy").left >= figure.right &&
+              box("action").left >= figure.right
+            );
+          })),
+        "Method bubbles flank the figure on wide screens",
+      );
+      check(
+        (await page.locator(".clip-bubble").count()) === 5,
+        "The study map and every research clip have a plain-language bubble",
+      );
+      check(
+        await page
+          .locator("#presentation-method img")
+          .evaluate((img) => img.getBoundingClientRect().width >= 700),
+        "Method figure stays large beside its bubbles at desktop width",
+      );
+      check(
+        (await page.locator(".citation h2").evaluate((h) => parseFloat(getComputedStyle(h).fontSize))) <= 22,
+        "Citation heading uses a compact size",
+      );
+      check(
+        (await page.locator("#vision, .scope-note, .section-deck, #figure-network figcaption").count()) === 0,
+        "The vision diagram and removed explanations stay absent",
+      );
+      const heroVideo = page.locator("#context-video");
       await tabToVideo(page, heroVideo);
       check(true, "Native video playback controls are reachable through Tab");
       await page.keyboard.press("Space");
@@ -305,9 +338,8 @@ try {
       );
       await atTop(page);
       check(
-        (await heroVideo.evaluate((v) => v.paused)) &&
-          (await page.locator("#context-video").evaluate((v) => !v.paused)),
-        "Native manual pause remains remembered after scrolling while other media can play",
+        await heroVideo.evaluate((v) => v.paused),
+        "Native manual pause remains remembered after scrolling",
       );
       await tabToVideo(page, heroVideo);
       await page.keyboard.press("Space");
@@ -317,7 +349,7 @@ try {
         v.currentTime = v.duration - 0.15;
       });
       await page.waitForFunction(() => {
-        const v = document.querySelector("#simulation-video");
+        const v = document.querySelector("#context-video");
         return !v.paused && !v.seeking && v.currentTime < 1;
       });
       check(true, "Video looping preserves playback and remains pausable");
@@ -419,8 +451,8 @@ try {
               ".visual-overview > section > h2, .visual-overview > section > .section-heading > h2, .visual-overview > section > .vision-heading > h2",
             )
             .allTextContents(),
-        ) === JSON.stringify(["A local decision. A shared road.", "Learn at the intersection.", "Look beyond a single junction.", "One junction. A connected city.", "Citation"]),
-        "Story progresses from a concrete question to a collaborative vision",
+        ) === JSON.stringify(["From one intersection to a road network", "How we trained it", "Simulation", "Citation"]),
+        "Story moves from the network to the method and the simulation",
       );
       await page
         .getByRole("button", { name: "Copy citation", exact: true })
@@ -431,8 +463,6 @@ try {
         "Keyboard citation copy",
       );
       check(await page.locator("figure:has(video) > figcaption, details.clip-description").count() === 0, "Video captions and per-player description blocks are removed");
-      check(await page.locator(".hero-text > .eyebrow, .hero-text .publication-line, .hero-venue").count() === 0, "Title area has no topic subtitle");
-      check(await page.locator(".vision-connections li").count() === 3 && await page.locator(".vision-scene svg[role=img]").count() === 1, "Visual bridge shows collaboration needs and an accessible future scene");
       const mediaNotes = page.locator("details.media-details");
       await mediaNotes.locator(":scope > summary").focus();
       await page.keyboard.press("Enter");
@@ -481,15 +511,6 @@ try {
         ),
         route + `: no horizontal page overflow at ${width}px`,
       );
-      if (route === "/")
-        check(
-          await page
-            .locator(".hero-backdrops video")
-            .evaluateAll((videos) =>
-              videos.every((v) => getComputedStyle(v).objectFit === "contain"),
-            ),
-          `Complete video frames at ${width}px`,
-        );
     }
     await page.setViewportSize({ width: 320, height: 900 });
     const spacing = await page.addStyleTag({
@@ -531,7 +552,7 @@ try {
     await p.waitForTimeout(200);
     check(await paused(p), preference + ": scrolling does not start media");
     await atTop(p);
-    const video = p.locator("#simulation-video");
+    const video = p.locator("#context-video");
     await tabToVideo(p, video);
     await p.keyboard.press("Space");
     await waitForPlayback(video, false);
@@ -603,7 +624,7 @@ try {
         (v) => !v.paused,
       ),
     );
-    const bufferingVideo = buffering.locator("#simulation-video");
+    const bufferingVideo = buffering.locator("#context-video");
     await tabToVideo(buffering, bufferingVideo);
     await buffering.keyboard.press("Space");
     await waitForPlayback(bufferingVideo, true);

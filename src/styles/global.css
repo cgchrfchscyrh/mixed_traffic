@@ -1521,3 +1521,234 @@ summary:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
   .visual-overview .intersection-grid .figure-image { aspect-ratio: auto; }
   .visual-hero .actions { justify-content: flex-start; }
 }
+
+/* Full-width opening video. The copy sits in normal flow so the block grows with zoom and text spacing. */
+.visual-hero.hero-film-section { padding: 0; }
+.hero-film {
+  position: relative;
+  display: grid;
+  align-content: start;
+  min-height: calc(100svh - 78px);
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+}
+.hero-film figure { margin: 0; }
+.hero-film video,
+.visual-hero .hero-film video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border-radius: 0;
+  background: #111;
+}
+.hero-film video:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+}
+.hero-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 78%) 0, rgb(0 0 0 / 58%) 30%, rgb(0 0 0 / 0%) 60%);
+}
+.hero-film-copy {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  padding: 48px clamp(1.25rem, 4vw, 4rem) 96px;
+}
+.visual-hero .hero-film-copy h1 {
+  max-width: none;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.4rem, 8vw, 9rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+.hero-film-copy .display-line { display: block; }
+.hero-credit {
+  position: absolute;
+  z-index: 1;
+  right: 16px;
+  bottom: 64px;
+  margin: 0;
+  padding: 3px 8px;
+  background: rgb(0 0 0 / 72%);
+  color: #fff;
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+.hero-publication {
+  padding: 2rem 1.25rem 0;
+  text-align: center;
+}
+.hero-publication .authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+.hero-publication .actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Plain-language bubbles beside the figures and the clips. */
+.clip-bubble,
+.method-bubble {
+  position: relative;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  background: #f5f5f3;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.clip-bubble strong,
+.method-bubble strong {
+  color: #171717;
+}
+.clip-with-bubble {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  min-width: 0;
+}
+.clip-with-bubble > .clip-bubble::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 28px;
+  width: 14px;
+  height: 14px;
+  border-top: 1px solid #d0d0d0;
+  border-left: 1px solid #d0d0d0;
+  background: #f5f5f3;
+  transform: rotate(45deg);
+}
+.wide-media {
+  width: min(calc(100vw - 32px), 1560px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.media-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+.media-pair .research-figure {
+  margin: 0;
+}
+.visual-overview .media-pair .figure-image img {
+  width: 100%;
+  max-width: none !important;
+}
+.simulation-feature {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+}
+.method-map {
+  display: grid;
+  grid-template-columns: clamp(170px, 14vw, 240px) minmax(0, 880px) clamp(170px, 14vw, 240px);
+  justify-content: center;
+  grid-template-areas:
+    "robot figure observe"
+    "human figure policy"
+    ". figure action";
+  gap: 1.25rem 1rem;
+  align-items: center;
+}
+.method-map-figure {
+  grid-area: figure;
+  min-width: 0;
+}
+.visual-overview .method-map .presentation-method {
+  max-width: none;
+  margin: 0;
+}
+.visual-overview .method-map .figure-image img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+}
+.method-bubble-robot { grid-area: robot; }
+.method-bubble-human { grid-area: human; }
+.method-bubble-observe { grid-area: observe; }
+.method-bubble-policy { grid-area: policy; }
+.method-bubble-action { grid-area: action; }
+.visual-overview .intersection-grid.wide-media {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* Compact citation. */
+.visual-overview .citation.section {
+  padding-block: 2rem;
+}
+.visual-overview .citation .section-heading {
+  margin-bottom: 0.5rem;
+}
+.visual-overview .citation h2 {
+  font-size: 1.25rem;
+}
+.visual-overview .citation > p {
+  max-width: 640px;
+  margin-inline: auto;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.visual-overview .citation-box {
+  max-width: 640px;
+  margin: 0.75rem auto 0;
+}
+.visual-overview .citation-toolbar {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+}
+.visual-overview .citation pre {
+  padding: 0.7rem;
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+@media (max-width: 1100px) {
+  .method-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "figure figure"
+      "robot human"
+      "observe policy"
+      "action action";
+    align-items: start;
+  }
+}
+@media (max-width: 760px) {
+  .media-pair,
+  .visual-overview .intersection-grid.wide-media {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 620px) {
+  .hero-film {
+    min-height: calc(100svh - 106px);
+  }
+  .visual-hero .hero-film-copy h1 {
+    font-size: 11vw;
+  }
+  .method-map {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "figure" "robot" "human" "observe" "policy" "action";
+  }
+}

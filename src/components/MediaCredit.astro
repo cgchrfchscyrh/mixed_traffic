@@ -2,6 +2,7 @@
 import media from "../../public/media/mixed-clips.json";
 import site from "../data/site.json";
 import simulation from "../data/hero-media.json";
+const network = site.figures.find((figure) => figure.id === "network")!;
 ---
 
 <section id="media-description" class="media-description" aria-labelledby="media-heading">
@@ -23,6 +24,7 @@ import simulation from "../data/hero-media.json";
     <p class="fine-print">{simulation.credit}</p>
 
   </section>
+  <section aria-labelledby="network-figure-heading"><h3 id="network-figure-heading">{network.title}</h3><p>{network.description}</p><p class="fine-print">{network.credit}</p></section>
   <section aria-labelledby="excerpts-heading"><h3 id="excerpts-heading">Network excerpts</h3>{media.clips.map(clip => <section><h4>{clip.title}</h4><p>{clip.description}</p></section>)}<p>Source: author-supplied TL_medium.mp4. These successive excerpts illustrate the same simulation setting; they are not independent trials.</p></section>
   <p class="fine-print">All clips are silent and show complete frames. They start automatically when visible unless reduced motion or data saving is enabled. Use the native controls on each player to stop motion; a manual pause is respected when you return to the videos. The two recordings illustrate different settings and are not a synchronized experimental comparison.</p>
 </section>

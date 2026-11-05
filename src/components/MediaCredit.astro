@@ -11,14 +11,14 @@ const network = site.figures.find((figure) => figure.id === "network")!;
   <section aria-labelledby="context-description-heading">
     <h3 id="context-description-heading">Waymo on city streets</h3>
     <p><a href={site.contextUrl}>{site.contextCredit}</a></p>
-    <div id="context-visual-description">
+    <div id="context-visual-notes">
       {site.contextDetails.map((paragraph) => <p>{paragraph}</p>)}
     </div>
     <p class="fine-print">{site.contextLicense}{" "}<a href={site.contextLicenseUrl}>Source and media-use information</a>.</p>
   </section>
   <section aria-labelledby="simulation-description-heading">
     <h3 id="simulation-description-heading">{simulation.title}</h3>
-    <div id="simulation-visual-description">
+    <div id="simulation-visual-notes">
       {simulation.description.map((paragraph) => <p>{paragraph}</p>)}
     </div>
     <p class="fine-print">{simulation.credit}</p>

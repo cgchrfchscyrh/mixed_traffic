@@ -69,7 +69,7 @@ async function scan(name) {
 }
 const expectedVideoIds = [
   "context-video",
-  "simulation-video",
+  "hero-sim-video",
   "mixed-network-video",
   "mixed-junction-video",
   "mixed-flow-video",
@@ -230,7 +230,7 @@ try {
       );
       for (const [section, ids] of [
         ["abstract", ["mixed-network-video"]],
-        ["results", ["simulation-video", "mixed-junction-video", "mixed-flow-video"]],
+        ["results", ["mixed-junction-video", "mixed-flow-video"]],
       ])
         check(
           JSON.stringify(
@@ -261,15 +261,22 @@ try {
         "Silent inline playback, original speed, native controls, and controllable loops",
       );
       check(
-        await page
-          .locator("#context-video")
-          .evaluate(
-            (v) =>
-              Math.round(v.getBoundingClientRect().width) ===
-                document.documentElement.clientWidth &&
-              v.getBoundingClientRect().height >= innerHeight * 0.6,
-          ),
-        "Opening video spans the full page width and most of the screen",
+        await page.evaluate(() => {
+          const box = (q) => document.querySelector(q).getBoundingClientRect();
+          const left = box("#context-video"), right = box("#hero-sim-video");
+          return left.left === 0 && Math.abs(left.right - right.left) <= 1 && Math.abs(right.right - document.documentElement.clientWidth) <= 1 && Math.abs(left.height - right.height) <= 1;
+        }),
+        "Opening shows Waymo and the simulation side by side at one height across the full width",
+      );
+      check(
+        (await page.locator(".site-header, .site-footer, details.media-details").count()) === 0 &&
+          (await page.locator(".citation-links a[href$='/accessibility/']").count()) === 1,
+        "Homepage has no top bar, footer, or media notes; credits stay linked",
+      );
+      check(
+        (await page.locator(".evidence-tile").count()) === 4 &&
+          (await page.locator(".evidence-tile a[href^='https://']").count()) === 4,
+        "Four evidence tiles each link to a source",
       );
       check(
         (await page.locator(".hero-credit").innerText()) === "Source: Waymo",
@@ -296,7 +303,7 @@ try {
         "Method bubbles flank the figure on wide screens",
       );
       check(
-        (await page.locator(".clip-bubble").count()) === 5,
+        (await page.locator(".clip-bubble").count()) === 4,
         "The study map and every research clip have a plain-language bubble",
       );
       check(
@@ -362,7 +369,7 @@ try {
           .split("/")
           .pop();
         const expectedClip =
-          id === "context-video" ? { duration: site.contextDuration } : id === "simulation-video" ? { duration: 22 } : clipByFile.get(sourceFile);
+          id === "context-video" ? { duration: site.contextDuration } : id === "hero-sim-video" ? { duration: 22 } : clipByFile.get(sourceFile);
         const expectedDuration = expectedClip?.duration;
         check(
           Number.isFinite(expectedDuration) &&
@@ -451,8 +458,8 @@ try {
               ".visual-overview > section > h2, .visual-overview > section > .section-heading > h2, .visual-overview > section > .vision-heading > h2",
             )
             .allTextContents(),
-        ) === JSON.stringify(["From one intersection to a road network", "How we trained it", "Simulation", "Citation"]),
-        "Story moves from the network to the method and the simulation",
+        ) === JSON.stringify(["Intersections are where crashes and delays build up, and robot vehicles already share the road.", "From one intersection to a road network", "How we trained it", "Simulation", "Citation"]),
+        "Story moves from the context to the network, the method, and the simulation",
       );
       await page
         .getByRole("button", { name: "Copy citation", exact: true })
@@ -463,14 +470,6 @@ try {
         "Keyboard citation copy",
       );
       check(await page.locator("figure:has(video) > figcaption, details.clip-description").count() === 0, "Video captions and per-player description blocks are removed");
-      const mediaNotes = page.locator("details.media-details");
-      await mediaNotes.locator(":scope > summary").focus();
-      await page.keyboard.press("Enter");
-      check(await mediaNotes.evaluate(el => el.open) && (await mediaNotes.innerText()).length > 1000, "Keyboard opens consolidated complete media notes");
-      await scan("Consolidated video descriptions desktop");
-      await mediaNotes.locator(":scope > summary").focus();
-      await page.keyboard.press("Space");
-      check(!(await mediaNotes.evaluate(el => el.open)), "Keyboard closes consolidated media notes");
 
     }
     if (route === "/paper/" || route === "/results/") {
@@ -495,8 +494,8 @@ try {
     }
     if (route === "/accessibility/")
       for (const id of [
-        "context-visual-description",
-        "simulation-visual-description",
+        "context-visual-notes",
+        "simulation-visual-notes",
       ])
         check(
           (await page.locator("#" + id).innerText()).length > 100,
@@ -600,7 +599,7 @@ try {
   );
   await n.goto(base + "/accessibility/");
   check(
-    (await n.locator("#simulation-visual-description").innerText()).length >
+    (await n.locator("#simulation-visual-notes").innerText()).length >
       100,
     "Complete video alternatives accessible without JavaScript",
   );

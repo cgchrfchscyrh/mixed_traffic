@@ -6,13 +6,22 @@ import Figure from "../components/Figure.astro";
 import PresentationFigure from "../components/PresentationFigure.astro";
 import ResearchClip from "../components/ResearchClip.astro";
 import Citation from "../components/Citation.astro";
-import MediaCredit from "../components/MediaCredit.astro";
-import simulation from "../data/hero-media.json";
-import { asset } from "../data/paths";
+import evidence from "../data/evidence.json";
 ---
-<Layout title={stories.mixed.headline}>
+<Layout title={stories.mixed.headline} bare>
   <Hero />
   <div class="container visual-overview">
+    <section class="section evidence-section" id="context" aria-labelledby="context-title">
+      <h2 id="context-title">Intersections are where crashes and delays build up, and robot vehicles already share the road.</h2>
+      <div class="evidence-grid">
+        {evidence.map(tile => <article class="evidence-tile">
+          <h3>{tile.label}</h3>
+          <p class="evidence-value">{tile.value}</p>
+          <p class="evidence-text">{tile.text}</p>
+          <a href={tile.source} aria-label={`Source for ${tile.label}: ${tile.sourceName}`}>Source ↗</a>
+        </article>)}
+      </div>
+    </section>
     <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
       <h2 id="abstract-title">From one intersection to a road network</h2>
       <div class="media-pair wide-media">
@@ -41,16 +50,6 @@ import { asset } from "../data/paths";
     </section>
     <section class="section" id="results" aria-labelledby="results-title">
       <h2 id="results-title" class="sr-only">Simulation</h2>
-      <div class="clip-with-bubble simulation-feature">
-        <figure class="research-clip">
-          <video id="simulation-video" data-playback-group="research" controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(simulation.poster)} width={simulation.width} height={simulation.height} aria-label={simulation.title} aria-describedby="simulation-visual-description">
-            <source src={asset(simulation.video)} type="video/mp4" />
-            <track kind="descriptions" src={asset(simulation.track)} srclang="en" label="English visual descriptions" />
-            <a href={asset(simulation.video)}>View the silent traffic simulation video.</a>
-          </video>
-        </figure>
-        <p class="clip-bubble"><strong>Junction to junction.</strong> The view follows traffic along the network in SUMO.</p>
-      </div>
       <div class="media-pair wide-media">
         <div class="clip-with-bubble">
           <ResearchClip id="junction" />
@@ -63,6 +62,5 @@ import { asset } from "../data/paths";
       </div>
     </section>
     <Citation />
-    <details class="reading-details media-details" id="media-descriptions"><summary>Video descriptions & sources</summary><MediaCredit /></details>
   </div>
 </Layout>

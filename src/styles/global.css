@@ -1752,3 +1752,34 @@ summary:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
     grid-template-areas: "figure" "robot" "human" "observe" "policy" "action";
   }
 }
+
+/* Opening pair: Waymo on the left, our simulation on the right; the title sits below. */
+.hero-film.hero-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; min-height: 0; }
+.hero-film.hero-pair::after { display: none; }
+.hero-pair figure { position: relative; margin: 0; min-width: 0; }
+.visual-hero .hero-pair video, .hero .hero-pair video { position: static; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 0; }
+.hero-pair .hero-credit { top: 12px; right: 12px; bottom: auto; }
+.hero-publication h1 { max-width: 34ch; margin: 0 auto 14px; color: #202020; font-size: clamp(24px, 2.3vw, 30px); font-weight: 600; line-height: 1.25; letter-spacing: -.02em; }
+
+/* Evidence tiles. */
+.evidence-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.evidence-tile { display: flex; flex-direction: column; min-width: 0; padding: 16px; border: 1px solid #d0d0d0; border-radius: 8px; background: #fff; }
+.evidence-tile h3 { margin: 0 0 6px; color: #454545; font-size: 15px; font-weight: 500; }
+.evidence-tile .evidence-value { margin: 0 0 6px; color: #171717; font-size: 28px; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; }
+.evidence-tile .evidence-text { flex: 1; margin: 0 0 10px; color: #333; font-size: 15px; line-height: 1.45; }
+.evidence-tile a { width: fit-content; color: #333; font-size: 14px; text-decoration: underline; }
+.visual-overview .evidence-section.section { padding-block: 32px 0; border: 0; }
+.visual-overview .evidence-section h2 { text-align: center; font-size: clamp(21px, 1.9vw, 24px); line-height: 1.25; margin-bottom: 20px; }
+
+/* Credits line in the citation, now that the homepage has no footer. */
+.visual-overview .citation > p.citation-links { margin: 14px auto 0; color: #454545; font-size: 14px; }
+.citation-links a { color: #202020; text-decoration: underline; }
+@media (max-width: 900px) {
+  .evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .hero-film.hero-pair { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 340px) {
+  .evidence-grid { grid-template-columns: minmax(0, 1fr); }
+}

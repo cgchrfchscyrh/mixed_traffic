@@ -7,8 +7,9 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  bare?: boolean;
 }
-const { title = site.title, description = site.description, noindex = false } = Astro.props;
+const { title = site.title, description = site.description, noindex = false, bare = false } = Astro.props;
 const isNotFound = /\/404(?:\/|\.html)?$/.test(Astro.url.pathname);
 const canonical =
   Astro.site && !isNotFound
@@ -62,7 +63,7 @@ const nav = [{ name: "Question", id: "abstract" }, { name: "Approach", id: "meth
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <header class="site-header">
+    {!bare && <header class="site-header">
       <a
         class="wordmark"
         href={asset()}
@@ -86,9 +87,9 @@ const nav = [{ name: "Question", id: "abstract" }, { name: "Approach", id: "meth
           ))
         }
       </nav>
-    </header>
+    </header>}
     <main id="main" tabindex="-1"><slot /></main>
-    <footer class="site-footer">
+    {!bare && <footer class="site-footer">
       <div class="footer-top">
         <span class="wordmark">{site.wordmark}</span><a href="#main"
           >Back to top ↑</a
@@ -105,6 +106,6 @@ const nav = [{ name: "Question", id: "abstract" }, { name: "Approach", id: "meth
           >Academic Project Astro Template</a
         > by Roman Hauksson.
       </p>
-    </footer>
+    </footer>}
   </body>
 </html>

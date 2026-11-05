@@ -1,5 +1,9 @@
 # Accessibility review — 18 October 2026
 
+## Opening pair and evidence tiles — 5 November 2026
+
+The opening now shows Waymo's footage beside our SUMO simulation, at one height, with the title below. Four text-only evidence tiles with named source links cover intersection safety, congestion, and driverless miles. At the author's request, the homepage has no top bar or footer, and the collapsed media notes were removed; full video descriptions and credits remain on the accessibility page, linked from the citation, and every video keeps its text alternative for screen readers. The full simulation video now appears only in the opening; its excerpts remain in the results.
+
 ## Opening video and shorter text — 4 November 2026
 
 The homepage now opens with the Waymo video at full width, with the title on a dark gradient and the credit Waymo requires shown on the video. Narrow screens crop the sides of the frame. The vision diagram and the longer explanations were removed at the author's request, and short bubbles now explain the method figure, the study map, and each clip. The study map keeps its image alternative, and its full description moved to the media notes. Statements about what the footage does not show remain in the media notes, not beside the videos. The result charts and tables stay in the paper. Existing PDF and screen-reader limitations still apply.

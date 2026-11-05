@@ -1,79 +1,17 @@
 {
-  "date": "2026-11-04T15:40:50.631Z",
+  "date": "2026-11-05T22:07:53.338Z",
   "project": "mixed_traffic",
   "target": "WCAG 2.1 A/AA",
   "engine": "axe-core via Playwright",
   "scans": [
     {
-      "name": "Consolidated video descriptions desktop",
-      "passes": 26,
-      "violations": [],
-      "incomplete": [
-        {
-          "id": "color-contrast",
-          "nodes": [
-            [
-              ".display-line:nth-child(1)"
-            ],
-            [
-              ".display-line:nth-child(2)"
-            ],
-            [
-              ".hero-credit"
-            ],
-            [
-              ".method-bubble-robot"
-            ],
-            [
-              ".method-bubble-human"
-            ],
-            [
-              ".method-bubble-observe"
-            ],
-            [
-              ".method-bubble-policy"
-            ],
-            [
-              ".method-bubble-action"
-            ]
-          ]
-        },
-        {
-          "id": "video-caption",
-          "nodes": [
-            [
-              "#context-video"
-            ],
-            [
-              "#mixed-network-video"
-            ],
-            [
-              "#simulation-video"
-            ],
-            [
-              "#mixed-junction-video"
-            ],
-            [
-              "#mixed-flow-video"
-            ]
-          ]
-        }
-      ]
-    },
-    {
       "name": "/ desktop",
-      "passes": 26,
+      "passes": 25,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
-            [
-              ".display-line:nth-child(1)"
-            ],
-            [
-              ".display-line:nth-child(2)"
-            ],
             [
               ".hero-credit"
             ],
@@ -101,10 +39,10 @@
               "#context-video"
             ],
             [
-              "#mixed-network-video"
+              "#hero-sim-video"
             ],
             [
-              "#simulation-video"
+              "#mixed-network-video"
             ],
             [
               "#mixed-junction-video"
@@ -118,18 +56,12 @@
     },
     {
       "name": "/ mobile",
-      "passes": 26,
+      "passes": 25,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
-            [
-              ".display-line:nth-child(1)"
-            ],
-            [
-              ".display-line:nth-child(2)"
-            ],
             [
               ".hero-credit"
             ]
@@ -142,10 +74,10 @@
               "#context-video"
             ],
             [
-              "#mixed-network-video"
+              "#hero-sim-video"
             ],
             [
-              "#simulation-video"
+              "#mixed-network-video"
             ],
             [
               "#mixed-junction-video"
@@ -229,7 +161,9 @@
     "results: the intended short excerpts accompany the research section",
     "All expected video players are available",
     "Silent inline playback, original speed, native controls, and controllable loops",
-    "Opening video spans the full page width and most of the screen",
+    "Opening shows Waymo and the simulation side by side at one height across the full width",
+    "Homepage has no top bar, footer, or media notes; credits stay linked",
+    "Four evidence tiles each link to a source",
     "The opening video shows the credit Waymo requires",
     "Method bubbles flank the figure on wide screens",
     "The study map and every research clip have a plain-language bubble",
@@ -239,7 +173,6 @@
     "Native video playback controls are reachable through Tab",
     "Space on the native player pauses the video",
     "Research excerpt plays silently when visible: mixed-network-video",
-    "Research excerpt plays silently when visible: simulation-video",
     "Research excerpt plays silently when visible: mixed-junction-video",
     "Research excerpt plays silently when visible: mixed-flow-video",
     "Offscreen title videos pause automatically",
@@ -257,16 +190,16 @@
     "context-video: poster asset responds successfully",
     "context-video: local description asset is declared",
     "context-video: description asset responds successfully",
-    "simulation-video: the selected duration matches the reviewed media manifest",
-    "simulation-video: selected excerpt duration and timed description load correctly",
-    "simulation-video: a complete text alternative is programmatically associated",
-    "simulation-video: description cues use valid times within the clip",
-    "simulation-video: local video asset is declared",
-    "simulation-video: video asset responds successfully",
-    "simulation-video: local poster asset is declared",
-    "simulation-video: poster asset responds successfully",
-    "simulation-video: local description asset is declared",
-    "simulation-video: description asset responds successfully",
+    "hero-sim-video: the selected duration matches the reviewed media manifest",
+    "hero-sim-video: selected excerpt duration and timed description load correctly",
+    "hero-sim-video: a complete text alternative is programmatically associated",
+    "hero-sim-video: description cues use valid times within the clip",
+    "hero-sim-video: local video asset is declared",
+    "hero-sim-video: video asset responds successfully",
+    "hero-sim-video: local poster asset is declared",
+    "hero-sim-video: poster asset responds successfully",
+    "hero-sim-video: local description asset is declared",
+    "hero-sim-video: description asset responds successfully",
     "mixed-network-video: the selected duration matches the reviewed media manifest",
     "mixed-network-video: selected excerpt duration and timed description load correctly",
     "mixed-network-video: a complete text alternative is programmatically associated",
@@ -297,11 +230,9 @@
     "mixed-flow-video: poster asset responds successfully",
     "mixed-flow-video: local description asset is declared",
     "mixed-flow-video: description asset responds successfully",
-    "Story moves from the network to the method and the simulation",
+    "Story moves from the context to the network, the method, and the simulation",
     "Keyboard citation copy",
     "Video captions and per-player description blocks are removed",
-    "Keyboard opens consolidated complete media notes",
-    "Keyboard closes consolidated media notes",
     "/: no horizontal page overflow at 320px",
     "/: no horizontal page overflow at 768px",
     "/: 320px text-spacing reflow",
@@ -357,8 +288,8 @@
     "/accessibility/: skip link is first keyboard stop",
     "/accessibility/: visible focus",
     "/accessibility/: skip link targets main",
-    "context-visual-description: complete visual alternative available",
-    "simulation-visual-description: complete visual alternative available",
+    "context-visual-notes: complete visual alternative available",
+    "simulation-visual-notes: complete visual alternative available",
     "/accessibility/: no horizontal page overflow at 320px",
     "/accessibility/: no horizontal page overflow at 768px",
     "/accessibility/: 320px text-spacing reflow",

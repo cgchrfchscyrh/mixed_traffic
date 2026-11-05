@@ -1,17 +1,13 @@
 {
-  "title": "SUMO network simulation",
-  "caption": "Vehicle movement across connected intersections.",
-  "video": "media/mixed-traffic-simulation.mp4",
-  "poster": "media/mixed-traffic-simulation.jpg",
-  "track": "media/mixed-traffic-simulation-descriptions.vtt",
-  "duration": 22,
-  "width": 1920,
-  "height": 1080,
+  "title": "City traffic",
+  "video": "media/city-traffic-opening.mp4",
+  "poster": "media/city-traffic-opening.jpg",
+  "track": "media/city-traffic-opening-descriptions.vtt",
+  "duration": 10,
+  "width": 1600,
+  "height": 934,
   "description": [
-    "A 22-second continuous excerpt of a SUMO road-network screen recording. The top-down view shows multilane roads, turning connections, and several linked intersections on a white background. Small vehicle symbols travel along lanes, form queues on approaches, and pass through intersections.",
-    "The recorded view pans and zooms between junctions, including closer views of traffic at two four-way intersections, then moves along connecting roads. The SUMO toolbar, simulation clock, status area, and desktop taskbar remain visible in the complete frame. The title bar identifies colorado_medium.sumocfg.",
-    "The excerpt runs from 00:24 to 00:46 of the supplied TL_medium.mp4 recording. It retains the original recording speed, which should not be interpreted as real-world vehicle speed. The source audio is digitally silent and has been removed from this web version.",
-    "This recording illustrates simulated traffic movements. The controller settings, robot-vehicle share, and U/S configuration are not identified in the selected footage. Quantitative comparisons are provided in the published paper. The Waymo clip separately illustrates real-world autonomous driving."
+    "An aerial view of a rendered city at dusk, with high-rise towers on the horizon and dense blocks below. A large highway interchange with elevated ramps crosses the foreground. Hundreds of small green and blue lights mark vehicles moving along the highways and city streets. The camera drifts slowly over the city."
   ],
-  "credit": "Source: author-supplied TL_medium.mp4. A continuous excerpt; original recording preserved. No video frames have been cropped from the web excerpt."
+  "credit": "Proposal defense presentation, slide 14. Animated GIF converted to silent MP4 and scaled to 1600 pixels wide."
 }

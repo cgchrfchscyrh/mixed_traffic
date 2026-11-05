@@ -1,33 +1,23 @@
 ---
-import stories from "../data/vision-stories.json";
 import site from "../data/site.json";
-import simulation from "../data/hero-media.json";
+import opening from "../data/hero-media.json";
 import MediaControls from "./MediaControls.astro";
 import { asset } from "../data/paths";
 ---
 
 <section class="hero visual-hero hero-film-section" aria-labelledby="paper-title">
-  <div class="hero-film hero-pair" id="hero-stage">
+  <div class="hero-film hero-single" id="hero-stage">
     <figure>
-      <video id="context-video" data-playback-group="hero" controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(site.contextPoster)} width="1280" height="720" aria-label={site.contextTitle} aria-describedby="context-visual-description">
-        <source src={asset(site.contextVideo)} type="video/mp4" />
-        <track kind="descriptions" src={asset(site.contextTrack)} srclang="en" label="English visual descriptions" />
-        <a href={asset(site.contextVideo)}>View the silent Waymo context video.</a>
-      </video>
-      <p class="hero-credit">Source: Waymo</p>
-    </figure>
-    <figure>
-      <video id="hero-sim-video" data-playback-group="hero" controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(simulation.poster)} width={simulation.width} height={simulation.height} aria-label={simulation.title} aria-describedby="simulation-visual-description">
-        <source src={asset(simulation.video)} type="video/mp4" />
-        <track kind="descriptions" src={asset(simulation.track)} srclang="en" label="English visual descriptions" />
-        <a href={asset(simulation.video)}>View the silent traffic simulation video.</a>
+      <video id="opening-video" data-playback-group="hero" controls controlslist="nodownload" muted playsinline loop preload="metadata" poster={asset(opening.poster)} width={opening.width} height={opening.height} aria-label={opening.title} aria-describedby="opening-visual-description">
+        <source src={asset(opening.video)} type="video/mp4" />
+        <track kind="descriptions" src={asset(opening.track)} srclang="en" label="English visual descriptions" />
+        <a href={asset(opening.video)}>View the silent city traffic video.</a>
       </video>
     </figure>
   </div>
-  <p class="sr-only" id="context-visual-description">{site.contextDetails.join(" ")}</p>
-  <p class="sr-only" id="simulation-visual-description">{simulation.description.join(" ")}</p>
+  <p class="sr-only" id="opening-visual-description">{opening.description.join(" ")}</p>
   <div class="hero-publication">
-    <h1 id="paper-title" class="project-display-title">{stories.mixed.headline}</h1>
+    <h1 id="paper-title" class="project-display-title">{site.title}</h1>
     <ul class="authors">
       {site.authors.map((author) => <li><a href={`mailto:${author.email}`}>{author.name}</a></li>)}
     </ul>

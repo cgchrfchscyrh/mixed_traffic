@@ -1,64 +1,59 @@
 ---
-import stories from "../data/vision-stories.json";
+import site from "../data/site.json";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import Figure from "../components/Figure.astro";
-import PresentationFigure from "../components/PresentationFigure.astro";
-import ResearchClip from "../components/ResearchClip.astro";
+import DeckFigure from "../components/DeckFigure.astro";
 import Citation from "../components/Citation.astro";
-import evidence from "../data/evidence.json";
+import { asset } from "../data/paths";
 ---
-<Layout title={stories.mixed.headline} bare>
+<Layout title={site.title} bare>
   <Hero />
   <div class="container visual-overview">
-    <section class="section evidence-section" id="context" aria-labelledby="context-title">
-      <h2 id="context-title">Intersections are where crashes and delays build up, and robot vehicles already share the road.</h2>
-      <div class="evidence-grid">
-        {evidence.map(tile => <article class="evidence-tile">
-          <h3>{tile.label}</h3>
-          <p class="evidence-value">{tile.value}</p>
-          <p class="evidence-text">{tile.text}</p>
-          <a href={tile.source} aria-label={`Source for ${tile.label}: ${tile.sourceName}`}>Source ↗</a>
-        </article>)}
-      </div>
+    <section class="section deck-section" id="background" aria-labelledby="background-title">
+      <h2 id="background-title">Background</h2>
+      <p class="deck-lead">Traffic congestion costs U.S. drivers billions of dollars a year. Autonomous driving offers a way to ease it: reinforcement learning (RL) can reduce collisions and move more vehicles through intersections.</p>
+      <figure class="rv-spectrum">
+        <div class="rv-ends">
+          <DeckFigure id="human-vehicle" />
+          <DeckFigure id="robot-vehicle" />
+        </div>
+        <div class="rv-bar" aria-hidden="true"></div>
+        <figcaption class="rv-labels">
+          <span><strong>Human traffic</strong>0% robot vehicles (RVs)</span>
+          <span class="rv-mixed"><strong>Mixed traffic</strong></span>
+          <span><strong>Robot traffic</strong>100% RVs</span>
+        </figcaption>
+      </figure>
     </section>
-    <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title">
-      <h2 id="abstract-title">From one intersection to a road network</h2>
-      <div class="media-pair wide-media">
-        <div class="clip-with-bubble">
-          <Figure id="network" bare />
-          <p class="clip-bubble"><strong>The study network.</strong> 14 intersections in Colorado Springs, simulated in SUMO.</p>
-        </div>
-        <div class="clip-with-bubble">
-          <ResearchClip id="network" />
-          <p class="clip-bubble"><strong>Connected roads.</strong> Vehicles move between neighboring intersections.</p>
+
+    <section class="section deck-section" id="problem" aria-labelledby="problem-title">
+      <h2 id="problem-title">Problem</h2>
+      <p class="deck-lead">Most mixed-traffic studies cover small or isolated intersections. It is still unclear how human-driven and robot vehicles behave together across a large network, and how to move that network from traffic signals to autonomous intersection management.</p>
+    </section>
+
+    <section class="section deck-section" id="method" aria-labelledby="method-title">
+      <h2 id="method-title">Methodology</h2>
+      <p class="deck-lead">We study a 14-intersection road network in Colorado Springs, Colorado, where human-driven and robot vehicles share the road, and compare our mixed-control framework with traffic-signal control.</p>
+      <div class="network-compare wide-media">
+        <DeckFigure id="prior-work" tag="Prior work" />
+        <span class="compare-arrow" aria-hidden="true">⇄</span>
+        <div class="network-ours">
+          <DeckFigure id="network" tag="Ours" />
+          <div class="tool-logos"><span>Built with</span><img src={asset("figures/deck/google-earth.webp")} width="480" height="112" alt="Google Earth" loading="lazy" decoding="async" /><img src={asset("figures/deck/sumo.webp")} width="200" height="200" alt="SUMO" loading="lazy" decoding="async" /></div>
         </div>
       </div>
-    </section>
-    <section class="section" id="method" aria-labelledby="method-title">
-      <h2 id="method-title">How we trained it</h2>
-      <div class="method-map wide-media">
-        <div class="method-map-figure"><PresentationFigure id="method" concise /></div>
-        <h3 class="sr-only">What the figure shows</h3>
-        <p class="method-bubble method-bubble-robot"><strong>Robot vehicles.</strong> Near an intersection, they switch to the learned policy.</p>
-        <p class="method-bubble method-bubble-human"><strong>Human vehicles.</strong> They follow the Intelligent Driver Model. So do robot vehicles away from intersections.</p>
-        <p class="method-bubble method-bubble-observe"><strong>What each robot sees.</strong> Queue lengths, waiting times, and occupancy at its intersection.</p>
-        <p class="method-bubble method-bubble-policy"><strong>One shared policy.</strong> Rainbow DQN trains it. Each vehicle decides on its own.</p>
-        <p class="method-bubble method-bubble-action"><strong>Stop or Go.</strong> Within 30 m of an intersection, the policy picks one of the two.</p>
+      <div class="deck-step">
+        <h3>Robot vehicles choose Stop or Go</h3>
+        <p>Near an intersection, each robot vehicle switches from the Intelligent Driver Model, which also drives the human vehicles, to an RL policy that reads local traffic.</p>
       </div>
-      <div class="intersection-grid wide-media"><PresentationFigure id="signalized" concise /><PresentationFigure id="unsignalized" concise /></div>
+      <div class="method-slide"><DeckFigure id="method" /></div>
     </section>
-    <section class="section" id="results" aria-labelledby="results-title">
-      <h2 id="results-title" class="sr-only">Simulation</h2>
-      <div class="media-pair wide-media">
-        <div class="clip-with-bubble">
-          <ResearchClip id="junction" />
-          <p class="clip-bubble"><strong>At the intersection.</strong> Vehicles pass through a four-way junction.</p>
-        </div>
-        <div class="clip-with-bubble">
-          <ResearchClip id="flow" />
-          <p class="clip-bubble"><strong>Across the network.</strong> Vehicles move and queue on the roads between junctions.</p>
-        </div>
+
+    <section class="section deck-section" id="experiment" aria-label="Experiment">
+      <p class="deck-lead">We move the network from signal control to unsignalized control step by step: robot vehicles run 2, 4, 6, 8, or 10 of the 14 intersections, and signals run the rest. Robot vehicles make up 40% to 80% of traffic, and the policy is trained with Rainbow DQN.</p>
+      <div class="media-pair wide-media intersection-pair">
+        <DeckFigure id="signalized" tag="Signalized (S)" />
+        <DeckFigure id="unsignalized" tag="Unsignalized (U)" />
       </div>
     </section>
     <Citation />

@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/ibm-plex-sans";
 import "../styles/global.css";
+import opening from "../data/hero-media.json";
 import site from "../data/site.json";
 import { asset } from "../data/paths";
 interface Props {
@@ -46,9 +47,9 @@ const nav = [{ name: "Question", id: "abstract" }, { name: "Approach", id: "meth
             <meta property="og:url" content={canonical} />
             <meta
               property="og:image"
-              content={new URL(asset(site.contextPoster), Astro.site).href}
+              content={new URL(asset(opening.poster), Astro.site).href}
             />
-            <meta property="og:image:alt" content={site.contextDescription} />
+            <meta property="og:image:alt" content={opening.description[0]} />
           </>
         </>
       )

@@ -1,0 +1,11 @@
+---
+import deck from "../data/deck.json";
+import { asset } from "../data/paths";
+interface Props { id: string; tag?: string; }
+const fig = deck.figures.find((item) => item.id === Astro.props.id)!;
+const { tag } = Astro.props;
+---
+<figure class="deck-figure" id={`deck-${fig.id}`}>
+  <img src={asset(fig.file)} width={fig.width} height={fig.height} alt={fig.alt} loading="lazy" decoding="async" />
+  {tag && <figcaption class="media-tag">{tag}</figcaption>}
+</figure>

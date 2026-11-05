@@ -5,13 +5,7 @@ import assert from "node:assert/strict";
 const site = JSON.parse(
   await readFile(new URL("../src/data/site.json", import.meta.url), "utf8"),
 );
-const clipManifest = JSON.parse(
-  await readFile(
-    new URL("../public/media/mixed-clips.json", import.meta.url),
-    "utf8",
-  ),
-);
-const clipByFile = new Map(clipManifest.clips.map((clip) => [clip.file, clip]));
+const clipByFile = new Map();
 const base = (
   process.env.TEST_URL || "http://127.0.0.1:4473/mixed_traffic"
 ).replace(/\/$/, "");
@@ -68,11 +62,7 @@ async function scan(name) {
   });
 }
 const expectedVideoIds = [
-  "context-video",
-  "hero-sim-video",
-  "mixed-network-video",
-  "mixed-junction-video",
-  "mixed-flow-video",
+  "opening-video",
 ];
 const paperUrl = site.paperUrl;
 const paused = (target) =>
@@ -218,7 +208,7 @@ try {
             .locator("video")
             .evaluateAll((videos) => videos.map((v) => v.id).sort()),
         ) === JSON.stringify([...expectedVideoIds].sort()),
-        "Five expected context and simulation excerpts are distributed across the page",
+        "Only the opening city traffic video is on the page",
       );
       check(
         (await page.locator(".hero-publication .actions a").count()) === 1 &&
@@ -228,19 +218,6 @@ try {
             .getAttribute("href")) === paperUrl,
         "The hero has only the Paper button linked to the published article",
       );
-      for (const [section, ids] of [
-        ["abstract", ["mixed-network-video"]],
-        ["results", ["mixed-junction-video", "mixed-flow-video"]],
-      ])
-        check(
-          JSON.stringify(
-            await page
-              .locator("#" + section + " video")
-              .evaluateAll((videos) => videos.map((v) => v.id)),
-          ) === JSON.stringify(ids),
-          section +
-            ": the intended short excerpts accompany the research section",
-        );
       check(
         (await page.locator("video").count()) === expectedVideoIds.length,
         "All expected video players are available",
@@ -263,10 +240,10 @@ try {
       check(
         await page.evaluate(() => {
           const box = (q) => document.querySelector(q).getBoundingClientRect();
-          const left = box("#context-video"), right = box("#hero-sim-video");
-          return left.left === 0 && Math.abs(left.right - right.left) <= 1 && Math.abs(right.right - document.documentElement.clientWidth) <= 1 && Math.abs(left.height - right.height) <= 1;
+          const v = box("#opening-video");
+          return v.left === 0 && Math.abs(v.right - document.documentElement.clientWidth) <= 1 && v.height > 150;
         }),
-        "Opening shows Waymo and the simulation side by side at one height across the full width",
+        "Opening city traffic video spans the full width",
       );
       check(
         (await page.locator(".site-header, .site-footer, details.media-details").count()) === 0 &&
@@ -274,43 +251,21 @@ try {
         "Homepage has no top bar, footer, or media notes; credits stay linked",
       );
       check(
-        (await page.locator(".evidence-tile").count()) === 4 &&
-          (await page.locator(".evidence-tile a[href^='https://']").count()) === 4,
-        "Four evidence tiles each link to a source",
+        (await page.locator(".evidence-tile, .hero-credit, #results, #conclusion, #metrics").count()) === 0 &&
+          (await page.locator("h1").innerText()) === site.title,
+        "No data tiles, results, or conclusion; the title is the paper title",
       );
       check(
-        (await page.locator(".hero-credit").innerText()) === "Source: Waymo",
-        "The opening video shows the credit Waymo requires",
-      );
-      check(
-        (await page.locator(".method-bubble").count()) === 5 &&
-          (await page.evaluate(() => {
-            const figure = document
-              .querySelector("#presentation-method img")
-              .getBoundingClientRect();
-            const box = (name) =>
-              document
-                .querySelector(`.method-bubble-${name}`)
-                .getBoundingClientRect();
-            return (
-              box("robot").right <= figure.left &&
-              box("human").right <= figure.left &&
-              box("observe").left >= figure.right &&
-              box("policy").left >= figure.right &&
-              box("action").left >= figure.right
-            );
-          })),
-        "Method bubbles flank the figure on wide screens",
-      );
-      check(
-        (await page.locator(".clip-bubble").count()) === 4,
-        "The study map and every research clip have a plain-language bubble",
+        (await page.locator("#background .rv-ends img").count()) === 2 &&
+          (await page.locator("#method .network-compare img").count()) === 4 &&
+          (await page.locator("#experiment .deck-figure img").count()) === 2,
+        "Deck images appear in the background, methodology, and experiment",
       );
       check(
         await page
-          .locator("#presentation-method img")
+          .locator("#deck-method img")
           .evaluate((img) => img.getBoundingClientRect().width >= 700),
-        "Method figure stays large beside its bubbles at desktop width",
+        "Method figure stays large at desktop width",
       );
       check(
         (await page.locator(".citation h2").evaluate((h) => parseFloat(getComputedStyle(h).fontSize))) <= 22,
@@ -320,7 +275,7 @@ try {
         (await page.locator("#vision, .scope-note, .section-deck, #figure-network figcaption").count()) === 0,
         "The vision diagram and removed explanations stay absent",
       );
-      const heroVideo = page.locator("#context-video");
+      const heroVideo = page.locator("#opening-video");
       await tabToVideo(page, heroVideo);
       check(true, "Native video playback controls are reachable through Tab");
       await page.keyboard.press("Space");
@@ -356,7 +311,7 @@ try {
         v.currentTime = v.duration - 0.15;
       });
       await page.waitForFunction(() => {
-        const v = document.querySelector("#context-video");
+        const v = document.querySelector("#opening-video");
         return !v.paused && !v.seeking && v.currentTime < 1;
       });
       check(true, "Video looping preserves playback and remains pausable");
@@ -369,7 +324,7 @@ try {
           .split("/")
           .pop();
         const expectedClip =
-          id === "context-video" ? { duration: site.contextDuration } : id === "hero-sim-video" ? { duration: 22 } : clipByFile.get(sourceFile);
+          id === "opening-video" ? { duration: 10 } : clipByFile.get(sourceFile);
         const expectedDuration = expectedClip?.duration;
         check(
           Number.isFinite(expectedDuration) &&
@@ -458,8 +413,8 @@ try {
               ".visual-overview > section > h2, .visual-overview > section > .section-heading > h2, .visual-overview > section > .vision-heading > h2",
             )
             .allTextContents(),
-        ) === JSON.stringify(["Intersections are where crashes and delays build up, and robot vehicles already share the road.", "From one intersection to a road network", "How we trained it", "Simulation", "Citation"]),
-        "Story moves from the context to the network, the method, and the simulation",
+        ) === JSON.stringify(["Background", "Problem", "Methodology", "Citation"]),
+        "Story follows the proposal deck: background, problem, methodology, then the experiment",
       );
       await page
         .getByRole("button", { name: "Copy citation", exact: true })
@@ -484,7 +439,7 @@ try {
           .locator(
             'main a[href="' +
               base.replace(/^https?:\/\/[^/]+/, "") +
-              (route === "/paper/" ? "/#method" : "/#results") +
+              (route === "/paper/" ? "/#method" : "/#experiment") +
               '"]',
           )
           .count()) > 0,
@@ -494,8 +449,7 @@ try {
     }
     if (route === "/accessibility/")
       for (const id of [
-        "context-visual-notes",
-        "simulation-visual-notes",
+        "opening-visual-notes",
       ])
         check(
           (await page.locator("#" + id).innerText()).length > 100,
@@ -547,11 +501,11 @@ try {
         ),
       preference + ": no automatic motion on entry",
     );
-    await p.locator("#mixed-flow-video").scrollIntoViewIfNeeded();
+    await p.locator("#experiment").scrollIntoViewIfNeeded();
     await p.waitForTimeout(200);
     check(await paused(p), preference + ": scrolling does not start media");
     await atTop(p);
-    const video = p.locator("#context-video");
+    const video = p.locator("#opening-video");
     await tabToVideo(p, video);
     await p.keyboard.press("Space");
     await waitForPlayback(video, false);
@@ -599,7 +553,7 @@ try {
   );
   await n.goto(base + "/accessibility/");
   check(
-    (await n.locator("#simulation-visual-notes").innerText()).length >
+    (await n.locator("#opening-visual-notes").innerText()).length >
       100,
     "Complete video alternatives accessible without JavaScript",
   );
@@ -623,7 +577,7 @@ try {
         (v) => !v.paused,
       ),
     );
-    const bufferingVideo = buffering.locator("#context-video");
+    const bufferingVideo = buffering.locator("#opening-video");
     await tabToVideo(buffering, bufferingVideo);
     await buffering.keyboard.press("Space");
     await waitForPlayback(bufferingVideo, true);

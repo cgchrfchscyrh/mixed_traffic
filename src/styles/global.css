@@ -1783,3 +1783,48 @@ summary:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
 @media (max-width: 340px) {
   .evidence-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Single opening video: the slide-14 city traffic rendering across the full width. */
+.hero-film.hero-single { display: block; min-height: 0; }
+.hero-film.hero-single::after { display: none; }
+.hero-single figure { margin: 0; }
+.visual-hero .hero-single video, .hero .hero-single video { position: static; display: block; width: 100%; height: auto; max-height: calc(100svh - 120px); aspect-ratio: 1600 / 934; object-fit: cover; border-radius: 0; }
+.hero-publication h1 { max-width: 46ch; }
+
+/* Deck narrative: Background → Problem → Methodology → Experiment. */
+.visual-overview .deck-section { border: 0; }
+.visual-overview .deck-section > h2 { text-align: center; font-size: clamp(24px, 2.4vw, 32px); margin-bottom: 12px; }
+.deck-lead { max-width: 780px; margin: 0 auto 28px; color: #333; font-size: 17px; line-height: 1.6; text-align: center; }
+.deck-figure { position: relative; margin: 0; min-width: 0; overflow: hidden; border-radius: 8px; }
+.deck-figure img { display: block; width: 100%; height: auto; }
+.media-tag { position: absolute; z-index: 1; top: 12px; left: 12px; margin: 0; padding: 3px 9px; border-radius: 4px; background: rgb(0 0 0 / 74%); color: #fff; font-size: 14px; font-weight: 500; line-height: 1.4; pointer-events: none; }
+.rv-spectrum { max-width: 980px; margin: 0 auto; }
+.rv-ends { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.rv-ends .deck-figure { width: min(34%, 300px); border-radius: 6px; }
+.rv-bar { height: 12px; margin: 18px 6% 12px; border-radius: 6px; background: linear-gradient(90deg, #c62828, #7a5a1e 50%, #2e7d32); clip-path: polygon(0 25%, 97% 25%, 97% 0, 100% 50%, 97% 100%, 97% 75%, 0 75%); }
+.rv-labels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; color: #454545; font-size: 15px; line-height: 1.45; }
+.rv-labels span { display: grid; }
+.rv-labels strong { color: #171717; font-size: 17px; font-weight: 600; }
+.rv-labels span:nth-child(2) { text-align: center; }
+.rv-labels span:last-child { text-align: right; }
+.network-compare { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.75fr); align-items: center; gap: 16px; max-width: 1400px; }
+.compare-arrow { color: #333; font-size: 40px; line-height: 1; }
+.network-ours { display: grid; gap: 10px; min-width: 0; }
+.tool-logos { display: flex; justify-content: center; align-items: center; gap: 18px; margin: 0; color: #454545; font-size: 14px; }
+.tool-logos img { width: auto; height: 32px; }
+.deck-step { max-width: 780px; margin: 48px auto 16px; text-align: center; }
+.deck-step h3 { margin: 0 0 6px; font-size: 20px; }
+.deck-step p { margin: 0; color: #333; font-size: 17px; line-height: 1.6; }
+.method-slide { max-width: 760px; margin: 0 auto; }
+.intersection-pair .deck-figure { aspect-ratio: 1.8; background: #111; }
+.intersection-pair .deck-figure img { height: 100%; object-fit: cover; }
+@media (max-width: 760px) {
+  .network-compare { grid-template-columns: minmax(0, 1fr); }
+  .compare-arrow { justify-self: center; transform: rotate(90deg); }
+  .rv-ends .deck-figure { width: 46%; }
+  .prior-work-mobile, #deck-prior-work { max-width: 320px; justify-self: center; }
+  .rv-labels, .deck-lead, .deck-step p { font-size: 14px; }
+  .rv-labels strong { font-size: 15px; }
+  .deck-lead, .deck-step p { font-size: 16px; }
+  .media-tag { top: 8px; font-size: 13px; }
+}

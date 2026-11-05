@@ -1,30 +1,20 @@
 ---
-import media from "../../public/media/mixed-clips.json";
-import site from "../data/site.json";
-import simulation from "../data/hero-media.json";
-const network = site.figures.find((figure) => figure.id === "network")!;
+import opening from "../data/hero-media.json";
+import deck from "../data/deck.json";
 ---
 
 <section id="media-description" class="media-description" aria-labelledby="media-heading">
-  <p class="eyebrow">Real-world context and simulation</p>
-  <h2 id="media-heading">Video descriptions & sources</h2>
-  <section aria-labelledby="context-description-heading">
-    <h3 id="context-description-heading">Waymo on city streets</h3>
-    <p><a href={site.contextUrl}>{site.contextCredit}</a></p>
-    <div id="context-visual-notes">
-      {site.contextDetails.map((paragraph) => <p>{paragraph}</p>)}
+  <h2 id="media-heading">Video description & sources</h2>
+  <section aria-labelledby="opening-description-heading">
+    <h3 id="opening-description-heading">{opening.title}</h3>
+    <div id="opening-visual-notes">
+      {opening.description.map((paragraph) => <p>{paragraph}</p>)}
     </div>
-    <p class="fine-print">{site.contextLicense}{" "}<a href={site.contextLicenseUrl}>Source and media-use information</a>.</p>
+    <p class="fine-print">{opening.credit}</p>
   </section>
-  <section aria-labelledby="simulation-description-heading">
-    <h3 id="simulation-description-heading">{simulation.title}</h3>
-    <div id="simulation-visual-notes">
-      {simulation.description.map((paragraph) => <p>{paragraph}</p>)}
-    </div>
-    <p class="fine-print">{simulation.credit}</p>
-
+  <section aria-labelledby="deck-images-heading">
+    <h3 id="deck-images-heading">Presentation images</h3>
+    <p>All homepage images come from the authors’ proposal defense presentation ({deck.source}), slides 15, 17, 18, and 19, converted to WebP without other edits. The car and Waymo photos illustrate human-driven and robot vehicles; the Google Earth and SUMO logos name the tools used to build and simulate the network. Rights in third-party photos and logos remain with their holders.</p>
   </section>
-  <section aria-labelledby="network-figure-heading"><h3 id="network-figure-heading">{network.title}</h3><p>{network.description}</p><p class="fine-print">{network.credit}</p></section>
-  <section aria-labelledby="excerpts-heading"><h3 id="excerpts-heading">Network excerpts</h3>{media.clips.map(clip => <section><h4>{clip.title}</h4><p>{clip.description}</p></section>)}<p>Source: author-supplied TL_medium.mp4. These successive excerpts illustrate the same simulation setting; they are not independent trials.</p></section>
-  <p class="fine-print">All clips are silent and show complete frames. They start automatically when visible unless reduced motion or data saving is enabled. Use the native controls on each player to stop motion; a manual pause is respected when you return to the videos. The two recordings illustrate different settings and are not a synchronized experimental comparison.</p>
+  <p class="fine-print">The video is silent and has a text alternative and a timed description track. It plays automatically when visible unless reduced motion or data saving is enabled; the native controls pause it, and a manual pause is respected when you return.</p>
 </section>

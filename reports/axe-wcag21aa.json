@@ -1,34 +1,31 @@
 {
-  "date": "2026-11-05T22:07:53.338Z",
+  "date": "2026-11-05T22:58:33.806Z",
   "project": "mixed_traffic",
   "target": "WCAG 2.1 A/AA",
   "engine": "axe-core via Playwright",
   "scans": [
     {
       "name": "/ desktop",
-      "passes": 25,
+      "passes": 24,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
             [
-              ".hero-credit"
+              "#deck-prior-work > .media-tag"
             ],
             [
-              ".method-bubble-robot"
+              ".compare-arrow"
             ],
             [
-              ".method-bubble-human"
+              "#deck-network > .media-tag"
             ],
             [
-              ".method-bubble-observe"
+              "#deck-signalized > .media-tag"
             ],
             [
-              ".method-bubble-policy"
-            ],
-            [
-              ".method-bubble-action"
+              "#deck-unsignalized > .media-tag"
             ]
           ]
         },
@@ -36,19 +33,7 @@
           "id": "video-caption",
           "nodes": [
             [
-              "#context-video"
-            ],
-            [
-              "#hero-sim-video"
-            ],
-            [
-              "#mixed-network-video"
-            ],
-            [
-              "#mixed-junction-video"
-            ],
-            [
-              "#mixed-flow-video"
+              "#opening-video"
             ]
           ]
         }
@@ -56,14 +41,26 @@
     },
     {
       "name": "/ mobile",
-      "passes": 25,
+      "passes": 24,
       "violations": [],
       "incomplete": [
         {
           "id": "color-contrast",
           "nodes": [
             [
-              ".hero-credit"
+              "#deck-prior-work > .media-tag"
+            ],
+            [
+              ".compare-arrow"
+            ],
+            [
+              "#deck-network > .media-tag"
+            ],
+            [
+              "#deck-signalized > .media-tag"
+            ],
+            [
+              "#deck-unsignalized > .media-tag"
             ]
           ]
         },
@@ -71,19 +68,7 @@
           "id": "video-caption",
           "nodes": [
             [
-              "#context-video"
-            ],
-            [
-              "#hero-sim-video"
-            ],
-            [
-              "#mixed-network-video"
-            ],
-            [
-              "#mixed-junction-video"
-            ],
-            [
-              "#mixed-flow-video"
+              "#opening-video"
             ]
           ]
         }
@@ -155,82 +140,35 @@
     "/: skip link targets main",
     "Visible title videos automatically play without a click",
     "No separate global playback button remains; native controls are available",
-    "Five expected context and simulation excerpts are distributed across the page",
+    "Only the opening city traffic video is on the page",
     "The hero has only the Paper button linked to the published article",
-    "abstract: the intended short excerpts accompany the research section",
-    "results: the intended short excerpts accompany the research section",
     "All expected video players are available",
     "Silent inline playback, original speed, native controls, and controllable loops",
-    "Opening shows Waymo and the simulation side by side at one height across the full width",
+    "Opening city traffic video spans the full width",
     "Homepage has no top bar, footer, or media notes; credits stay linked",
-    "Four evidence tiles each link to a source",
-    "The opening video shows the credit Waymo requires",
-    "Method bubbles flank the figure on wide screens",
-    "The study map and every research clip have a plain-language bubble",
-    "Method figure stays large beside its bubbles at desktop width",
+    "No data tiles, results, or conclusion; the title is the paper title",
+    "Deck images appear in the background, methodology, and experiment",
+    "Method figure stays large at desktop width",
     "Citation heading uses a compact size",
     "The vision diagram and removed explanations stay absent",
     "Native video playback controls are reachable through Tab",
     "Space on the native player pauses the video",
-    "Research excerpt plays silently when visible: mixed-network-video",
-    "Research excerpt plays silently when visible: mixed-junction-video",
-    "Research excerpt plays silently when visible: mixed-flow-video",
     "Offscreen title videos pause automatically",
     "Native manual pause remains remembered after scrolling",
     "Space on the native player explicitly resumes playback",
     "Video looping preserves playback and remains pausable",
     "Native keyboard pause still works after a loop",
-    "context-video: the selected duration matches the reviewed media manifest",
-    "context-video: selected excerpt duration and timed description load correctly",
-    "context-video: a complete text alternative is programmatically associated",
-    "context-video: description cues use valid times within the clip",
-    "context-video: local video asset is declared",
-    "context-video: video asset responds successfully",
-    "context-video: local poster asset is declared",
-    "context-video: poster asset responds successfully",
-    "context-video: local description asset is declared",
-    "context-video: description asset responds successfully",
-    "hero-sim-video: the selected duration matches the reviewed media manifest",
-    "hero-sim-video: selected excerpt duration and timed description load correctly",
-    "hero-sim-video: a complete text alternative is programmatically associated",
-    "hero-sim-video: description cues use valid times within the clip",
-    "hero-sim-video: local video asset is declared",
-    "hero-sim-video: video asset responds successfully",
-    "hero-sim-video: local poster asset is declared",
-    "hero-sim-video: poster asset responds successfully",
-    "hero-sim-video: local description asset is declared",
-    "hero-sim-video: description asset responds successfully",
-    "mixed-network-video: the selected duration matches the reviewed media manifest",
-    "mixed-network-video: selected excerpt duration and timed description load correctly",
-    "mixed-network-video: a complete text alternative is programmatically associated",
-    "mixed-network-video: description cues use valid times within the clip",
-    "mixed-network-video: local video asset is declared",
-    "mixed-network-video: video asset responds successfully",
-    "mixed-network-video: local poster asset is declared",
-    "mixed-network-video: poster asset responds successfully",
-    "mixed-network-video: local description asset is declared",
-    "mixed-network-video: description asset responds successfully",
-    "mixed-junction-video: the selected duration matches the reviewed media manifest",
-    "mixed-junction-video: selected excerpt duration and timed description load correctly",
-    "mixed-junction-video: a complete text alternative is programmatically associated",
-    "mixed-junction-video: description cues use valid times within the clip",
-    "mixed-junction-video: local video asset is declared",
-    "mixed-junction-video: video asset responds successfully",
-    "mixed-junction-video: local poster asset is declared",
-    "mixed-junction-video: poster asset responds successfully",
-    "mixed-junction-video: local description asset is declared",
-    "mixed-junction-video: description asset responds successfully",
-    "mixed-flow-video: the selected duration matches the reviewed media manifest",
-    "mixed-flow-video: selected excerpt duration and timed description load correctly",
-    "mixed-flow-video: a complete text alternative is programmatically associated",
-    "mixed-flow-video: description cues use valid times within the clip",
-    "mixed-flow-video: local video asset is declared",
-    "mixed-flow-video: video asset responds successfully",
-    "mixed-flow-video: local poster asset is declared",
-    "mixed-flow-video: poster asset responds successfully",
-    "mixed-flow-video: local description asset is declared",
-    "mixed-flow-video: description asset responds successfully",
-    "Story moves from the context to the network, the method, and the simulation",
+    "opening-video: the selected duration matches the reviewed media manifest",
+    "opening-video: selected excerpt duration and timed description load correctly",
+    "opening-video: a complete text alternative is programmatically associated",
+    "opening-video: description cues use valid times within the clip",
+    "opening-video: local video asset is declared",
+    "opening-video: video asset responds successfully",
+    "opening-video: local poster asset is declared",
+    "opening-video: poster asset responds successfully",
+    "opening-video: local description asset is declared",
+    "opening-video: description asset responds successfully",
+    "Story follows the proposal deck: background, problem, methodology, then the experiment",
     "Keyboard citation copy",
     "Video captions and per-player description blocks are removed",
     "/: no horizontal page overflow at 320px",
@@ -288,8 +226,7 @@
     "/accessibility/: skip link is first keyboard stop",
     "/accessibility/: visible focus",
     "/accessibility/: skip link targets main",
-    "context-visual-notes: complete visual alternative available",
-    "simulation-visual-notes: complete visual alternative available",
+    "opening-visual-notes: complete visual alternative available",
     "/accessibility/: no horizontal page overflow at 320px",
     "/accessibility/: no horizontal page overflow at 768px",
     "/accessibility/: 320px text-spacing reflow",

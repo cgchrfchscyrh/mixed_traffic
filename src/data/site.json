@@ -68,17 +68,6 @@
       "label": "robot-vehicle penetration studied"
     }
   ],
-  "contextTitle": "Autonomous vehicles on real city streets.",
-  "contextDescription": "A Waymo autonomous Jaguar I-PACE drives through Los Angeles alongside other road traffic. Source: Waymo. This industry footage provides context for the paper’s separate Colorado Springs simulation.",
-  "contextCredit": "Source: Waymo · Autonomous Jaguar I-PACE driving in Los Angeles",
-  "contextUrl": "https://waymo.com/media-resources/",
-  "contextDuration": 20,
-  "contextDetails": [
-    "A white Waymo Jaguar I-PACE, fitted with a roof-mounted sensor unit and additional sensors around its body, travels through city streets. The first moving shot follows the vehicle beside a large white building with a patterned facade. A second, wider front-quarter view follows it past a silver curved building and across marked intersections. Other vehicles pass in adjacent lanes, and traffic lights, crosswalks, and downtown buildings are visible. The final shot changes to dusk: the same type of vehicle approaches the camera with its headlights on while other cars travel behind it.",
-    "This approximately 20-second silent excerpt uses 01:08–01:28 of Waymo’s official Los Angeles driving B-roll. It illustrates a real-world autonomous vehicle sharing public roads. It does not demonstrate the authors’ controller, identify the control mode of surrounding vehicles, or validate the paper’s simulation results. No affiliation with or endorsement by Waymo is implied."
-  ],
-  "contextLicense": "Waymo provides this media for press and educational purposes with the credit “Source: Waymo.” The excerpt is trimmed, resized, re-encoded, and presented without audio; the original image sequence and playback speed are retained. This is an educational research use.",
-  "contextLicenseUrl": "https://waymo.com/media-resources/",
   "steps": [
     {
       "title": "Observe locally",
@@ -210,14 +199,28 @@
           "unit": "s",
           "direction": "Lower is better",
           "max": 10,
-          "values": [6.17, 5.76, 5.91, 6.31, 5.09, 5.95]
+          "values": [
+            6.17,
+            5.76,
+            5.91,
+            6.31,
+            5.09,
+            5.95
+          ]
         },
         {
           "title": "Network throughput",
           "unit": "vehicles / 500 s",
           "direction": "Higher is better",
           "max": 550,
-          "values": [454, 473, 466, 475, 493, 478]
+          "values": [
+            454,
+            473,
+            466,
+            475,
+            493,
+            478
+          ]
         }
       ],
       "labels": [
@@ -241,14 +244,28 @@
           "unit": "s",
           "direction": "Lower is better",
           "max": 10,
-          "values": [6.17, 5.86, 6.63, 7.92, 6.11, 7.02]
+          "values": [
+            6.17,
+            5.86,
+            6.63,
+            7.92,
+            6.11,
+            7.02
+          ]
         },
         {
           "title": "Network throughput",
           "unit": "vehicles / 500 s",
           "direction": "Higher is better",
           "max": 550,
-          "values": [454, 470, 459, 448, 471, 473]
+          "values": [
+            454,
+            470,
+            459,
+            448,
+            471,
+            473
+          ]
         }
       ],
       "labels": [
@@ -759,8 +776,5 @@
         ]
       ]
     }
-  ],
-  "contextVideo": "media/waymo-los-angeles.mp4",
-  "contextPoster": "media/waymo-los-angeles.jpg",
-  "contextTrack": "media/waymo-descriptions.vtt"
+  ]
 }

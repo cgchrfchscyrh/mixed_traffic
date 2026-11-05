@@ -1,0 +1,68 @@
+{
+  "source": "Proposal defense presentation (Proposal_defense_narrow.pptx)",
+  "figures": [
+    {
+      "id": "human-vehicle",
+      "file": "figures/deck/human-vehicle.webp",
+      "width": 600,
+      "height": 329,
+      "alt": "Side view of a white passenger car, standing for a human-driven vehicle."
+    },
+    {
+      "id": "robot-vehicle",
+      "file": "figures/deck/robot-vehicle.webp",
+      "width": 1200,
+      "height": 600,
+      "alt": "A Waymo autonomous vehicle with a roof-mounted sensor unit driving on a city street."
+    },
+    {
+      "id": "prior-work",
+      "file": "figures/deck/prior-work-figure-eight.webp",
+      "width": 900,
+      "height": 902,
+      "alt": "Prior work: a single intersection on a figure-eight road with a few vehicles."
+    },
+    {
+      "id": "network",
+      "file": "figures/deck/colorado-springs-network.webp",
+      "width": 2000,
+      "height": 1176,
+      "alt": "Our network: a map of Colorado Springs with 14 numbered intersections, flanked by close-up satellite views of four of them."
+    },
+    {
+      "id": "google-earth",
+      "file": "figures/deck/google-earth.webp",
+      "width": 480,
+      "height": 112,
+      "alt": "Google Earth"
+    },
+    {
+      "id": "sumo",
+      "file": "figures/deck/sumo.webp",
+      "width": 200,
+      "height": 200,
+      "alt": "SUMO"
+    },
+    {
+      "id": "method",
+      "file": "figures/presentation/mixed-traffic-method-slide18.webp",
+      "width": 2076,
+      "height": 1880,
+      "alt": "Overhead view of a city intersection. Robot vehicles, in red, show Stop or Go signs; a human-driven vehicle crosses in the middle. Below, traffic information feeds an RL policy that outputs the robot vehicle's action, Go or Stop."
+    },
+    {
+      "id": "signalized",
+      "file": "figures/presentation/signalized-intersection-slide19.webp",
+      "width": 976,
+      "height": 583,
+      "alt": "A signalized four-way intersection with traffic lights and four approaches labelled A to D."
+    },
+    {
+      "id": "unsignalized",
+      "file": "figures/presentation/unsignalized-intersection-slide19.webp",
+      "width": 1028,
+      "height": 484,
+      "alt": "An unsignalized four-way intersection with yield signs and four approaches labelled A to D."
+    }
+  ]
+}

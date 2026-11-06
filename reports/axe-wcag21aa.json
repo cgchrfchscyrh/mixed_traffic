@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-05T22:58:33.806Z",
+  "date": "2026-11-06T14:28:07.221Z",
   "project": "mixed_traffic",
   "target": "WCAG 2.1 A/AA",
   "engine": "axe-core via Playwright",
@@ -168,7 +168,7 @@
     "opening-video: poster asset responds successfully",
     "opening-video: local description asset is declared",
     "opening-video: description asset responds successfully",
-    "Story follows the proposal deck: background, problem, methodology, then the experiment",
+    "Story follows the proposal deck: background, methodology, then the experiment",
     "Keyboard citation copy",
     "Video captions and per-player description blocks are removed",
     "/: no horizontal page overflow at 320px",

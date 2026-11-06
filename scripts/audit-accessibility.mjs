@@ -413,8 +413,8 @@ try {
               ".visual-overview > section > h2, .visual-overview > section > .section-heading > h2, .visual-overview > section > .vision-heading > h2",
             )
             .allTextContents(),
-        ) === JSON.stringify(["Background", "Problem", "Methodology", "Citation"]),
-        "Story follows the proposal deck: background, problem, methodology, then the experiment",
+        ) === JSON.stringify(["Background", "Methodology", "Citation"]),
+        "Story follows the proposal deck: background, methodology, then the experiment",
       );
       await page
         .getByRole("button", { name: "Copy citation", exact: true })

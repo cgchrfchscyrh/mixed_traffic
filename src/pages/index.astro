@@ -26,11 +26,6 @@ import { asset } from "../data/paths";
       </figure>
     </section>
 
-    <section class="section deck-section" id="problem" aria-labelledby="problem-title">
-      <h2 id="problem-title">Problem</h2>
-      <p class="deck-lead">Most mixed-traffic studies cover small or isolated intersections. It is still unclear how human-driven and robot vehicles behave together across a large network, and how to move that network from traffic signals to autonomous intersection management.</p>
-    </section>
-
     <section class="section deck-section" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Methodology</h2>
       <p class="deck-lead">We study a 14-intersection road network in Colorado Springs, Colorado, where human-driven and robot vehicles share the road, and compare our mixed-control framework with traffic-signal control.</p>
@@ -44,13 +39,13 @@ import { asset } from "../data/paths";
       </div>
       <div class="deck-step">
         <h3>Robot vehicles choose Stop or Go</h3>
-        <p>Near an intersection, each robot vehicle switches from the Intelligent Driver Model, which also drives the human vehicles, to an RL policy that reads local traffic.</p>
+        <p>Near an intersection, each robot vehicle switches from the Intelligent Driver Model, which also drives the human vehicles, to an RL policy, trained with Rainbow DQN, that reads local traffic.</p>
       </div>
       <div class="method-slide"><DeckFigure id="method" /></div>
     </section>
 
     <section class="section deck-section" id="experiment" aria-label="Experiment">
-      <p class="deck-lead">We move the network from signal control to unsignalized control step by step: robot vehicles run 2, 4, 6, 8, or 10 of the 14 intersections, and signals run the rest. Robot vehicles make up 40% to 80% of traffic, and the policy is trained with Rainbow DQN.</p>
+      <p class="deck-lead">At a signalized intersection (S), traffic lights decide when vehicles go. An unsignalized intersection (U) has no lights: robot vehicles decide when to stop or go, and the human-driven vehicles behind them follow. We make 2, 4, 6, 8, or 10 of the 14 intersections unsignalized, leave signals at the rest, and vary robot vehicles from 40% to 80% of traffic.</p>
       <div class="media-pair wide-media intersection-pair">
         <DeckFigure id="signalized" tag="Signalized (S)" />
         <DeckFigure id="unsignalized" tag="Unsignalized (U)" />

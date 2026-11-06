@@ -3,7 +3,7 @@
 
 ## Proposal-deck narrative — 5 November 2026
 
-At the author's request, the homepage follows the proposal defense deck: Background, Problem, Methodology, and the experiment setup. The opening is now one full-width silent video, converted from the slide-14 city traffic animation, with a timed description track and a text alternative. The Waymo clip, the SUMO excerpts, the data tiles, and the numerical results were removed; the retired `/results/` page links to the Experiment section and the paper. Deck images are WebP files with alt text; the red-to-green bar in the background figure is decorative and its meaning is in text labels. Build, lint, and the browser suite passed: **10 axe scans and 138 functional checks**, with no violations or failures, at desktop, 390, and 320 CSS pixels. This is not full ADA/WCAG certification.
+At the author's request, the homepage follows the proposal defense deck: Background, Methodology, and the experiment setup (the Problem section was later removed at the author's request). The opening is now one full-width silent video, converted from the slide-14 city traffic animation, with a timed description track and a text alternative. The Waymo clip, the SUMO excerpts, the data tiles, and the numerical results were removed; the retired `/results/` page links to the Experiment section and the paper. Deck images are WebP files with alt text; the red-to-green bar in the background figure is decorative and its meaning is in text labels. Build, lint, and the browser suite passed: **10 axe scans and 138 functional checks**, with no violations or failures, at desktop, 390, and 320 CSS pixels. This is not full ADA/WCAG certification.
 
 ## Opening pair and evidence tiles — 5 November 2026
 

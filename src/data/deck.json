@@ -63,6 +63,22 @@
       "width": 1028,
       "height": 484,
       "alt": "An unsignalized four-way intersection with yield signs and four approaches labelled A to D."
+    },
+    {
+      "id": "results-penetration",
+      "file": "figures/deck/results-penetration.webp",
+      "width": 2400,
+      "height": 1132,
+      "alt": "Two box plots for the 8U + 6S configuration: (a) average waiting time and (b) vehicle throughput at robot-vehicle rates of 40% to 80%, each compared with traffic-light control (TL).",
+      "description": "Panels a and b of the paper's Figure 2, for the configuration with 8 unsignalized and 6 signalized intersections (8U + 6S). Panel a shows average waiting time in seconds; the traffic-light baseline (TL) is 6.17 s. Network values from the paper's tables are 6.11 s at 50% robot vehicles and 5.09 s at 80%; the medians at 40%, 60%, and 70% sit between about 5.2 and 5.8 s. Panel b shows vehicle throughput per 500 seconds; the baseline is 454. Network values are 471 at 50% and 493 at 80%, and every robot-vehicle rate has a median above the baseline. The paper's panels c and d, for the 4U + 10S configuration, are not reproduced here; there, waiting time stays above the baseline at most rates and throughput gains are smaller."
+    },
+    {
+      "id": "results-intersections",
+      "file": "figures/deck/results-intersections.webp",
+      "width": 2600,
+      "height": 435,
+      "alt": "Paired bar charts of average waiting time at each of the 14 intersections, comparing our method (blue) with traffic lights (red, TL), at 50% robot vehicles (left) and 80% (right).",
+      "description": "The paper's Figure 3. For each intersection, the Ours bar is the lowest waiting time among the five mixed-control configurations, not one shared configuration. At 50% robot vehicles, 9 of the 14 intersections wait less than under traffic lights; intersections 2, 7, and 13 wait longer, and 5 and 9 are about even. At 80%, 11 of the 14 wait less; intersections 7, 9, and 13 wait about the same or longer. The largest waits, around 13 to 18 seconds, are at intersections 7 and 11 under both controls."
     }
   ]
 }

@@ -2,10 +2,12 @@
 import deck from "../data/deck.json";
 import { asset } from "../data/paths";
 interface Props { id: string; tag?: string; }
-const fig = deck.figures.find((item) => item.id === Astro.props.id)!;
+const fig = deck.figures.find((item) => item.id === Astro.props.id)! as (typeof deck.figures)[number] & { description?: string };
 const { tag } = Astro.props;
+const descId = fig.description ? `deck-${fig.id}-description` : undefined;
 ---
 <figure class="deck-figure" id={`deck-${fig.id}`}>
-  <img src={asset(fig.file)} width={fig.width} height={fig.height} alt={fig.alt} loading="lazy" decoding="async" />
+  <img src={asset(fig.file)} width={fig.width} height={fig.height} alt={fig.alt} aria-describedby={descId} loading="lazy" decoding="async" />
   {tag && <figcaption class="media-tag">{tag}</figcaption>}
+  {fig.description && <p class="sr-only" id={descId}>{fig.description}</p>}
 </figure>

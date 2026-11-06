@@ -1791,7 +1791,7 @@ summary:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
 .visual-hero .hero-single video, .hero .hero-single video { position: static; display: block; width: 100%; height: auto; max-height: calc(100svh - 120px); aspect-ratio: 1600 / 934; object-fit: cover; border-radius: 0; }
 .hero-publication h1 { max-width: 46ch; }
 
-/* Deck narrative: Background → Methodology → Experiment. */
+/* Deck narrative: Background → Methodology → Experiment → Results → Conclusion. */
 .visual-overview .deck-section { border: 0; }
 .visual-overview .deck-section > h2 { text-align: center; font-size: clamp(24px, 2.4vw, 32px); margin-bottom: 12px; }
 .deck-lead { max-width: 780px; margin: 0 auto 28px; color: #333; font-size: 17px; line-height: 1.6; text-align: center; }
@@ -1818,6 +1818,13 @@ summary:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
 .method-slide { max-width: 760px; margin: 0 auto; }
 .intersection-pair .deck-figure { aspect-ratio: 1.8; background: #111; }
 .intersection-pair .deck-figure img { height: 100%; object-fit: cover; }
+.result-chart { width: min(calc(100vw - 32px), 1240px); padding: 16px; border-radius: 8px; background: #fff; }
+.result-chart .deck-figure { border-radius: 0; }
+.result-follow { margin-top: 56px; }
+.result-scroll { position: relative; overflow-x: auto; }
+.result-scroll:focus-visible { outline: 3px solid #171717; outline-offset: 3px; }
+.chart-labels { display: grid; grid-template-columns: 1fr 1fr; margin: 0 0 8px; color: #333; font-size: 15px; font-weight: 600; text-align: center; }
+#conclusion .deck-lead { font-size: 19px; }
 @media (max-width: 760px) {
   .network-compare { grid-template-columns: minmax(0, 1fr); }
   .compare-arrow { justify-self: center; transform: rotate(90deg); }
@@ -1827,4 +1834,7 @@ summary:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
   .rv-labels strong { font-size: 15px; }
   .deck-lead, .deck-step p { font-size: 16px; }
   .media-tag { top: 8px; font-size: 13px; }
+  .result-chart { padding: 8px; }
+  .result-scroll-inner { min-width: 640px; }
+  #conclusion .deck-lead { font-size: 17px; }
 }

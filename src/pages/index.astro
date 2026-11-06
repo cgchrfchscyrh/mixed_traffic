@@ -51,6 +51,24 @@ import { asset } from "../data/paths";
         <DeckFigure id="unsignalized" tag="Unsignalized (U)" />
       </div>
     </section>
+
+    <section class="section deck-section" id="results" aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <p class="deck-lead">With 80% robot vehicles and 8 of the 14 intersections unsignalized, the average wait falls from 6.17 to 5.09 seconds, and 493 vehicles reach their destinations every 500 seconds, up from 454 under traffic lights alone.</p>
+      <div class="result-chart wide-media"><DeckFigure id="results-penetration" /></div>
+      <p class="deck-lead result-follow">Gains differ by intersection. Choosing the best setup for each one, robot vehicles cut waiting at 9 of the 14 intersections when they make up half of traffic, and at 11 when they make up 80%.</p>
+      <div class="result-chart wide-media result-scroll" role="region" tabindex="0" aria-label="Waiting time by intersection, horizontally scrollable on small screens">
+        <div class="result-scroll-inner">
+          <p class="chart-labels" aria-hidden="true"><span>50% robot vehicles</span><span>80% robot vehicles</span></p>
+          <DeckFigure id="results-intersections" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section deck-section" id="conclusion" aria-labelledby="conclusion-title">
+      <h2 id="conclusion-title">Conclusion</h2>
+      <p class="deck-lead">Robot vehicles can take over intersections from traffic lights one step at a time. In a city-scale simulation, mixing unsignalized and signalized intersections shortened waits and moved more vehicles, a gradual path from traffic signals to autonomous intersection management.</p>
+    </section>
     <Citation />
   </div>
 </Layout>

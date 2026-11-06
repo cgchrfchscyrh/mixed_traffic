@@ -251,9 +251,11 @@ try {
         "Homepage has no top bar, footer, or media notes; credits stay linked",
       );
       check(
-        (await page.locator(".evidence-tile, .hero-credit, #results, #conclusion, #metrics").count()) === 0 &&
+        (await page.locator(".evidence-tile, .hero-credit, #metrics").count()) === 0 &&
+          (await page.locator("#results .deck-figure img[aria-describedby]").count()) === 2 &&
+          (await page.locator("#conclusion .deck-lead").count()) === 1 &&
           (await page.locator("h1").innerText()) === site.title,
-        "No data tiles, results, or conclusion; the title is the paper title",
+        "No data tiles; results charts carry text descriptions and a short conclusion follows; the title is the paper title",
       );
       check(
         (await page.locator("#background .rv-ends img").count()) === 2 &&
@@ -413,8 +415,8 @@ try {
               ".visual-overview > section > h2, .visual-overview > section > .section-heading > h2, .visual-overview > section > .vision-heading > h2",
             )
             .allTextContents(),
-        ) === JSON.stringify(["Background", "Methodology", "Citation"]),
-        "Story follows the proposal deck: background, methodology, then the experiment",
+        ) === JSON.stringify(["Background", "Methodology", "Results", "Conclusion", "Citation"]),
+        "Story follows the proposal deck: background, methodology, experiment, results, conclusion",
       );
       await page
         .getByRole("button", { name: "Copy citation", exact: true })
@@ -439,7 +441,7 @@ try {
           .locator(
             'main a[href="' +
               base.replace(/^https?:\/\/[^/]+/, "") +
-              (route === "/paper/" ? "/#method" : "/#experiment") +
+              (route === "/paper/" ? "/#method" : "/#results") +
               '"]',
           )
           .count()) > 0,

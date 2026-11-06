@@ -1,5 +1,9 @@
 # Accessibility review — 18 October 2026
 
+## Results and conclusion — 6 November 2026
+
+At the author's request, the homepage again ends with Results and Conclusion, following slides 21–23 of the proposal deck. Results show two charts from the published paper (Figure 2 panels a–b for 8U + 6S, and Figure 3), each with alternative text and a full description announced through `aria-describedby`; the lead sentences give the key network values from the paper's tables (6.17 → 5.09 s waiting time and 454 → 493 vehicles per 500 s at 80% robot vehicles). The description states that the omitted 4U + 10S panels show weaker results, and that the per-intersection bars take the best of five configurations at each intersection. On narrow screens the per-intersection chart scrolls horizontally inside a keyboard-focusable region. The retired `/results/` page now links to `#results`.
+
 
 ## Proposal-deck narrative — 5 November 2026
 
